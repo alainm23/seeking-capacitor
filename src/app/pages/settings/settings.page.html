@@ -1,0 +1,373 @@
+<ion-header>
+  <ion-toolbar>
+    <!--<ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>-->
+
+    <ion-card class="card-cabezera">
+      <div class="div-flex">
+        <img src="assets/img/Capturaiconse.PNG" class="img-circle">
+        <p class="label-titulo">
+          {{ 'Settings' | translate }}
+        </p>
+      </div>
+      <ion-button (click)="back ()" mode="ios" class="btn-close"><ion-icon name="close" class="icon-close"></ion-icon></ion-button>
+    </ion-card>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="div-blanco">
+    <ion-item class="item-select" lines="none">
+      <ion-select class="select-favo" [(ngModel)]="seccion" interface="popover">
+        <ion-select-option value="profile">Profile</ion-select-option>
+        <ion-select-option value="account">Account</ion-select-option>
+        <ion-select-option value="emails_notifications">Emails & notifications</ion-select-option>
+      </ion-select>
+      <div class="div-linea-select"></div>
+    </ion-item>
+  </div>
+
+  <div *ngIf="seccion === 'profile'">
+    <ion-list>
+      <ion-list-header>
+        Activity
+      </ion-list-header>
+
+      <ion-item lines="none">
+        <ion-label>Incognito mode</ion-label>
+        <ion-toggle (ionChange)="update ($event, 'modo_incognito')" [checked]="modo_incognito" mode="ios"></ion-toggle>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>Send me gifts</ion-label>
+        <ion-toggle (ionChange)="update ($event, 'send_me_gifts')" [checked]="send_me_gifts" mode="ios"></ion-toggle>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="seccion === 'account'">
+    <ion-list>
+      <ng-container *ngIf="auth.USER_DATA.membresia !== 0">
+        <ion-list-header>
+          Plan
+        </ion-list-header>
+        <ion-item lines="none">
+          <ion-label>
+            {{ get_plan_name (auth.USER_DATA.membresia) }}
+          </ion-label>
+  
+          <ion-button (click)="cancel_plan_confirm ()" class="delete_button" slot="end" mode="ios">
+            Cancel
+          </ion-button>
+        </ion-item>
+        <br>
+      </ng-container>
+      <ion-list-header>
+        Activity
+      </ion-list-header>
+
+      <ion-item lines="none">
+        <ion-label>Auto renew</ion-label>
+        <ion-toggle (ionChange)="update ($event, 'auto_renew')" [(ngModel)]="auto_renew" mode="ios"></ion-toggle>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>Get newsletter</ion-label>
+        <ion-toggle (ionChange)="update ($event, 'get_newsletter')" [(ngModel)]="get_newsletter" mode="ios"></ion-toggle>
+      </ion-item>
+      <br>
+      <ion-list-header>
+        Social accounts
+      </ion-list-header>
+
+      <ion-item lines="none">
+        <ion-label>
+          Facebook
+        </ion-label>
+
+        <ion-button slot="end" mode="ios">
+          Connect
+        </ion-button>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>
+          Instagram
+        </ion-label>
+
+        <ion-button slot="end" mode="ios">
+          Connect
+        </ion-button>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>
+          Tik Tok
+        </ion-label>
+
+        <ion-button slot="end" mode="ios">
+          Connect
+        </ion-button>
+      </ion-item>
+      <br>
+      <ion-list-header>
+        Preferences
+      </ion-list-header>
+
+      <ion-item lines="none">
+        <ion-label>Use metric system</ion-label>
+        <ion-toggle (ionChange)="update ($event, 'metric_system')" [(ngModel)]="metric_system" mode="ios"></ion-toggle>
+      </ion-item>
+
+      <br>
+      <ion-list-header>
+        Account
+      </ion-list-header>
+
+      <ion-item lines="none">
+        <ion-label>
+          Delete my account
+        </ion-label>
+
+        <ion-button (click)="delete_account_confirm ()" class="delete_button" slot="end" mode="ios">
+          Delete
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="seccion === 'emails_notifications'">
+    <ion-list>
+      <ion-list-header>
+        When someone winks me
+      </ion-list-header>
+
+      <ion-item lines="none">
+        <ion-label>
+          Alert
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, winks_notifications, 'winks_notifications', 'alert')" [(ngModel)]="winks_notifications.alert"></ion-checkbox>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>
+          Email
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, winks_notifications, 'winks_notifications', 'email')" [(ngModel)]="winks_notifications.email"></ion-checkbox>
+      </ion-item>
+      
+      <br>
+
+      <ion-list-header>
+        When someone adds me to favorites
+      </ion-list-header>
+
+      <ion-item lines="none">
+        <ion-label>
+          Alert
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, favorites_notifications, 'favorites_notifications', 'alert')" [(ngModel)]="favorites_notifications.alert"></ion-checkbox>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>
+          Email
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, favorites_notifications, 'favorites_notifications', 'email')" [(ngModel)]="favorites_notifications.email"></ion-checkbox>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>
+          Inbox
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, favorites_notifications, 'favorites_notifications', 'inbox')" [(ngModel)]="favorites_notifications.inbox"></ion-checkbox>
+      </ion-item>
+
+      <br>
+
+      <ion-list-header>
+        When someone sends me a message
+      </ion-list-header>
+
+      <ion-item lines="none">
+        <ion-label>
+          Alert
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, message_notifications, 'message_notifications', 'alert')" [(ngModel)]="message_notifications.alert"></ion-checkbox>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>
+          Email
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, message_notifications, 'message_notifications', 'email')" [(ngModel)]="message_notifications.email"></ion-checkbox>
+      </ion-item>
+
+      <br>
+
+      <ion-list-header>
+        When someone views my profile
+      </ion-list-header>
+
+      <ion-item lines="none">
+        <ion-label>
+          Alert
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, profile_notifications, 'profile_notifications', 'alert')" [(ngModel)]="profile_notifications.alert"></ion-checkbox>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>
+          Email
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, profile_notifications, 'profile_notifications', 'email')" [(ngModel)]="profile_notifications.email"></ion-checkbox>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>
+          Inbox
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, profile_notifications, 'profile_notifications', 'inbox')" [(ngModel)]="profile_notifications.inbox"></ion-checkbox>
+      </ion-item>
+
+      <br>
+
+      <ion-list-header>
+        New members and matches
+      </ion-list-header>
+
+      <ion-item lines="none">
+        <ion-label>
+          Alert
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, members_and_matches_notifications, 'members_and_matches_notifications', 'alert')" [(ngModel)]="members_and_matches_notifications.alert"></ion-checkbox>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>
+          Email
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, members_and_matches_notifications, 'members_and_matches_notifications', 'email')" [(ngModel)]="members_and_matches_notifications.email"></ion-checkbox>
+      </ion-item>
+
+      <br>
+
+      <ion-list-header>
+        Profile changes are approved
+      </ion-list-header>
+
+      <ion-item lines="none">
+        <ion-label>
+          Alert
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, profile_changes_notifications, 'profile_changes_notifications', 'alert')" [(ngModel)]="profile_changes_notifications.alert"></ion-checkbox>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>
+          Email
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, profile_changes_notifications, 'profile_changes_notifications', 'email')" [(ngModel)]="profile_changes_notifications.email"></ion-checkbox>
+      </ion-item>
+
+      <br>
+
+      <ion-list-header>
+        Verification & information requests
+      </ion-list-header>
+
+      <ion-item lines="none">
+        <ion-label>
+          Alert
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, verification_and_information_notifications, 'verification_and_information_notifications', 'alert')" [(ngModel)]="verification_and_information_notifications.alert"></ion-checkbox>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>
+          Email
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, verification_and_information_notifications, 'verification_and_information_notifications', 'email')" [(ngModel)]="verification_and_information_notifications.email"></ion-checkbox>
+      </ion-item>
+
+      <br>
+
+      <ion-list-header>
+        News and Special events
+      </ion-list-header>
+
+      
+
+      <ion-item lines="none">
+        <ion-label>
+          Alert
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, news_and_events_notifications, 'news_and_events_notifications', 'alert')" [(ngModel)]="news_and_events_notifications.alert"></ion-checkbox>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>
+          Email
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, news_and_events_notifications, 'news_and_events_notifications', 'email')" [(ngModel)]="news_and_events_notifications.email"></ion-checkbox>
+      </ion-item>
+
+      <!-- <br>
+
+      <!-- <ion-item lines="none">
+        <ion-label>
+          Alert
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, special_events_notifications, 'special_events_notifications', 'alert')" [(ngModel)]="special_events_notifications.alert"></ion-checkbox>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>
+          Email
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, special_events_notifications, 'special_events_notifications', 'email')" [(ngModel)]="special_events_notifications.email"></ion-checkbox>
+      </ion-item> -->
+
+      <!-- <br>
+
+      <ion-list-header>
+        News and updates
+      </ion-list-header>
+
+      <ion-item lines="none">
+        <ion-label>
+          Alert
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, news_and_updates_notifications, 'news_and_updates_notifications', 'alert')" [(ngModel)]="news_and_updates_notifications.alert"></ion-checkbox>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>
+          Email
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, news_and_updates_notifications, 'news_and_updates_notifications', 'email')" [(ngModel)]="news_and_updates_notifications.email"></ion-checkbox>
+      </ion-item> -->
+
+      <br>
+
+      <ion-list-header>
+        Promotions and offers
+      </ion-list-header>
+
+      <ion-item lines="none">
+        <ion-label>
+          Alert
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, promotions_notifications, 'promotions_notifications', 'alert')" [(ngModel)]="promotions_notifications.alert"></ion-checkbox>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>
+          Email
+        </ion-label>
+        <ion-checkbox slot="end" (ionChange)="update_check ($event, promotions_notifications, 'promotions_notifications', 'email')" [(ngModel)]="promotions_notifications.email"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

@@ -1,0 +1,64 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="ion-text-center">
+    <ion-button class="btn-close-messaje" (click)="close ()"><ion-icon name="close-sharp" class="icon-close"></ion-icon></ion-button>
+    <h1>{{ perfil?.usernick }}, {{ perfil?.edad }}</h1>
+    <p class="pcolor-formato">{{ perfil?.nombre_ciudad }}, {{ perfil?.nombre_pais }}</p>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #content class="ion-text-center">
+  <ion-infinite-scroll position="top" (ionInfinite)="get_data ($event, true)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ng-container *ngFor="let item of messages">
+    <ion-item *ngIf="item.id_sender !== auth.USER_DATA.id" class="ion-no-padding item-avatar-sytle" lines="none">
+      <ion-avatar slot="start">
+        <img src="assets/img/Elipse1.png" class="img-perfil">
+      </ion-avatar>
+      <div class="div-general-top">
+        <div class="div-conversacion-una-linea div-anaranjado-conversacion div-radius-primer-mensaje">
+          <p class="p-conversacion p-conversacion-blanco ion-no-margin">{{ format_message (item.message) }}</p>
+          <span class="span-hora span-hora-blanco">{{ get_date_format (item.created_at) }}</span>
+        </div>
+        <!-- <div class="div-conversacion-una-linea div-anaranjado-conversacion div-radius-ultimo-mensaje">
+          <p class="p-conversacion p-conversacion-blanco ion-no-margin">{{ item.message }}</p>
+          <span class="span-hora span-hora-blanco">{{ get_date_format (item.created_at) }}</span>
+        </div> -->
+      </div>
+    </ion-item>
+
+    <ion-item *ngIf="item.id_sender === auth.USER_DATA.id" class="ion-no-padding item-avatar-sytle item-derecha" lines="none">
+      <ion-avatar slot="end" style="display: none;">
+        <img src="assets/img/Elipse1.png" class="img-perfil">
+      </ion-avatar>
+      <div style="width: 100%;" class="div-general-top div-padding-left">
+        <div style="width: 100%;" class="div-conversacion-dos-varias-lineas div_dos-lineas-top fondo-responder div-fondo-cambio">
+          <p class="p-conversacion ion-no-margin">{{ format_message (item.message) }}</p>
+          <span class="span-hora">{{ get_date_format (item.created_at) }}</span>
+        </div>
+      </div>
+    </ion-item>
+  </ng-container>
+  <img src="assets/img/Imagen-11.png" class="img-llave">
+</ion-content>
+<ion-footer mode="ios">
+  <ion-card>
+    <ion-textarea
+      (keyup.enter)="send_message ()"
+      [(ngModel)]="message"
+      placeholder="Type your message here"
+      mode="ios"
+      rows="1"
+      cols="1"
+      enterkeyhint="Send"></ion-textarea>
+    <ion-button [disabled]="is_loading === true" fill="clear" (click)="send_message ()" >
+      <ion-icon slot="icon-only" name="send"></ion-icon>
+    </ion-button>
+  </ion-card>
+  <div class="ion-text-center div-blanco-footer">
+    Never send money, gift card or banking info.
+  </div>
+</ion-footer>

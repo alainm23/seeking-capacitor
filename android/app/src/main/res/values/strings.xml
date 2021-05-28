@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Seeking Terms</string>
+    <string name="title_activity_main">Seeking Terms</string>
+    <string name="package_name">com.seekingterms</string>
+    <string name="custom_url_scheme">com.seekingterms</string>
+    <string name="facebook_app_id">149253523741767</string>
+    <string name="fb_login_protocol_scheme">fb149253523741767</string>
+    <string name="server_client_id">115731276335-ls0jio5c9rc62vicm1pn3e1ogam6q1p6.apps.googleusercontent.com</string>
+</resources>

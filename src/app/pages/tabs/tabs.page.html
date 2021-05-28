@@ -1,0 +1,26 @@
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button [class.ion-tab-button-selected]="tab_selected === 'home'" (click)="set_tab ('home')" tab="home">
+        <img src="assets/img/iconos_Magnifying-glass.png" class="img-buscador-footer">
+      </ion-tab-button>
+  
+      <ion-tab-button [class.ion-tab-button-selected]="tab_selected === 'inbox'" (click)="set_tab ('inbox')" tab="inbox">
+        <img src="assets/img/iconos_Inbox.png" class="img-chat-footer">
+      </ion-tab-button>
+
+      <ion-tab-button (click)="open_upgrade_menu ()" [class.ion-tab-button-selected]="tab_selected === 'sale'">
+        <img src="assets/img/iconos_Upgrade.png" class="img-corona-footer">
+      </ion-tab-button>
+
+      <ion-tab-button [class.ion-tab-button-selected]="tab_selected === 'favorites'" (click)="set_tab ('favorites')" tab="favorites">
+        <img src="assets/img/icono-no-favorito.png" class="img-corazon-footer">
+      </ion-tab-button>
+  
+      <ion-tab-button [class.ion-tab-button-selected]="tab_selected === 'profile'" (click)="set_tab ('profile')" tab="profile-menu">
+        <img src="assets/img/iconos_Profile.png" class="img-persona-footer">
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>
+  

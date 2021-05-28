@@ -1,0 +1,166 @@
+@font-face{
+    font-family: AvenirMedium;
+    src : url('/assets/font/Avenir-Medium.ttf')
+}
+@font-face{
+    font-family: AvenirHeavy;
+    src : url('/assets/font/Avenir Heavy.ttf')
+}
+@font-face{
+    font-family: Avenirlight;
+    src : url('/assets/font/avenirltstd-light.otf')
+}
+
+.loading-box {
+    width: 100%;
+    padding: 2rem;
+}
+
+ion-content
+{
+    --background: #ffff;
+}
+.card-cabezera
+{
+    margin: 0px;
+    --background: #ffff;
+    padding: 0px 20px;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .div-flex
+    {
+        display: flex;
+        align-items: center;
+        .label-titulo
+        {
+            font-family: Avenirlight;
+            color: #000000;
+            margin: 0;
+            font-size: 20px;
+            margin-left: 15px;
+        }
+    }
+    .btn-close
+    {
+        --background: #ffff;
+        --background-activated: #ffffff;
+        --border-radius: 50%;
+        --box-shadow: 0px 3px 6px #00000029;
+        width: 31px;
+        height: 31px;
+        --padding-top: 0px;
+        --padding-bottom: 0px;
+        --padding-start: 0px;
+        --padding-end: 0px;
+        .icon-close
+        {
+            color: #707070;
+            font-size: 25px;
+        }
+    }
+    
+}
+.div-blanco
+{
+    background: #ffffff;
+    padding: 20px 25px;
+    .item-select
+    {
+        --padding-start: 20px;
+        --inner-padding-end: 10px;
+        --border-color: #E3E3E3;
+        --border-style: solid;
+        --border-width: 1px;
+        --border-radius: 6px;
+        --background: #F7F8F7;
+        position: relative;
+        .select-favo
+        {
+            width: 100%;
+            --placeholder-color: #555555;
+            color: #555555;
+            font-family: Avenirlight;
+            --padding-top: 0px;
+            --padding-bottom: 0px;
+            --placeholder-opacity: 1;
+        }
+        .div-linea-select
+        {
+            position: absolute;
+            right: 35px;
+            width: 1px;
+            background: #D5D5D5;
+            height: 70%;
+        }
+    }
+}
+ion-list
+{
+    padding-left: 20px;
+    padding-right: 20px;
+    ion-list-header
+    {
+        padding-left: 0px;
+        color: #333333;
+        font-family: AvenirHeavy;
+        font-size: 20px;
+    }
+    ion-item
+    {
+        --padding-start: 0px;
+        --inner-padding-end: 0px;
+        ion-label
+        {
+            color: #000000;
+            font-family: Avenirlight;
+        }
+        ion-toggle
+        {
+            --background: #E3E3E3;
+            --background-checked: #CB9229;
+            --handle-background: #ffffff;
+            --handle-background-checked: #ffffff;
+            width: 50px;
+            height: 26px;
+            --handle-border-radius: 50%;
+            --border-radius: 13px;
+            --handle-width: 20px;
+            --handle-height: 20px; 
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        ion-checkbox
+        {
+            --border-color: #E3E3E3;
+            --border-style: solid;
+            --border-width: 4px;
+            margin-right: 10px;
+            --background-checked: #CB9229;
+            --border-color-checked: #CB9229;
+            --size: 25px;
+        }
+        .delete_button {
+            --background: red;
+            --background-activated: red;
+            --border-radius: 13px;
+            font-family: AvenirHeavy;
+            margin-left: 10px;
+            margin-right: 10px;
+            font-size: 15px;
+            height: 30px;
+        }
+        ion-button
+        {
+            --background: #77BDF0;
+            --background-activated: #77BDF0;
+            --border-radius: 13px;
+            font-family: AvenirHeavy;
+            margin-left: 10px;
+            margin-right: 10px;
+            font-size: 15px;
+            height: 30px;
+        }
+    }
+}

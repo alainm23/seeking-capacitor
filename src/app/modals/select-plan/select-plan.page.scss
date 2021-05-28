@@ -1,0 +1,322 @@
+@font-face{
+    font-family: AvenirHeavy;
+    src : url('/assets/font/Avenir Heavy.ttf')
+}
+@font-face{
+    font-family: AvenirMedium;
+    src : url('/assets/font/Avenir-Medium.ttf')
+}
+@font-face{
+    font-family: Avenirlight;
+    src : url('/assets/font/avenirltstd-light.otf')
+}
+
+ion-slide.swiper-slide {
+    left: 0%;
+}
+
+ion-content
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    --padding-start:  1.25rem;
+    --padding-end: 1.25rem;
+    --padding-top: 15px;
+    position: relative;
+    
+}
+.img_persona
+{
+    position: absolute;
+    z-index: -1;
+    left: 0px;
+    top: 0px;
+    height: 100vh;
+    width: 100%;
+    object-fit: none;
+}
+p
+{
+    font-family: Avenirlight;
+    color: #333333;
+    padding: 0px 6.25rem;
+}
+ion-card
+{
+    border-radius: 16px;
+    box-shadow: 0px 6px 11px #00000029;
+    padding: 30px;
+    position: relative;
+    margin: 0px;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 8px;
+    ion-list
+    {
+        height: 165px;
+        margin-top: 16px;
+        ion-item
+        {
+            --padding-start: 0px;
+            --inner-padding-end: 0px;
+            display: flex;
+            align-content: center;
+            height: 23px;
+            ion-icon
+            {
+                color: #85B745;
+                font-size: 16px;
+            }
+            ion-label
+            {
+                color: #8F8F8F;
+                font-family: AvenirMedium;
+                font-size: 18px;
+                margin-left: 5px;
+                .span_morado
+                {
+                    color: #9437D8;
+                }
+            }
+        }
+    }
+    h5
+    {
+        font-family: AvenirHeavy;
+        color: #535353;
+        font-size: 25px;
+    }
+    .p_card
+    {
+        font-family: Avenirlight;
+        color: #535353;
+        padding: 0px !important;
+        font-size: 22px;
+    }
+    h6
+    {
+        font-family: AvenirMedium;
+        font-size: 20px;
+        color: #8F8F8F;
+        margin-bottom: 16px;
+        margin-top: 0px;
+    }
+    .plan_button
+    {
+        width: 90%;
+        --background: #77BDF0;
+        --background-activated: #77BDF0;
+        --border-radius: 23px;
+        --color: #ffffff;
+        --color-activated: #ffffff;
+        margin: 0px;
+        margin-top: 50px;
+        font-family: AvenirHeavy;
+        font-size: 20px;
+        height: 50px;
+    }
+    .plan_selected {
+        width: 90%;
+        --background: #C89530;
+        --background-activated: #C89530;
+        --border-radius: 27px;
+        --color: #ffffff;
+        --color-activated: #ffffff;
+        margin: 0px;
+        margin-top: 50px;
+        font-family: AvenirHeavy;
+    }
+    .div_bandera
+    {
+        position: absolute;
+        top: 0;
+        right: -1px;
+        z-index: 1;
+        .img_bandera
+        {
+            width: 100%;
+            height: 100%;
+            object-fit: scale-down;
+        }
+        span
+        {
+            color: #ffffff;
+            font-family: AvenirHeavy;
+            position: absolute;
+            z-index: 3;
+            left: 29px;
+            font-size: 18px;
+            transform: rotate(42deg);
+            top: 21px;
+        }
+    }
+}
+ion-slides
+{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding-left: 20px;
+    ion-slide
+    {
+        width: 280px;
+    }
+}
+.img-logo-genral
+{
+    width: 138px;
+    margin-top: 50px;
+}
+.item-toogle
+{
+    --background: transparent;
+    ion-toggle
+    {
+        --background: #77BDF0;
+        --background-checked: #CB9229;
+        --handle-background: #ffffff;
+        --handle-background-checked: #ffffff;
+        width: 50px;
+        height: 26px;
+        --handle-border-radius: 50%;
+        --border-radius: 13px;
+        --handle-width: 20px;
+        --handle-height: 20px; 
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    ion-label
+    {
+        --color: #333333;
+        font-family: AvenirMedium;
+        font-weight: 800;
+    }
+}
+.btn-close-modal
+{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    --border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    --box-shadow: 0px 3px 6px #00000029;
+    --background: #fff;
+    --background-activated: #fff;
+    font-size: 0px;
+    .icon-close
+    {
+        font-size: 30px;
+        color: #707070;
+    }
+}
+@media (min-width: 411px)
+{
+    ion-content
+    {
+      --padding-start: 3.125rem;
+      --padding-end: 3.125rem;
+      --padding-top: 25px;
+    }
+    ion-card
+    {
+        ion-list
+        {
+            ion-item
+            {
+                ion-label
+                {
+                    font-size: 16px;
+                }
+            } 
+        } 
+        h5
+        {
+            margin-top: 15px;
+        }
+        ion-button
+        {
+            margin-top: 30px;
+        }
+    }
+}
+@media (min-width: 480px)
+{
+    ion-content
+    {
+      --padding-start: 3.125rem;
+      --padding-end: 3.125rem;
+      --padding-top: 75px;
+    }
+    ion-slides
+    {
+        margin-top: 40px;
+    }
+    ion-card
+    {
+        ion-list
+        {
+            height: 190px;
+        } 
+        h5
+        {
+            margin-top: 25px;
+        }
+    }
+}
+@media (min-width: 540px)
+{
+    ion-content
+    {
+      --padding-top: 30px;
+    }
+}
+@media (min-width: 640px)
+{
+    ion-content
+    {
+      --padding-start: 7.5rem;
+      --padding-end: 7.5rem;
+    }
+}
+@media (min-width: 768px)
+{
+    ion-content
+    {
+        --padding-start: 10px;
+        --padding-end: 10px;
+        --padding-top: 20px;
+    }
+    ion-card
+    {
+        ion-button
+        {
+            width: 50%;
+        }
+    }
+    .img_persona
+    {
+        height: 90vh;
+    }
+}
+@media (min-width: 1024px)
+{
+    ion-content
+    {
+      --padding-start: 20px;
+      --padding-end: 20px;
+    }
+    ion-card
+    {
+        ion-button
+        {
+            width: 35%;
+        }
+    }
+    .img_persona
+    {
+        height: 60vh;
+    }
+}
