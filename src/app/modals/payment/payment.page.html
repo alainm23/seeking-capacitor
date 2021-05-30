@@ -1,10 +1,14 @@
-<ion-content>
-  <div style="padding: 3rem;">
+<ion-content style="position: relative;">
+  <ion-button *ngIf="page !== 'registro'" class="btn-close-modal" mode="ios" (click)="close ()">
+    <ion-icon name="close" class="icon-close"></ion-icon>
+  </ion-button>
+  <div style="text-align: center;" class="div-vard">
+    <img src="assets/img/Grupo804.png" class="img-logo-genral">
     <ion-card mode="ios" class="ion-text-center">
       <div *ngIf="data?.promovido === 1" class="div_bandera">
         <img src="assets/img/Grupo-593.png" class="img_bandera">
         <span>
-          {{ 'Mas vendido' | translate }}
+          {{ 'Popular' | translate }}
         </span>
       </div>
       <h5 *ngIf="type !== 'credis'" class="ion-no-margin ion-text-start">{{ data?.nombre }}</h5>
@@ -20,7 +24,7 @@
     </ion-card>
   </div>
 
-  <div style="padding: 3rem;">
+  <div class="div-paypal">
     <div #paypal></div>
   </div>
 </ion-content>

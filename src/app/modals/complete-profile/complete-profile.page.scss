@@ -20,26 +20,6 @@ ion-progress-bar
     --progress-background: #CB9229;
     height: 7px;
 }
-.item-llamas
-{
-    --padding-start: 0px;
-    --inner-padding-end: 0px;
-    margin-top: 40px;
-    border-bottom: 3px solid #E3E3E3;
-    .label-campo
-    {
-        font-family: Avenirlight;
-        color: #555555;
-        font-size: 20px;
-    }
-    .input-llmas
-    {
-        --color: #555555;
-        font-family: Avenirlight;
-        margin-top: 8px;
-        --placeholder-opacity: 1;
-    }
-}
 h1
 {
     color: #333333;
@@ -53,7 +33,7 @@ h1
     padding-right: 30px;
     align-self: start;
 }
-.color-plomo
+.color-plomo 
 {
     color: #8F8F8F;
     font-family: Avenirlight;
@@ -65,28 +45,6 @@ h1
     font-family: AvenirMedium;
     font-weight: 600;
     margin: 0px;
-}
-.item-dias
-{
-    --padding-start: 0px;
-    --inner-padding-end: 0px;
-    .input-dia
-    {
-        --placeholder-color: #9B9B9B;
-        --color: #9B9B9B;
-        font-family: AvenirMedium;
-        --placeholder-font-weight: 800;
-        border-bottom: 1px solid #D8D8D8;
-        --placeholder-opacity: 1;
-    }
-    .input-dia:hover
-    {
-        border-bottom: 3px solid #333333;
-    }
-    .input-left
-    {
-        margin-left: 10px;
-    }
 }
 .col-padding-dia
 {
@@ -108,6 +66,13 @@ h1
     border: 1px solid rgb(0 0 0 / 50%);
     border-radius: 6px;
     text-align: left;
+}
+.textarea-abaout
+{
+    border: 1px solid rgb(0 0 0 / 50%);
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin-top: 5px;
 }
 
 ion-footer
@@ -185,6 +150,142 @@ ion-footer
         color: #CB9229;
     }
 }
+ion-slides {
+    height: 95%;
+}
+ion-item 
+{
+
+    --padding-start: 0px;
+    --inner-padding-end: 0px;
+    width: 100%;
+    .label-campo
+    {
+        font-family: Avenirlight;
+        color: #000000;
+        font-size: 17px;
+    }
+    ion-input
+    {
+        --color: #000000;
+        font-family: Avenirlight;
+        margin-top: 0px;
+        --placeholder-opacity: 1;
+    }
+    .seletc-location
+    {
+        --placeholder-color: #555555;
+        --placeholder-opacity: 1;
+        font-family: Avenirlight;
+        color: #555555;
+        --padding-top: 0px;
+        --padding-bottom: 0px;
+    }
+    .label-chech-radio
+    {
+        margin-top: 4px;
+        margin-bottom: 0px;
+    }
+    ion-radio
+    {
+        margin-left: 0px;
+        margin-right: 15px;
+        --color-checked: #CB9229;
+        --color: #E3E3E3;
+        margin-top: 4px;
+        margin-bottom: 0px;
+    }
+    ion-checkbox     
+    {
+        --border-color: #E3E3E3;
+        --border-style: solid;
+        --border-width: 4px;
+        margin-right: 10px;
+        --background-checked: #CB9229;
+        --border-color-checked: #CB9229;
+        --size: 25px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+.item-height
+{
+    margin-top: 4px;
+}
+.item-radio-height
+{
+    align-items: baseline;
+    height: 30px;
+    margin-bottom: 5px;
+}
+.item-check-height
+{
+    align-items: baseline;
+    height: 30px;
+    margin-bottom: 10px;
+}
+.list-scrool
+{
+    height: 130%;
+    overflow-y: scroll;
+}
+.row-scrool
+{
+    height: 100%;
+    overflow-y: scroll;
+}
+.list-scrool::-webkit-scrollbar,
+.row-scrool::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+.list-scrool::-webkit-scrollbar-thumb,
+.row-scrool::-webkit-scrollbar-thumb {
+    background: #cdcdd1;
+    border-radius: 0px;
+}
+.list-scrool::-webkit-scrollbar-thumb:hover,
+.row-scrool::-webkit-scrollbar-thumb:hover{
+    background: #CDCDD1;
+}
+.list-scrool::-webkit-scrollbar-track
+.row-scrool::-webkit-scrollbar-track{
+    background: #ffffff;
+    border-radius: 0px;
+}
+.p-gracias
+{
+    color: #000000;
+    font-family: AvenirMedium;
+}
+@media(min-width: 375px) and (min-height: 667px)
+{
+    .list-scrool, .row-scrool
+    {
+        height: 140%;
+    }
+}
+@media(min-width: 375px) and (min-height: 812px)
+{
+    .list-scrool, .row-scrool
+    {
+        height: 185%;
+    }
+}
+@media(min-width: 411px) and (min-height: 823px)
+{
+    .list-scrool, .row-scrool
+    {
+        height: 165%;
+    }
+}
+@media(min-width: 411px) and (min-height: 823px)
+{
+    .list-scrool, .row-scrool
+    {
+        height: 195%;
+    }
+}
 @media(min-width: 411px)
 {
     .card-foto
@@ -197,6 +298,13 @@ ion-footer
         height: 110px;
     }
 }
+@media(min-width: 414px)
+{
+    .list-scrool, .row-scrool
+    {
+        height: 165%;
+    }
+}
 @media(min-width: 480px)
 {
     .card-foto
@@ -206,6 +314,10 @@ ion-footer
     .card-fotos
     {
         height: 130px;
+    }
+    .list-scrool, .row-scrool
+    {
+        height: 200%;
     }
 }
 @media(min-width: 540px)
@@ -220,13 +332,17 @@ ion-footer
         padding-left: 70px;
         padding-right: 70px;
     }
+    .list-scrool, .row-scrool
+    {
+        height: 160%;
+    }
 }
 @media(min-width: 768px)
 {
     .grid-pagging
     {
-        padding-left: 150px;
-        padding-right: 150px;
+        padding-left: 60px;
+        padding-right: 60px;
     }
     ion-footer
     {
@@ -237,13 +353,17 @@ ion-footer
     {
         height: 140px;
     }
+    .list-scrool, .row-scrool
+    {
+        height: 120%;
+    }
 }
 @media(min-width: 1024px)
 {
     .grid-pagging
     {
-        padding-left: 200px;
-        padding-right: 200px;
+        padding-left: 60px;
+        padding-right: 60px;
     }
     .card-foto
     {
@@ -260,5 +380,9 @@ ion-footer
     {
         width: 32%;
         height: 200px;
+    }
+    .list-scrool, .row-scrool
+    {
+        height: 125%;
     }
 }

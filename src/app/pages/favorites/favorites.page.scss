@@ -104,6 +104,13 @@ ion-content
     background: transparent;
     box-shadow: none;
     margin-top: 30px;
+    .card-perfil-fondo
+    {
+        background-position: top center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url('/assets/img/galeria-daddies-uno.jpg');
+    }
     .card-perfil
     {
         width: 100%;
@@ -123,6 +130,89 @@ ion-content
             top: 7px;
             z-index: 1;
         }
+        .div-sombra
+        {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            z-index: 99999999;
+            background: rgb(0,0,0);
+            background: linear-gradient(0deg, rgba(0,0,0,0.8939950980392157) 4%, rgba(255,254,254,0.025647759103641476) 40%);
+            border-radius: 8px 8px 0px 0px;
+            display: flex;
+            align-content: flex-end;
+            flex-wrap: wrap;
+            padding-bottom: 5px;
+            .item-badge
+            {
+                background: transparent;
+                padding-left: 7px;
+                padding-right: 28px;
+                width: 100%;
+                height: 15px;
+                display: flex;
+                justify-content: space-between;
+                position: relative;
+                .badge-style
+                {
+                    margin-right: 0px;
+                    display: flex;
+                    --background: #1A1413;
+                    font-family: AvenirMedium;
+                    font-size: 11px;
+                    --padding-start: 5px;
+                    --padding-top: 2px;
+                    --padding-bottom: 3px;
+                    .icon-camara
+                    {
+                        color: #FFFFFF;
+                        margin-right: 3px;
+                    }
+                }
+                .label-miles
+                {
+                    font-family: Avenirlight;
+                    color: #ffffff;
+                    font-size: 10px;
+                    margin: 0px;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+                .span-edad
+                {
+                    font-family: AvenirHeavy !important;
+                    margin-right: 5px;
+                }
+                .icon-favorito
+                {
+                    position: absolute;
+                    right: 5px;
+                    color: #ffffff;
+                    font-size: 21px;
+                    top: -10px;
+                }
+                .icon-activo-favorito
+                {
+                    position: absolute;
+                    right: 5px;
+                    color: #ffffff;
+                    font-size: 21px;
+                    top: -10px;
+                }
+            }
+            .p-nombre
+            {
+                font-family: AvenirHeavy;
+                color: #ffffff;
+                font-size: 11px;
+                margin: 0px;
+                padding: 0px 7px;
+            }
+        }
         .avatar-img
         {
             width: 100%;
@@ -135,85 +225,6 @@ ion-content
                 width: 100%;
                 height: 100%;
                 object-fit: fill;
-            }
-            .div-sombra
-            {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                left: 0;
-                top: 0;
-                z-index: 99999999;
-                background: rgb(0,0,0);
-                background: linear-gradient(0deg, rgba(0,0,0,0.8939950980392157) 4%, rgba(255,254,254,0.025647759103641476) 40%);
-                border-radius: 8px 8px 0px 0px;
-                display: flex;
-                align-content: flex-end;
-                flex-wrap: wrap;
-                padding-bottom: 5px;
-                .item-badge
-                {
-                    background: transparent;
-                    padding-left: 7px;
-                    padding-right: 28px;
-                    width: 100%;
-                    height: 15px;
-                    display: flex;
-                    justify-content: space-between;
-                    position: relative;
-                    .badge-style
-                    {
-                        margin-right: 0px;
-                        display: flex;
-                        --background: #1A1413;
-                        font-family: AvenirMedium;
-                        font-size: 11px;
-                        --padding-start: 5px;
-                        --padding-top: 2px;
-                        --padding-bottom: 3px;
-                        .icon-camara
-                        {
-                            color: #FFFFFF;
-                            margin-right: 3px;
-                        }
-                    }
-                    .label-miles
-                    {
-                        font-family: Avenirlight;
-                        color: #ffffff;
-                        font-size: 10px;
-                        margin: 0px;
-                    }
-                    .span-edad
-                    {
-                        font-family: AvenirHeavy !important;
-                        margin-right: 5px;
-                    }
-                    .icon-favorito
-                    {
-                        position: absolute;
-                        right: 5px;
-                        color: #ffffff;
-                        font-size: 21px;
-                        top: -10px;
-                    }
-                    .icon-activo-favorito
-                    {
-                        position: absolute;
-                        right: 5px;
-                        color: #ffffff;
-                        font-size: 21px;
-                        top: -10px;
-                    }
-                }
-                .p-nombre
-                {
-                    font-family: AvenirHeavy;
-                    color: #ffffff;
-                    font-size: 11px;
-                    margin: 0px;
-                    padding: 0px 7px;
-                }
             }
         }
         /*.item-blanco

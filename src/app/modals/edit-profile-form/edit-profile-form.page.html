@@ -1,5 +1,5 @@
 
-<ion-header mode="ios" class="ion-no-border">
+<!--<ion-header mode="ios" class="ion-no-border">
   <ion-toolbar>
     <ion-title>{{ 'Edit perfil' | translate }}</ion-title>
     <ion-buttons slot="end">
@@ -8,33 +8,33 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-</ion-header>
+</ion-header>-->
 
 <ion-content>
   <ng-container *ngIf="form === 'personal_data'">
     <form style="align-self: start;" [formGroup]="personal_form">
       <ion-grid class="grid-pagging">
         <ion-row style="display: flex;">
-          <ion-col size="12" class="ion-no-padding">
+          <ion-col size="12">
             <h1 class="ion-text-center">{{ 'Personal Data' | translate }}</h1>
           </ion-col>
 
-          <ion-col size="12" class="ion-no-padding">
+          <ion-col size="12">
             <ion-item mode="ios">
               <ion-label position="stacked">{{ 'Nick' | translate }}</ion-label>
               <ion-input formControlName="usernick"></ion-input>
             </ion-item>
           </ion-col>
 
-          <ion-col size="12" class="ion-no-padding">
+          <ion-col size="6">
             <ion-item mode="ios">
               <ion-label position="stacked">{{ 'Date of birth' | translate }}</ion-label>
               <ion-datetime formControlName="fecha_nacimiento"></ion-datetime>
             </ion-item>
           </ion-col>
 
-          <ion-col size="12" class="ion-no-padding">
-            <ion-item mode="ios">
+          <ion-col size="6">
+            <ion-item mode="ios" class="item-top-gender">
               <ion-label position="stacked">{{ 'Gender' | translate }}</ion-label>
               <ion-select interface="popover" formControlName="sexo" placeholder="Select One">
                 <ion-select-option *ngFor="let item of generos" [value]="item.id">
@@ -44,7 +44,7 @@
             </ion-item>
           </ion-col>
 
-          <ion-col size="12" class="ion-no-padding">
+          <ion-col size="6">
             <ion-item mode="ios">
               <ion-label position="stacked">{{ 'Height' | translate }}</ion-label>
               <ion-select  formControlName="sistema" interface="popover" okText="Okay" cancelText="Dismiss">
@@ -52,8 +52,10 @@
                 <ion-select-option value="metric">{{ 'Metric' | translate }}</ion-select-option>
               </ion-select>
             </ion-item>
+          </ion-col>
 
-            <ion-item mode="ios">
+          <ion-col sieze="6">
+            <ion-item mode="ios" class="item-top">
               <ion-label position="stacked"></ion-label>
               <ion-select  formControlName="altura" interface="popover" okText="Okay" cancelText="Dismiss">
                 <ion-select-option *ngFor="let item of get_alturas ()" [value]="item.id">
@@ -63,7 +65,7 @@
             </ion-item>
           </ion-col>
 
-          <ion-col size="12" class="ion-no-padding">
+          <ion-col size="6">
             <ion-item mode="ios">
               <ion-label position="stacked">{{ 'Net. worth' | translate }}</ion-label>
               <ion-select formControlName="patrimonio" interface="popover" okText="Okay" cancelText="Dismiss">
@@ -89,8 +91,8 @@
             </ion-item>
           </ion-col>
 
-          <ion-col size="12" class="ion-no-padding">
-            <ion-item mode="ios">
+          <ion-col size="6">
+            <ion-item mode="ios" class="item-top-annual">
               <ion-label position="stacked">{{ 'Annual income' | translate }}
               </ion-label>
               <ion-select  formControlName="ingreso_anual" interface="popover" okText="Okay" cancelText="Dismiss">
@@ -125,7 +127,7 @@
       <ion-grid class="grid-pagging">
         <ion-row style="display: flex;">
           <ion-col size="12" class="ion-no-padding">
-            <h1 class="ion-text-center">{{ 'Describe exactly what you are looking for' | translate }}</h1>
+            <h1 class="ion-text-center h1-textarea">{{ 'Describe exactly what you are looking for' | translate }}</h1>
           </ion-col>
 
           <ion-col size="12" class="ion-no-padding">
@@ -141,7 +143,7 @@
       <ion-grid class="grid-pagging">
         <ion-row style="display: flex;">
           <ion-col size="12" class="ion-no-padding">
-            <h1 class="ion-text-center">{{ 'About me' | translate }}</h1>
+            <h1 class="ion-text-center h1-textarea">{{ 'About me' | translate }}</h1>
           </ion-col>
 
           <ion-col size="12" class="ion-no-padding">

@@ -5,7 +5,8 @@
 </ion-header>-->
 
 <ion-content>
-  <ion-card class="card-perfil">
+  <ion-button (click)="back ()" mode="ios" shape="round" class="btn-regresar"><ion-icon name="arrow-back-sharp" class="icon-left"></ion-icon></ion-button>
+  <ion-card class="card-perfil card-perfil-fondo">
     <ion-avatar class="img-avatar-perfil">
       <img src="assets/img/slider-img.png">
     </ion-avatar>
@@ -21,7 +22,7 @@
     </div>
     <ion-row>
       <ion-col size="6">
-        <ion-card class="card-list-perfil">
+        <ion-card class="card-list-perfil card-list-perfil-fondo">
           <ion-avatar class="avatar-perfil">
             <img src="assets/img/rectangulo-17236.png">
           </ion-avatar>

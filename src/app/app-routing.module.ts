@@ -51,7 +51,15 @@ const routes: Routes = [
     path: '',
     canActivate: [AuthGuard],
     loadChildren: () => import ('./pages/tabs/tabs.module').then (m => m.TabsPageModule)
+  },  {
+    path: 'request-fotos',
+    loadChildren: () => import('./request-fotos/request-fotos.module').then( m => m.RequestFotosPageModule)
+  },
+  {
+    path: 'erase-profile',
+    loadChildren: () => import('./erase-profile/erase-profile.module').then( m => m.EraseProfilePageModule)
   }
+
 ];
 
 @NgModule({

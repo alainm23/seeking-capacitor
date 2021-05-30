@@ -20,26 +20,6 @@ ion-progress-bar
     --progress-background: #CB9229;
     height: 7px;
 }
-.item-llamas
-{
-    --padding-start: 0px;
-    --inner-padding-end: 0px;
-    margin-top: 40px;
-    border-bottom: 3px solid #E3E3E3;
-    .label-campo
-    {
-        font-family: Avenirlight;
-        color: #555555;
-        font-size: 20px;
-    }
-    .input-llmas
-    {
-        --color: #555555;
-        font-family: Avenirlight;
-        margin-top: 8px;
-        --placeholder-opacity: 1;
-    }
-}
 h1
 {
     color: #333333;
@@ -47,10 +27,40 @@ h1
     margin-top: 30px;
     font-size: 21px;
 }
+.h1-textarea
+{
+    margin-top: 80px !important;
+}
+ion-item
+{
+    --padding-start: 0px;
+    --inner-padding-end: 0px;
+    ion-label
+    {
+        font-family: AvenirMedium;
+        color: #000000;
+        font-size: 17px;
+    }
+    ion-input
+    {
+        --color: #000000;
+        font-family: AvenirMedium;
+        margin-top: 0px;
+        --placeholder-opacity: 1;
+    }
+}
+.item-top
+{
+    margin-top: 10px;
+}
+.item-top-gender
+{
+    margin-top: 4px;
+}
 .grid-pagging
 {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
     align-self: start;
 }
 .color-plomo
@@ -119,7 +129,7 @@ ion-footer
         width: 100%;
         --background: #77BDF0;
         --box-shadow: none;
-        --border-radius: 10px;
+        --border-radius: 23px;
         height: 50px;
         text-transform: none;
         font-family: AvenirMedium;
@@ -185,6 +195,14 @@ ion-footer
         color: #CB9229;
     }
 }
+ion-textarea
+{
+    --border-radius: 10px;
+    --color: #555555;
+    border: 1px solid #C7C7C7;
+    height: 150px;
+    margin-top: 28px;
+}
 @media(min-width: 411px)
 {
     .card-foto
@@ -225,8 +243,8 @@ ion-footer
 {
     .grid-pagging
     {
-        padding-left: 150px;
-        padding-right: 150px;
+        padding-left: 120px;
+        padding-right: 120px;
     }
     ion-footer
     {
@@ -240,11 +258,6 @@ ion-footer
 }
 @media(min-width: 1024px)
 {
-    .grid-pagging
-    {
-        padding-left: 200px;
-        padding-right: 200px;
-    }
     .card-foto
     {
         padding: 60px 0px;

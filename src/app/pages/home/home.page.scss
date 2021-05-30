@@ -183,6 +183,13 @@ ion-slides
     --background: transparent;
     box-shadow: none;
     margin-top: 30px;
+    .card-pefil-fondo
+    {
+        background-position: top center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url('/assets/img/galeria-daddies-uno.jpg');
+    }
     .card-perfil
     {
         width: 100%;
@@ -212,143 +219,91 @@ ion-slides
                 height: 100%;
                 object-fit: cover;
             }
-            .div-sombra
+        }
+        .div-sombra
+        {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            z-index: 99999999;
+            background: rgb(0,0,0);
+            background: linear-gradient(0deg, rgba(0,0,0,0.8939950980392157) 4%, rgba(255,254,254,0.025647759103641476) 40%);
+            border-radius: 8px 8px 0px 0px;
+            display: flex;
+            align-content: flex-end;
+            flex-wrap: wrap;
+            padding-bottom: 5px;
+            .item-badge
             {
-                position: absolute;
+                background: transparent;
+                padding-left: 7px;
+                padding-right: 28px;
                 width: 100%;
-                height: 100%;
-                left: 0;
-                top: 0;
-                z-index: 99999999;
-                background: rgb(0,0,0);
-                background: linear-gradient(0deg, rgba(0,0,0,0.8939950980392157) 4%, rgba(255,254,254,0.025647759103641476) 40%);
-                border-radius: 8px 8px 0px 0px;
+                height: 15px;
                 display: flex;
-                align-content: flex-end;
-                flex-wrap: wrap;
-                padding-bottom: 5px;
-                .item-badge
+                justify-content: space-between;
+                position: relative;
+                .badge-style
                 {
-                    background: transparent;
-                    padding-left: 7px;
-                    padding-right: 28px;
-                    width: 100%;
-                    height: 15px;
+                    margin-right: 0px;
                     display: flex;
-                    justify-content: space-between;
-                    position: relative;
-                    .badge-style
-                    {
-                        margin-right: 0px;
-                        display: flex;
-                        --background: #1A1413;
-                        font-family: AvenirMedium;
-                        font-size: 11px;
-                        --padding-start: 5px;
-                        --padding-top: 2px;
-                        --padding-bottom: 3px;
-                        .icon-camara
-                        {
-                            color: #FFFFFF;
-                            margin-right: 3px;
-                        }
-                    }
-                    .label-miles
-                    {
-                        font-family: Avenirlight;
-                        color: #ffffff;
-                        font-size: 10px;
-                        margin: 0px;
-                    }
-                    .span-edad
-                    {
-                        font-family: AvenirHeavy !important;
-                        margin-right: 5px;
-                    }
-                    .icon-favorito
-                    {
-                        position: absolute;
-                        right: 5px;
-                        color: #ffffff;
-                        font-size: 21px;
-                        top: -10px;
-                    }
-                    .icon-activo-favorito
-                    {
-                        position: absolute;
-                        right: 5px;
-                        color: #ffffff;
-                        font-size: 21px;
-                        top: -10px;
-                    }
-                }
-                .p-nombre
-                {
-                    font-family: AvenirHeavy;
-                    color: #ffffff;
+                    --background: #1A1413;
+                    font-family: AvenirMedium;
                     font-size: 11px;
-                    margin: 0px;
-                    padding: 0px 7px;
+                    --padding-start: 5px;
+                    --padding-top: 2px;
+                    --padding-bottom: 3px;
+                    .icon-camara
+                    {
+                        color: #FFFFFF;
+                        margin-right: 3px;
+                    }
                 }
+                .label-miles
+                {
+                    font-family: Avenirlight;
+                    color: #ffffff;
+                    font-size: 10px;
+                    margin: 0px;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+                .span-edad
+                {
+                    font-family: AvenirHeavy !important;
+                    margin-right: 5px;
+                }
+                .icon-favorito
+                {
+                    position: absolute;
+                    right: 5px;
+                    color: #ffffff;
+                    font-size: 21px;
+                    top: -10px;
+                }
+                .icon-activo-favorito
+                {
+                    position: absolute;
+                    right: 5px;
+                    color: #ffffff;
+                    font-size: 21px;
+                    top: -10px;
+                }
+            }
+            .p-nombre
+            {
+                font-family: AvenirHeavy;
+                color: #ffffff;
+                font-size: 11px;
+                margin: 0px;
+                padding: 0px 7px;
             }
         }
-        /*.item-blanco
-        {
-            --padding-start: 0px;
-            --padding-end: 0px;
-            --inner-padding-end: 0px;
-            --border-radius: 0px 0px 8px 8px;
-            transition: .4s;
-            display: flex;
-            align-items: center;
-            .btn-iguales-tab
-            {
-                width: 25%;
-                margin: 0px;
-                --background: transparent;
-                --background-activated: transparent;
-                --box-shadow: none;
-            }
-            .btn-border-right
-            {
-                border-right: 1px solid #EBEBEB;
-            }
-        }*/
     }
-    .card-foto-fondo
-    {
-        width: 100%;
-        border-radius: 0px;
-        margin: 0px;
-        height: 250px;
-        overflow: hidden;
-        box-shadow: 0px 6px 12px #00000029;
-        margin-bottom: 17px;
-        position: relative;
-        background-position: top center;
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-    .card-img-uno
-    {
-        background-image: url('/assets/img/galeria-daddies-uno.jpg');
-    }
-    .card-img-dos
-    {
-        background-image: url('/assets/img/galeria-daddies-tres.jpg');
-    }
-    .card-img-tres
-    {
-        background-image: url('/assets/img/galeria-daddies-dos.jpg');
-    }
-    .card-img-cuatro
-    {
-        background-image: url('/assets/img/PR7YYadKBn6HdrhjKASlTZXnMdQVEx4p4MPtrUJX.jpeg');
-    }
-    /*.card-perfil:hover .avatar-img
-    {
-        height: 154px;
-    }*/
 }
 .img-right
 {
