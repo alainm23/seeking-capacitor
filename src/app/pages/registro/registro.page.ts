@@ -47,7 +47,7 @@ export class RegistroPage implements OnInit {
   form_terms: FormGroup;
 
   slideOpts = {
-    initialSlide: 7,
+    initialSlide: 0,
     duration: 400,
     slidesPerView: 1
   };
@@ -193,7 +193,9 @@ export class RegistroPage implements OnInit {
     if (this.id === 'null') {
       if (this.index === 0) { // Nick
         if (this.form_usernick.invalid) {
-          this.presentToast (this.utils.get_translate ('The given data was invalid'), 'danger');  
+          this.presentToast (
+            this.utils.get_translate ('Your nickname is required'), 'danger'
+          );  
         } else {
           returned = true;
         }
@@ -201,12 +203,12 @@ export class RegistroPage implements OnInit {
         if (this.form_email.invalid) {
           ['email', 'confirm_email'].forEach ((control: string) => {
             if (this.form_email.controls [control].errors !== null) {
-              if (this.form_email.controls [control].errors.equalTo === true) {
+              if (this.form_email.controls [control].errors.email === true) {
+                this.presentToast (this.utils.get_translate ('Enter a valid email address'), 'danger');
+              } else if (this.form_email.controls [control].errors.equalTo === true) {
                 this.presentToast (this.utils.get_translate ('The confirm email and email must match'), 'danger');
               } else if (this.form_email.controls [control].errors.required === true) {
-                this.presentToast (this.utils.get_translate ('Select at least one option'), 'danger');
-              } else if (this.form_email.controls [control].errors.email === true) {
-                this.presentToast (this.utils.get_translate ('Enter a valid email address'), 'danger');
+                this.presentToast (this.utils.get_translate ('Your email is required'), 'danger');
               }
             }
           });
@@ -220,7 +222,7 @@ export class RegistroPage implements OnInit {
               if (this.form_password.controls [control].errors.equalTo === true) {
                 this.presentToast (this.utils.get_translate ('The confirm password and password must match'), 'danger');
               } else if (this.form_password.controls [control].errors.required === true) {
-                this.presentToast (this.utils.get_translate ('Select at least one option'), 'danger');
+                this.presentToast (this.utils.get_translate ('Your password is required'), 'danger');
               }
             }
           });
@@ -249,7 +251,7 @@ export class RegistroPage implements OnInit {
         }
       } else if (this.index === 4) { // Sexo
         if (this.form_sexo.invalid) {
-          this.presentToast (this.utils.get_translate ('Select at least one option'), 'danger');  
+          this.presentToast (this.utils.get_translate ('Select one option'), 'danger');  
         } else {
           returned = true;
         }
@@ -267,7 +269,7 @@ export class RegistroPage implements OnInit {
         }
       } else if (this.index === 7) {
         if (this.profile_image === '') {
-          this.presentToast (this.utils.get_translate ('Select at least one option'), 'danger');
+          this.presentToast (this.utils.get_translate ('Your profile image is required'), 'danger');
         } else {
           returned = true;
         }
@@ -275,7 +277,7 @@ export class RegistroPage implements OnInit {
         returned = true;
       } else if (this.index === 9) {
         if (this.form_terms.invalid) {
-          this.presentToast (this.utils.get_translate ('Select at least one option'), 'danger');  
+          this.presentToast (this.utils.get_translate ('You need to accept the terms and conditions'), 'danger');  
         } else {
           returned = true;
         }
@@ -309,7 +311,7 @@ export class RegistroPage implements OnInit {
         }
       } else if (this.index === 2) {
         if (this.form_sexo.invalid) {
-          this.presentToast (this.utils.get_translate ('Select at least one option'), 'danger');  
+          this.presentToast (this.utils.get_translate ('Select one option'), 'danger');  
         } else {
           returned = true;
         }
@@ -327,7 +329,7 @@ export class RegistroPage implements OnInit {
         }
       } else if (this.index === 5) {
         if (this.profile_image === '') {
-          this.presentToast (this.utils.get_translate ('Select at least one option'), 'danger');
+          this.presentToast (this.utils.get_translate ('Your profile image is required'), 'danger');
         } else {
           returned = true;
         }
@@ -335,7 +337,7 @@ export class RegistroPage implements OnInit {
         returned = true;
       } else if (this.index === 7) {
         if (this.form_terms.invalid) {
-          this.presentToast (this.utils.get_translate ('Select at least one option'), 'danger');  
+          this.presentToast (this.utils.get_translate ('You need to accept the terms and conditions'), 'danger');  
         } else {
           returned = true;
         }
@@ -453,14 +455,13 @@ export class RegistroPage implements OnInit {
   
           this.auth.registro (request).subscribe ((res: any) => {
             console.log (res);
-            loading.dismiss ();
-  
             if (res ['status'] === undefined) {
-              this.select_plan (res);
+              this.select_plan (res, loading);
             } else {
               this.show_api_error (res, ['usernick', 'sexo', 'relaciones', 'generos_interes', 'email',
               'password', 'pais', 'id_region', 'id_ciudad', 'latitud', 'longitud', 'year', 'month', 
               'day', 'imagen', 'galeria']);
+              loading.dismiss ();
             }
           }, error => {
             console.log (error);
@@ -537,11 +538,10 @@ export class RegistroPage implements OnInit {
 
           this.auth.registro (request).subscribe ((res: any) => {
             console.log (res);
-            loading.dismiss ();
-  
             if (res ['status'] === undefined) {
-              this.select_plan (res);
+              this.select_plan (res, loading);
             } else {
+              loading.dismiss ();
               this.show_api_error (res, ['usernick', 'sexo', 'relaciones', 'generos_interes', 'email',
               'password', 'pais', 'id_region', 'id_ciudad', 'latitud', 'longitud', 'year', 'month', 
               'day', 'imagen', 'galeria']);
@@ -555,17 +555,19 @@ export class RegistroPage implements OnInit {
     }
   }
 
-  async select_plan (res: any) {
+  async select_plan (res: any, loading: any) {
     this.auth.save_local_user (res).then (async () => {
       if (this.countries_black_list.indexOf (this.form_location.value.pais_codigo) > -1) {
         if (this.id === 'null') {
           await this.storage.set ('verify-email-sent', moment ().format ());
+          loading.dismiss ();
           this.navController.navigateRoot ('verify-email');
         } else {
+          loading.dismiss ();
           this.navController.navigateRoot ('request-notification');
         }
       } else {
-        const modal = await this.modalController.create({
+        const modal = await this.modalController.create ({
           component: SelectPlanPage,
           componentProps: {
             page: 'registro'
@@ -587,17 +589,16 @@ export class RegistroPage implements OnInit {
           }
         });
         
-        return await modal.present ();
+        return await modal.present ().then (() => {
+          loading.dismiss ();
+        });
       }
     });
   }
 
   async open_buy_credis () {
     const modal = await this.modalController.create ({
-      component: BuySingleCreditsPage,
-      componentProps: {
-        page: 'home'
-      }
+      component: BuySingleCreditsPage
     });
 
     modal.onWillDismiss ().then ((response: any) => {
@@ -790,6 +791,7 @@ export class RegistroPage implements OnInit {
   async valid_image (file: any, type: string, index: number) {
     const formData: FormData = new FormData ();
     formData.append ('campo', 'imagen');
+    formData.append ('lang', this.lang);
     formData.append ('imagen', file.blob, file.name);
 
     const loading = await this.loadingController.create ({
@@ -857,6 +859,7 @@ export class RegistroPage implements OnInit {
 
       const formData: FormData = new FormData ();
       formData.append ('campo', 'imagen');
+      formData.append ('lang', this.lang);
       formData.append ('imagen', file, file.name);
 
       const loading = await this.loadingController.create ({
@@ -893,6 +896,7 @@ export class RegistroPage implements OnInit {
     reader.readAsDataURL (file);
     
     reader.onload = () => {
+      console.log (reader.result);
       this.profile_image = reader.result;
     };
     

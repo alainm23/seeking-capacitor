@@ -48,6 +48,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/block-page/block-page.module').then( m => m.BlockPagePageModule)
   },
   {
+    path: 'restore-password',
+    loadChildren: () => import('./pages/restore-password/restore-password.module').then( m => m.RestorePasswordPageModule)
+  },
+  {
     path: '',
     canActivate: [AuthGuard],
     loadChildren: () => import ('./pages/tabs/tabs.module').then (m => m.TabsPageModule)

@@ -6,7 +6,8 @@ import { Storage } from '@ionic/storage-angular';
 import { FacebookLogin, FacebookLoginResponse } from '@capacitor-community/facebook-login';
 
 // Google
-import { GoogleAuth } from '@reslear/capacitor-google-auth'
+// import { GoogleAuth } from '@reslear/capacitor-google-auth'
+import { GooglePlus } from '@ionic-native/google-plus';
 
 
 import { LoadingController, NavController } from '@ionic/angular';
@@ -66,7 +67,7 @@ export class AuthService {
 
   async logout_social () {
     if (Capacitor.isNativePlatform ()) {
-      await GoogleAuth.signOut ();
+      // await GoogleAuth.signOut ();
       await FacebookLogin.logout ();
     }
   }
@@ -192,7 +193,7 @@ export class AuthService {
   }
 
   google_init () {
-    GoogleAuth.init ();
+    // GoogleAuth.init ();
   }
 
   async google () {
@@ -202,14 +203,20 @@ export class AuthService {
     //   mode: 'ios'
     // });
 
-    // await loading.present ();
-    
-    GoogleAuth.signIn ().then ((result: any) => {
-      alert (JSON.stringify (result));
-    }, error => {
-      alert (JSON.stringify (error));
+    alert ('Iniciando Google');
+ 
+    GooglePlus.login ({}).then (async (request: any) => {
+      alert (JSON.stringify (request));
+    }).catch ((error) => {
+      alert ('error' + JSON.stringify (error));
     });
-    
+
+    // await loading.present ();
+    // GoogleAuth.signIn ().then ((result: any) => {
+    //   alert ('result' + JSON.stringify (result));
+    // }).catch ((error) => {
+    //   alert ('error' + JSON.stringify (error));
+    // });
 
     // this.googlePlus.login ({}).then (async (request: any) => { 
     //   this.login_social (request.userId, 'Google', request.displayName, request.email).subscribe ((res: any) => {-

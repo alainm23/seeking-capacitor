@@ -1,5 +1,7 @@
 {
   "name": "seeking-capcitor",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

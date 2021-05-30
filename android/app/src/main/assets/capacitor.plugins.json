@@ -10,9 +10,5 @@
 	{
 		"pkg": "@capacitor/geolocation",
 		"classpath": "com.capacitorjs.plugins.geolocation.GeolocationPlugin"
-	},
-	{
-		"pkg": "@reslear/capacitor-google-auth",
-		"classpath": "com.codetrixstudio.capacitor.GoogleAuth.GoogleAuth"
 	}
 ]

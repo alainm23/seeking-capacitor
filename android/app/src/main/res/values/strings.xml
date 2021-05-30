@@ -6,5 +6,5 @@
     <string name="custom_url_scheme">com.seekingterms</string>
     <string name="facebook_app_id">149253523741767</string>
     <string name="fb_login_protocol_scheme">fb149253523741767</string>
-    <string name="server_client_id">115731276335-ls0jio5c9rc62vicm1pn3e1ogam6q1p6.apps.googleusercontent.com</string>
+    <string name="WEB_APPLICATION_CLIENT_ID">115731276335-8dj47cbgu9al4j66tuqfm6trfv3d1irm.apps.googleusercontent.com</string>
 </resources>

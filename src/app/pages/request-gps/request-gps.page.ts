@@ -47,16 +47,22 @@ export class RequestGpsPage implements OnInit {
         const canUseGPS = await this.locationService.askToTurnOnGPS ();
         this.postGPSPermission (canUseGPS);
       } else {
-        alert ('User denied location permission');
+        // this.presentToast (
+        //   this.utils.get_translate ('User denied location permission'),
+        //   'warning'
+        // );
       }
     }
   }
 
-  async postGPSPermission(canUseGPS: boolean) {
+  async postGPSPermission (canUseGPS: boolean) {
     if (canUseGPS) {
       this.getPosition ();
     } else {
-      alert ('Please turn on GPS to get location');
+      this.presentToast (
+        this.utils.get_translate ('Please turn on GPS to get location'),
+        'warning'
+      );
     }
   }
 
@@ -70,7 +76,7 @@ export class RequestGpsPage implements OnInit {
     await loading.present ();
 
     const coordinates: any = await Geolocation.getCurrentPosition ({
-      timeout: 60 * 1000
+      timeout: 30 * 1000
     });
 
     console.log (coordinates);
@@ -80,10 +86,8 @@ export class RequestGpsPage implements OnInit {
       let geocoder: any = new google.maps.Geocoder ();
 
       let location = new google.maps.LatLng (
-        -12.0723516,
-        -77.1638751
-        // coordinates.coords.latitude,
-        // coordinates.coords.longitude
+        coordinates.coords.latitude,
+        coordinates.coords.longitude
       );
 
       let request = {
@@ -182,7 +186,6 @@ export class RequestGpsPage implements OnInit {
     };
 
     console.log (this.location);
-
     this.navController.navigateForward (['registro', this.id, JSON.stringify (this.location)]);
   }
 

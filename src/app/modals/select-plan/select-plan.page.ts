@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 // Services
-import { LoadingController, ModalController, AlertController } from '@ionic/angular';
+import { LoadingController, ModalController, AlertController, IonSlides } from '@ionic/angular';
 import { DatabaseService } from '../../services/database.service';
 import { Storage } from '@ionic/storage-angular';
 import { AuthService } from 'src/app/services/auth.service';
@@ -12,10 +12,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./select-plan.page.scss'],
 })
 export class SelectPlanPage implements OnInit {
+  @ViewChild (IonSlides, { static: false }) slides: IonSlides;
   @Input () page: string; 
   planes: any [] = [];
   slideOpts = {
-    initialSlide: 3,
+    initialSlide: 0,
     slidesPerView: 1.2,
     spaceBetween: 10,
     breakpoints: {
@@ -50,7 +51,6 @@ export class SelectPlanPage implements OnInit {
       this.membresia = this.auth.USER_DATA.membresia;
 
       console.log (this.page);
-      console.log (this.lang);
       console.log (this.membresia);
 
       const loading = await this.loadingController.create ({
@@ -65,6 +65,22 @@ export class SelectPlanPage implements OnInit {
         console.log (res);
         this.planes = res;
         loading.dismiss ();
+
+        if (this.page === 'home') {
+          if (this.membresia > 0) {
+            setTimeout (() => {
+              this.slides.slideTo (this.membresia + 1);
+            }, 300);
+          } else {
+            setTimeout (() => {
+              this.slides.slideTo (0);
+            }, 300);
+          }
+        } else {
+          setTimeout (() => {
+            this.slides.slideTo (2);
+          }, 300);
+        }
       }, error => {
         loading.dismiss ();
         console.log (error);

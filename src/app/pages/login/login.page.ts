@@ -53,7 +53,7 @@ export class LoginPage implements OnInit {
 
     await loading.present ();
 
-    this.auth.login (this.form.value.email, this.form.value.password).subscribe ((res: any) => {
+    this.auth.login (this.get_trim (this.form.value.email), this.get_trim (this.form.value.password)).subscribe ((res: any) => {
       console.log (res);
       if (res.user.estado_cuenta > 0) {
         this.navController.navigateRoot (['block-page', JSON.stringify (res.user)]).then (() => {
@@ -63,7 +63,7 @@ export class LoginPage implements OnInit {
         this.auth.save_local_user (res).then (() => {
           loading.dismiss ();
           this.navController.navigateRoot ('home');
-          this.auth.request_notification (res);
+          // this.auth.request_notification (res);
         });
       }
     }, error => {
@@ -73,8 +73,16 @@ export class LoginPage implements OnInit {
     });
   }
 
+  get_trim (value: string) {
+    return value.trim ();
+  }
+
   registro () {
     this.navController.navigateForward (['request-gps', 'null']);
+  }
+
+  restore () {
+    this.navController.navigateForward ('restore-password');
   }
 
   async presentToast (message: any, color: string) {
@@ -134,7 +142,7 @@ export class LoginPage implements OnInit {
       this.auth.facebook ();
     } else {
       let request: any = {
-        "id":"474482330467820",
+        "id":"474482337467820",
         "name":"Alain Meza",
       };
 

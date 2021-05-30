@@ -5,7 +5,7 @@
 </ion-header>-->
 
 <ion-content class="ion-text-center">
-  <ion-button *ngIf="page !== 'registro'" class="btn-close-modal" mode="ios" (click)="close ()">
+  <ion-button *ngIf="page === 'home'" class="btn-close-modal" mode="ios" (click)="close ()">
     <ion-icon name="close" class="icon-close"></ion-icon>
   </ion-button>
   <img src="assets/img/Imagen-31.png" class="img_persona">
@@ -19,8 +19,8 @@
   <ion-slides pager="false" [options]="slideOpts">
     <ion-slide>
       <ion-card mode="ios" class="ion-text-center">
-        <h5 class="ion-no-margin ion-text-start">Explore</h5>
-        <p class="p_card ion-no-margin ion-text-start">Free</p>
+        <h5 class="ion-no-margin ion-text-start">{{ 'Explore' | translate }}</h5>
+        <p class="p_card ion-no-margin ion-text-start">{{ 'Free' | translate }}</p>
         <ion-list mode="ios">
           <ion-item mode="ios" lines="none">
             <ion-icon name="checkmark-circle-sharp"></ion-icon>
@@ -35,7 +35,13 @@
             <ion-label class="ion-no-margin">Search and view girls</ion-label>
           </ion-item>
         </ion-list>
-        <ion-button (click)="select_plan ('free')" class="plan_button" mode="ios">Go on for free</ion-button>
+        <ion-button *ngIf="membresia === 0 && page === 'registro'" (click)="select_plan ('free')" class="plan_button" mode="ios">
+          {{ 'Go on for free' | translate }}
+        </ion-button>
+
+        <ion-button class="plan_selected" *ngIf="membresia === 0 && page === 'home'" mode="ios">
+          {{ 'Selected' | translate }}
+        </ion-button>
       </ion-card>
     </ion-slide>
 
@@ -62,7 +68,9 @@
             <ion-label class="ion-no-margin">Respond to girls</ion-label>
           </ion-item>
         </ion-list>
-        <ion-button mode="ios" class="plan_button" (click)="select_plan ('free-spirit')">Get credits</ion-button>
+        <ion-button mode="ios" class="plan_button" (click)="select_plan ('free-spirit')">
+          {{ 'Get credits' | translate }}
+        </ion-button>
       </ion-card>
     </ion-slide>
     
@@ -83,11 +91,11 @@
           </ion-item>
         </ion-list>
         <ion-button class="plan_button" *ngIf="membresia !== item.id" mode="ios" (click)="select_plan ('subscription', item)">
-          Go premiun
+          Go {{ item.nombre }}
         </ion-button>
 
         <ion-button class="plan_selected" *ngIf="membresia === item.id" mode="ios">
-          Plan selected
+          {{ 'Selected' | translate }}
         </ion-button>
       </ion-card>
     </ion-slide>

@@ -81,12 +81,12 @@ export class VerifyEmailPage implements OnInit {
     console.log ('send: ', verify_email.format ());
     console.log (now.diff (verify_email, 'minutes'));
 
-    if (now.diff (verify_email, 'minutes') <= 10) {
-      this.presentToast (
-        this.utils.get_translate (
-          'We have already sent you a validation email to') + ' ' + this.auth.USER_DATA.email + '\n' + this.utils.get_translate ('Please check your spam inbox'),
-        'warning');
-    } else {
+    // if (now.diff (verify_email, 'minutes') <= 10) {
+    //   this.presentToast (
+    //     this.utils.get_translate (
+    //       'We have already sent you a validation email to') + ' ' + this.auth.USER_DATA.email + '\n' + this.utils.get_translate ('Please check your spam inbox'),
+    //     'warning');
+    // } else {
       const loading = await this.loadingController.create ({
         translucent: true,
         spinner: 'lines-small',
@@ -97,19 +97,24 @@ export class VerifyEmailPage implements OnInit {
 
       this.auth.resend_verification ().subscribe (async (res: any) => {
         loading.dismiss ();
-        const alert = await this.alertController.create({
-          message: this.utils.get_translate ('We have just sent you a validation email to') + ' ' + this.auth.USER_DATA.email + '\n' + this.utils.get_translate ('Please check your spam inbox'),
-          buttons: ['OK']
-        });
+        console.log (res);
+        if (res.status === true) {
+          const alert = await this.alertController.create({
+            message: this.utils.get_translate ('We have just sent you a validation email to') + ' ' + this.auth.USER_DATA.email + '\n' + this.utils.get_translate ('Please check your spam inbox'),
+            buttons: ['OK']
+          });
+  
+          alert.present ();
+          this.email_sent = moment ().format ();
+          await this.storage.set ('verify-email-sent', moment ().format ());
+        } else {
 
-        alert.present ();
-        this.email_sent = moment ().format ();
-        await this.storage.set ('verify-email-sent', moment ().format ());
+        }
       }, error => {
         loading.dismiss ();
         console.log (error);
       });
-    }
+    // }
   }
   
   async presentToast (message: any, color: string) {

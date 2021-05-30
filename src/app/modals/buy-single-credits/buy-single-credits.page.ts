@@ -18,18 +18,18 @@ export class BuySingleCreditsPage implements OnInit {
     },
     {
       text: '50 Credits',
-      value: 49.99,
+      value: 29.99,
       creditos: 50
     },
     {
-      text: '100 Credits',
-      value: 99.99,
-      creditos: 100
+      text: '75 Credits',
+      value: 39.99,
+      creditos: 75
     },
     {
-      text: '200 Credits',
-      value: 149.99,
-      creditos: 200
+      text: '100 Credits',
+      value: 52.99,
+      creditos: 100
     }
   ]
   constructor (private modalController: ModalController,

@@ -59,7 +59,7 @@ export class TabsPage implements OnInit {
     const modal = await this.modalController.create({
       component: SelectPlanPage,
       componentProps: {
-        gender: 0
+        page: 'home'
       }
     });
 
@@ -78,10 +78,7 @@ export class TabsPage implements OnInit {
 
   async open_buy_credis () {
     const modal = await this.modalController.create ({
-      component: BuySingleCreditsPage,
-      componentProps: {
-        page: 'home'
-      }
+      component: BuySingleCreditsPage
     });
 
     modal.onWillDismiss ().then ((response: any) => {

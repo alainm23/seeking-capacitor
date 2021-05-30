@@ -12,7 +12,8 @@ dependencies {
     implementation project(':capacitor-community-facebook-login')
     implementation project(':capacitor-camera')
     implementation project(':capacitor-geolocation')
-    implementation project(':reslear-capacitor-google-auth')
+    implementation "com.google.android.gms:play-services-auth:15.0.1"
+    implementation "com.google.android.gms:play-services-identity:15.0.1"
     implementation "com.google.android.gms:play-services-location:16.+"
     implementation "com.onesignal:OneSignal:3.15.3"
 }

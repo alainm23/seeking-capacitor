@@ -41,6 +41,10 @@ export class PaymentPage implements OnInit {
               });     
             },
             onApprove: (data: any, actions: any) => {
+              console.log (data);
+
+              navigator.clipboard.writeText (JSON.stringify (data));
+
               this.modalController.dismiss ({
                 data: this.data,
                 type: this.type,
@@ -74,9 +78,14 @@ export class PaymentPage implements OnInit {
               });
             },
             onApprove: (data: any, actions: any) => {
+              console.log ('data', data);
+              console.log ('actions', actions),
               console.log ('onApprove');
               return actions.order.capture ().then ((details: any) => {
-                console.log (details)
+                console.log (details);
+
+                navigator.clipboard.writeText (JSON.stringify (details));
+
                 if (details.status === 'COMPLETED') {
                   this.modalController.dismiss ({
                     data: this.data,

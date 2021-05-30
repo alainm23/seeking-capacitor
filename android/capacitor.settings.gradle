@@ -10,6 +10,3 @@ project(':capacitor-camera').projectDir = new File('../node_modules/@capacitor/c
 
 include ':capacitor-geolocation'
 project(':capacitor-geolocation').projectDir = new File('../node_modules/@capacitor/geolocation/android')
-
-include ':reslear-capacitor-google-auth'
-project(':reslear-capacitor-google-auth').projectDir = new File('../node_modules/@reslear/capacitor-google-auth/android')

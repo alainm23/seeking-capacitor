@@ -1,8 +1,4 @@
 @font-face{
-    font-family: AvenirMedium;
-    src : url('/assets/font/Avenir-Medium.ttf')
-}
-@font-face{
     font-family: AvenirHeavy;
     src : url('/assets/font/Avenir Heavy.ttf')
 }
@@ -10,157 +6,441 @@
     font-family: Avenirlight;
     src : url('/assets/font/avenirltstd-light.otf')
 }
+@font-face{
+    font-family: AvenirMedium;
+    src : url('/assets/font/Avenir-Medium.ttf')
+}
+@font-face{
+    font-family: AvenirBlack;
+    src : url('/assets/font/Avenir-Black.otf')
+}
+ion-progress-bar
+{
+    --background: #EDEDED;
+    --progress-background: #CB9229;
+    height: 7px;
+}
 
-.loading-box {
+ion-slides {
+    height: 95%;
+}
+
+ion-title
+{
+    font-family: AvenirHeavy;
+    color: #333333;
+}
+.item-llamas
+{
+    --padding-start: 0px;
+    --inner-padding-end: 0px;
+    margin-top: 40px;
+    border-bottom: 3px solid #E3E3E3;
     width: 100%;
-    padding: 2rem;
-}
-
-ion-content
-{
-    --background: #ffff;
-}
-.card-cabezera
-{
-    margin: 0px;
-    --background: #ffff;
-    padding: 0px 20px;
-    box-shadow: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    .div-flex
+    .label-campo
     {
-        display: flex;
-        align-items: center;
-        .label-titulo
-        {
-            font-family: Avenirlight;
-            color: #000000;
-            margin: 0;
-            font-size: 20px;
-            margin-left: 15px;
-        }
+        font-family: Avenirlight;
+        color: #555555;
+        font-size: 17px;
     }
-    .btn-close
+    .input-llmas
     {
-        --background: #ffff;
-        --background-activated: #ffffff;
-        --border-radius: 50%;
-        --box-shadow: 0px 3px 6px #00000029;
-        width: 31px;
-        height: 31px;
+        --color: #555555;
+        font-family: Avenirlight;
+        margin-top: 8px;
+        --placeholder-opacity: 1;
+    }
+    .seletc-location
+    {
+        --placeholder-color: #555555;
+        --placeholder-opacity: 1;
+        font-family: Avenirlight;
+        color: #555555;
         --padding-top: 0px;
         --padding-bottom: 0px;
-        --padding-start: 0px;
-        --padding-end: 0px;
-        .icon-close
-        {
-            color: #707070;
-            font-size: 25px;
-        }
     }
-    
-}
-.div-blanco
-{
-    background: #ffffff;
-    padding: 20px 25px;
-    .item-select
+    .seletc-location::part(icon) 
     {
-        --padding-start: 20px;
-        --inner-padding-end: 10px;
-        --border-color: #E3E3E3;
-        --border-style: solid;
-        --border-width: 1px;
-        --border-radius: 6px;
-        --background: #F7F8F7;
-        position: relative;
-        .select-favo
-        {
-            width: 100%;
-            --placeholder-color: #555555;
-            color: #555555;
-            font-family: Avenirlight;
-            --padding-top: 0px;
-            --padding-bottom: 0px;
-            --placeholder-opacity: 1;
-        }
-        .div-linea-select
-        {
-            position: absolute;
-            right: 35px;
-            width: 1px;
-            background: #D5D5D5;
-            height: 70%;
-        }
+        display: none !important;
     }
 }
-ion-list
+.item-select-location
 {
-    padding-left: 20px;
-    padding-right: 20px;
-    ion-list-header
+    --inner-padding-end: 15px;
+}
+h1
+{
+    color: #333333;
+    font-family: AvenirHeavy;
+    margin-top: 0px;
+    font-size: 21px;
+}
+.color-plomo
+{
+    color: #8F8F8F;
+    font-family: Avenirlight;
+    margin-top: 20px;
+}
+.p-dia-mes-ano
+{
+    color: #333333;
+    font-family: AvenirMedium;
+    font-weight: 600;
+    margin: 0px;
+}
+.item-dias
+{
+    --padding-start: 0px;
+    --inner-padding-end: 0px;
+    .input-dia
     {
-        padding-left: 0px;
-        color: #333333;
-        font-family: AvenirHeavy;
+        --placeholder-color: #9B9B9B;
+        --color: #9B9B9B;
+        font-family: AvenirMedium;
+        --placeholder-font-weight: 800;
+        border-bottom: 1px solid #D8D8D8;
+        --placeholder-opacity: 1;
+        text-align: center;
+    }
+    .input-dia-focus
+    {
+        border-bottom: 3px solid #333333;
+    }
+    .input-left
+    {
+        margin-left: 10px;
+    }
+}
+
+.ion-item-center {
+    text-align: center;  
+}
+.item-dias:focus {
+    border-bottom: 3px solid #333333;
+}
+.col-padding-dia
+{
+    padding-left: 0px;
+    padding-right: 10px;
+}
+.col-padding-mes
+{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.col-padding-ano
+{
+    padding-left: 10px;
+    padding-right: 0px;
+}
+ion-footer
+{
+    padding-left: 30px;
+    padding-right: 30px;
+    .btn-continuar-footer
+    {
+        width: 100%;
+        --background: #77BDF0;
+        --box-shadow: none;
+        --border-radius: 23px;
+        height: 50px;
+        text-transform: none;
+        font-family: AvenirMedium;
         font-size: 20px;
     }
-    ion-item
+    .p-footer
     {
-        --padding-start: 0px;
-        --inner-padding-end: 0px;
-        ion-label
+        color: #555555;
+        font-family: AvenirMedium;
+        font-size: 18px;
+        margin-top: 22px;
+        margin-bottom: 22px;
+    }
+}
+.card-foto-fondo
+{
+    background-image: url('/assets/img/galeria-daddies-uno.jpg');
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.card-foto
+{
+    --background: #F9F6FF;
+    width: 90%;
+    box-shadow: none;
+    border-radius: 34px;
+    margin: 10% 5% 0px 5%;
+    text-align: center;
+    padding: 30px 0px;
+    height: 250px;
+    .p-subir-foto
+    {
+        color: #555555;
+        font-family: AvenirMedium;
+        font-size: 20px;
+        margin-bottom: 0px;
+        font-weight: 600;
+        margin-top: 5px;
+    }
+}
+.div-fotos
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20%;
+}
+.card-fotos
+{
+    --background: #F9F6FF;
+    width: 46%;
+    box-shadow: none;
+    border-radius: 10px;
+    margin: 0px;
+    height: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 4px 8px 4px;
+    ion-avatar
+    {
+        --border-radius: 10px;
+        width: 100%;
+        height: 100%;
+        img
         {
-            color: #000000;
-            font-family: Avenirlight;
+            width: 100%;
+            height: 100%;
         }
-        ion-toggle
-        {
-            --background: #E3E3E3;
-            --background-checked: #CB9229;
-            --handle-background: #ffffff;
-            --handle-background-checked: #ffffff;
-            width: 50px;
-            height: 26px;
-            --handle-border-radius: 50%;
-            --border-radius: 13px;
-            --handle-width: 20px;
-            --handle-height: 20px; 
-            margin-left: 10px;
-            margin-right: 10px;
-        }
-        ion-checkbox
-        {
-            --border-color: #E3E3E3;
-            --border-style: solid;
-            --border-width: 4px;
-            margin-right: 10px;
-            --background-checked: #CB9229;
-            --border-color-checked: #CB9229;
-            --size: 25px;
-        }
-        .delete_button {
-            --background: red;
-            --background-activated: red;
-            --border-radius: 13px;
-            font-family: AvenirHeavy;
-            margin-left: 10px;
-            margin-right: 10px;
-            font-size: 15px;
-            height: 30px;
-        }
-        ion-button
-        {
-            --background: #77BDF0;
-            --background-activated: #77BDF0;
-            --border-radius: 13px;
-            font-family: AvenirHeavy;
-            margin-left: 10px;
-            margin-right: 10px;
-            font-size: 15px;
-            height: 30px;
-        }
+    }
+    .icon-add
+    {
+        font-size: 35px;
+        color: #CB9229;
+    }
+}
+.card-fotos-fondo
+{
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.card-fotos-fondo-general
+{
+    background-image: url('/assets/img/galeria-daddies-uno.jpg');
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.item-radio-height
+{
+    align-items: baseline;
+    height: 30px;
+    margin-bottom: 5px;
+}
+.item-check-height
+{
+    align-items: baseline;
+    height: 30px;
+    margin-bottom: 10px;
+}
+.item-radio
+{
+    --padding-start: 0px;
+    --inner-padding-end: 0px;
+    .label-chech-radio
+    {
+        font-family: AvenirMedium;
+        font-size: 18px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .label-policy
+    {
+        font-size: 15px !important;
+    }
+    ion-radio
+    {
+        margin-left: 0px;
+        margin-right: 15px;
+        --color-checked: #CB9229;
+        --color: #E3E3E3;
+        margin-top: 4px;
+        margin-bottom: 0px;
+    }
+    .checbox
+    {
+        --border-color: #E3E3E3;
+        --border-style: solid;
+        --border-width: 4px;
+        margin-right: 10px;
+        --background-checked: #CB9229;
+        --border-color-checked: #CB9229;
+        --size: 25px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+ion-select
+{
+    width: 100%;
+}
+ion-slide
+{
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
+    align-items: flex-start;
+    form
+    {
+        width: 100%;
+    }
+}
+.list-scroll
+{
+    height: 85%;
+    overflow-y: scroll;
+}
+.list-scroll::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+.list-scroll::-webkit-scrollbar-thumb {
+    background: #cdcdd1;
+    border-radius: 0px;
+}
+.list-scroll::-webkit-scrollbar-thumb:hover{
+    background: #CDCDD1;
+}
+.list-scroll::-webkit-scrollbar-track{
+    background: #ffffff;
+    border-radius: 0px;
+}
+@media(min-width: 375px) and (min-height: 667px)
+{
+    .list-scroll
+    {
+        height: 90%;
+    }
+    .card-fotos
+    {
+        height: 112px;
+    }
+}
+@media(min-width: 375px) and (min-height: 812px)
+{
+    .list-scroll
+    {
+        height: 100%;
+    }
+    .card-fotos
+    {
+        height: 130px;
+    }
+}
+@media(min-width: 411px)
+{
+    .card-foto
+    {
+        padding: 45px 0px;
+        height: 300px;
+    }
+    .card-fotos
+    {
+        width: 31%;
+        height: 130px;
+    }
+    .list-scroll
+    {
+        height: 100%;
+    }
+}
+@media(min-width: 480px)
+{
+    .card-foto
+    {
+        padding: 50px 0px;
+        height: 350px;
+    }
+    .card-fotos
+    {
+        height: 160px;
+    }
+}
+@media(min-width: 540px)
+{
+    .grid-pagging
+    {
+        padding-left: 70px;
+        padding-right: 70px;
+    }
+    ion-footer
+    {
+        padding-left: 70px;
+        padding-right: 70px;
+    }
+    .card-fotos
+    {
+        height: 160px;
+        width: 31%;
+    }
+}
+@media(min-width: 768px)
+{
+    .grid-pagging
+    {
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+    ion-footer
+    {
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+    .card-fotos
+    {
+        height: 195px;
+    }
+    ion-slide
+    {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+    .card-foto
+    {
+        width: 60%;
+        margin: 10% 20% 0px 20%;
+    }
+}
+@media(min-width: 1024px)
+{
+    .grid-pagging
+    {
+        padding-left: 200px;
+        padding-right: 200px;
+    }
+    .card-foto
+    {
+        padding: 60px 0px;
+        width: 50%;
+        margin: 5% 25% 0px 25%;
+        height: 400px;
+    }
+    ion-footer
+    {
+        padding-left: 300px;
+        padding-right: 300px;
+    }
+    .card-fotos
+    {
+        width: 32%;
+        height: 240px;
+    }
+    ion-slide
+    {
+        padding-left: 120px;
+        padding-right: 120px;
     }
 }
