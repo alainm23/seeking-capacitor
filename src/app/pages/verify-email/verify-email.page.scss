@@ -16,9 +16,9 @@ ion-content
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    --padding-start:  1.25rem;
-    --padding-end: 1.25rem;
-    --padding-top: 70px;
+    --padding-start:  10px;
+    --padding-end: 10px;
+    --padding-top: 30px;
 }
 h1
 {
@@ -30,7 +30,7 @@ p
 {
     color: #555555;
     font-family: AvenirMedium;
-    margin-top: 30px;
+    margin-top: 20px;
     padding: 0px 30px;
     font-size: 20px;
 
@@ -38,6 +38,11 @@ p
 .p-top-footer
 {
     margin-top: 20px !important;
+    margin-bottom: 0px !important;
+}
+ion-footer
+{
+    padding-bottom: 20px;
 }
 ion-button
 {
@@ -47,27 +52,24 @@ ion-button
     --color: #ffffff;
     --color-activated: #ffffff;
     font-family: AvenirHeavy;
-    margin-top: 20px;
+    margin-top: 0px;
     --border-radius: 23px;
-    height: 45px;
+    height: 50px;
     text-transform: none;
     --box-shadow: none;
+    font-size: 20px;
 }
 img
 {
-    margin-top: 30%;
+    margin-top: 15%;
 }
 @media (min-width: 411px)
 {
     ion-content
     {
-      --padding-start: 3.125rem;
-      --padding-end: 3.125rem;
-      --padding-top: 5rem
-    }
-    p
-    {
-        margin-top: 60px;
+        --padding-start: 20px;
+        --padding-end: 20px;
+        --padding-top: 50px;
     }
 }
 @media (min-width: 480px)
@@ -77,16 +79,20 @@ img
       --padding-start: 3.125rem;
       --padding-end: 3.125rem;
     }
-    ion-button
-    {
-        margin-top: 20px;
-    }
 }
 @media (min-width: 540px)
 {
     p
     {
         margin-top: 40px;
+    }
+    ion-button
+    {
+        width: 65%;
+    }
+    ion-footer
+    {
+        padding-bottom: 50px;
     }
 }
 @media (min-width: 640px)
@@ -106,16 +112,21 @@ img
 {
     ion-content
     {
-      --padding-start: 12.5rem;
-      --padding-end: 12.5rem;
+      --padding-start: 100px;
+      --padding-end: 100px;
       --padding-top: 7rem;
+    }
+    ion-button
+    {
+        width: 45%;
     }
 }
 @media (min-width: 1024px)
 {
     ion-content
     {
-      --padding-start: 18.75rem;
-      --padding-end: 18.75rem;
+        --padding-start: 200px;
+        --padding-end: 200px;
+        --padding-top: 307px;
     }
 }

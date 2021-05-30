@@ -20,14 +20,17 @@ export class SelectPlanPage implements OnInit {
     slidesPerView: 1.2,
     spaceBetween: 10,
     breakpoints: {
+      411: {
+        spaceBetween: 15
+      },
       // when window width is >= 480px
       480: {
         slidesPerView: 1.5,
         spaceBetween: 10
       },
       // when window width is >= 640px
-      640: {
-        slidesPerView: 4,
+      768: {
+        slidesPerView: 2,
         spaceBetween: 40
       }
     }

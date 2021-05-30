@@ -1,3 +1,15 @@
+@font-face{
+    font-family: AvenirHeavy;
+    src : url('/assets/font/Avenir Heavy.ttf')
+}
+@font-face{
+    font-family: AvenirMedium;
+    src : url('/assets/font/Avenir-Medium.ttf')
+}
+@font-face{
+    font-family: Avenirlight;
+    src : url('/assets/font/avenirltstd-light.otf')
+}
 ion-card
 {
     border-radius: 16px;
@@ -104,5 +116,48 @@ ion-card
             transform: rotate(43deg);
             top: 20px;
         }
+    }
+}
+.img-logo-genral
+{
+    width: 138px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+.div-vard
+{
+    padding: 0px 48px;
+}
+.div-paypal
+{
+    padding: 48px;
+}
+.btn-close-modal
+{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    --border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    --box-shadow: 0px 3px 6px #00000029;
+    --background: #fff;
+    --background-activated: #fff;
+    font-size: 0px;
+    .icon-close
+    {
+        font-size: 30px;
+        color: #707070;
+    }
+}
+@media(min-width: 768px)
+{
+    .div-vard
+    {
+        padding: 0px 165px;
+    }
+    .div-paypal
+    {
+        padding: 48px 165px;
     }
 }

@@ -48,6 +48,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/block-page/block-page.module').then( m => m.BlockPagePageModule)
   },
   {
+    path: '',
+    canActivate: [AuthGuard],
+    loadChildren: () => import ('./pages/tabs/tabs.module').then (m => m.TabsPageModule)
+  },
+  {
+    path: 'request-fotos',
+    loadChildren: () => import('./request-fotos/request-fotos.module').then( m => m.RequestFotosPageModule)
+  },
+  {
     path: 'restore-password',
     loadChildren: () => import('./pages/restore-password/restore-password.module').then( m => m.RestorePasswordPageModule)
   },
@@ -55,6 +64,10 @@ const routes: Routes = [
     path: '',
     canActivate: [AuthGuard],
     loadChildren: () => import ('./pages/tabs/tabs.module').then (m => m.TabsPageModule)
+  },
+  {
+    path: 'erase-profile',
+    loadChildren: () => import('./erase-profile/erase-profile.module').then( m => m.EraseProfilePageModule)
   }
 ];
 

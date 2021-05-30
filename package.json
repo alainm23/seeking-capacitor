@@ -25,6 +25,7 @@
     "@capacitor/core": "3.0.0",
     "@capacitor/geolocation": "^1.0.0",
     "@ionic-native/android-permissions": "^5.33.0",
+    "@ionic-native/core": "^5.33.1",
     "@ionic-native/file": "^5.33.0",
     "@ionic-native/google-plus": "^5.33.1",
     "@ionic-native/location-accuracy": "^5.33.0",

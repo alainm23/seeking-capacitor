@@ -1,5 +1,5 @@
 
-<ion-header mode="ios" class="ion-no-border">
+<!--<ion-header mode="ios" class="ion-no-border">
   <ion-toolbar>
     <ion-title>{{ 'Complete perfil' | translate }}</ion-title>
     <ion-buttons slot="end">
@@ -8,7 +8,7 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-</ion-header>
+</ion-header>-->
 
 <ion-content>
   <ion-progress-bar mode="ios" [value]="index / slides.length"></ion-progress-bar>
@@ -31,10 +31,10 @@
             </ion-col>
   
             <ion-col size="12" class="ion-no-padding">
-              <ion-list>  
-                <ion-item *ngFor="let item of intereses">
-                  <ion-label>{{ item.valor }}</ion-label>
-                  <ion-checkbox (ionChange)="checkbox_changed ($event, item.id, intereses_map)" color="dark" slot="start"></ion-checkbox>
+              <ion-list class="list-scrool">  
+                <ion-item *ngFor="let item of intereses" lines="none" class="item-check-height">
+                  <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                  <ion-checkbox (ionChange)="checkbox_changed ($event, item.id, intereses_map)" slot="start"></ion-checkbox>
                 </ion-item>
               </ion-list>
             </ion-col>
@@ -64,38 +64,40 @@
                 <h1 class="ion-text-center">{{ 'Personal Data' | translate }}</h1>
               </ion-col>
     
-              <ion-col size="6" class="ion-no-padding">
+              <ion-col size="6">
                 <ion-item mode="ios">
-                  <ion-label position="stacked">{{ 'Name' | translate }}</ion-label>
+                  <ion-label position="stacked" class="label-campo">{{ 'Name' | translate }}</ion-label>
                   <ion-input formControlName="name"></ion-input>
                 </ion-item>
               </ion-col>
     
-              <ion-col size="6" class="ion-no-padding">
+              <ion-col size="6">
                 <ion-item mode="ios">
-                  <ion-label position="stacked">{{ 'Phone' | translate }}</ion-label>
+                  <ion-label position="stacked" class="label-campo">{{ 'Phone' | translate }}</ion-label>
                   <ion-input formControlName="telefono"></ion-input>
                 </ion-item>
               </ion-col>
     
-              <ion-col size="12" class="ion-no-padding">
-                <ion-item mode="ios">
-                  <ion-label position="stacked">{{ 'About me' | translate }}</ion-label>
-                  <ion-textarea rows="5" formControlName="acerca_de_mi"></ion-textarea>
+              <ion-col size="12">
+                <ion-item mode="ios" lines="none">
+                  <ion-label position="stacked" class="label-campo">{{ 'About me' | translate }}</ion-label>
+                  <ion-textarea rows="5" formControlName="acerca_de_mi" class="textarea-abaout"></ion-textarea>
                 </ion-item>
               </ion-col>
     
-              <ion-col size="12" class="ion-no-padding">
+              <ion-col size="6">
                 <ion-item mode="ios">
-                  <ion-label position="stacked">{{ 'Height' | translate }}</ion-label>
+                  <ion-label position="stacked" class="label-campo">{{ 'Height' | translate }}</ion-label>
                   <ion-select  formControlName="sistema" interface="popover" okText="Okay" cancelText="Dismiss">
                     <ion-select-option value="imperial">{{ 'Imperial' | translate }}</ion-select-option>
                     <ion-select-option value="metric">{{ 'Metric' | translate }}</ion-select-option>
                   </ion-select>
                 </ion-item>
-    
-                <ion-item mode="ios">
-                  <ion-label position="stacked"></ion-label>
+              </ion-col>
+
+              <ion-col size="6">
+                <ion-item mode="ios" class="item-height">
+                  <ion-label position="stacked" class="label-campo"></ion-label>
                   <ion-input formControlName="altura"></ion-input>
                 </ion-item>
               </ion-col>
@@ -112,11 +114,11 @@
             </ion-col>
   
             <ion-col size="12" class="ion-no-padding">
-              <ion-list>  
+              <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'apariencia_', apariencia_map)">            
-                  <ion-item *ngFor="let item of apariencia_items ['Body Type'].items">
-                    <ion-label>{{ item.valor }}</ion-label>
-                    <ion-radio color="dark" slot="start" [value]="item"></ion-radio>
+                  <ion-item *ngFor="let item of apariencia_items ['Body Type'].items" lines="none" class="item-radio-height">
+                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
               </ion-list>
@@ -133,11 +135,11 @@
             </ion-col>
   
             <ion-col size="12" class="ion-no-padding">
-              <ion-list>  
+              <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'apariencia_', apariencia_map)">            
-                  <ion-item *ngFor="let item of apariencia_items ['Ethnicity'].items">
-                    <ion-label>{{ item.valor }}</ion-label>
-                    <ion-radio color="dark" slot="start" [value]="item"></ion-radio>
+                  <ion-item *ngFor="let item of apariencia_items ['Ethnicity'].items" lines="none" class="item-radio-height">
+                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
               </ion-list>
@@ -154,11 +156,11 @@
             </ion-col>
   
             <ion-col size="12" class="ion-no-padding">
-              <ion-list>  
+              <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'apariencia_', apariencia_map)">            
-                  <ion-item *ngFor="let item of apariencia_items ['Hair Color'].items">
-                    <ion-label>{{ item.valor }}</ion-label>
-                    <ion-radio color="dark" slot="start" [value]="item"></ion-radio>
+                  <ion-item *ngFor="let item of apariencia_items ['Hair Color'].items" lines="none" class="item-radio-height">
+                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
               </ion-list>
@@ -175,11 +177,11 @@
             </ion-col>
   
             <ion-col size="12" class="ion-no-padding">
-              <ion-list>  
+              <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'apariencia_', apariencia_map)">            
-                  <ion-item *ngFor="let item of apariencia_items ['Eye Color'].items">
-                    <ion-label>{{ item.valor }}</ion-label>
-                    <ion-radio color="dark" slot="start" [value]="item"></ion-radio>
+                  <ion-item *ngFor="let item of apariencia_items ['Eye Color'].items" lines="none" class="item-radio-height">
+                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
               </ion-list>
@@ -196,11 +198,11 @@
             </ion-col>
   
             <ion-col size="12" class="ion-no-padding">
-              <ion-list>  
+              <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'apariencia_', apariencia_map)">            
-                  <ion-item *ngFor="let item of apariencia_items ['Drinking'].items">
-                    <ion-label>{{ item.valor }}</ion-label>
-                    <ion-radio color="dark" slot="start" [value]="item"></ion-radio>
+                  <ion-item *ngFor="let item of apariencia_items ['Drinking'].items" lines="none" class="item-radio-height">
+                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
               </ion-list>
@@ -217,11 +219,11 @@
             </ion-col>
   
             <ion-col size="12" class="ion-no-padding">
-              <ion-list>  
+              <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'apariencia_', apariencia_map)">            
-                  <ion-item *ngFor="let item of apariencia_items ['Smoking'].items">
-                    <ion-label>{{ item.valor }}</ion-label>
-                    <ion-radio color="dark" slot="start" [value]="item"></ion-radio>
+                  <ion-item *ngFor="let item of apariencia_items ['Smoking'].items" lines="none" class="item-radio-height">
+                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
               </ion-list>
@@ -238,11 +240,11 @@
             </ion-col>
   
             <ion-col size="12" class="ion-no-padding">
-              <ion-list>  
+              <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
-                  <ion-item *ngFor="let item of personalidad_items ['Orientation'].items">
-                    <ion-label>{{ item.valor }}</ion-label>
-                    <ion-radio color="dark" slot="start" [value]="item"></ion-radio>
+                  <ion-item *ngFor="let item of personalidad_items ['Orientation'].items" lines="none" class="item-radio-height">
+                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
               </ion-list>
@@ -259,11 +261,11 @@
             </ion-col>
   
             <ion-col size="12" class="ion-no-padding">
-              <ion-list>  
+              <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
-                  <ion-item *ngFor="let item of personalidad_items ['Relationship'].items">
-                    <ion-label>{{ item.valor }}</ion-label>
-                    <ion-radio color="dark" slot="start" [value]="item"></ion-radio>
+                  <ion-item *ngFor="let item of personalidad_items ['Relationship'].items" lines="none" class="item-radio-height">
+                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
               </ion-list>
@@ -280,11 +282,11 @@
             </ion-col>
   
             <ion-col size="12" class="ion-no-padding">
-              <ion-list>  
+              <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
-                  <ion-item *ngFor="let item of personalidad_items ['Sexually'].items">
-                    <ion-label>{{ item.valor }}</ion-label>
-                    <ion-radio color="dark" slot="start" [value]="item"></ion-radio>
+                  <ion-item *ngFor="let item of personalidad_items ['Sexually'].items" lines="none" class="item-radio-height">
+                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
               </ion-list>
@@ -301,11 +303,11 @@
             </ion-col>
   
             <ion-col size="12" class="ion-no-padding">
-              <ion-list>  
+              <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
-                  <ion-item *ngFor="let item of personalidad_items ['Education'].items">
-                    <ion-label>{{ item.valor }}</ion-label>
-                    <ion-radio color="dark" slot="start" [value]="item"></ion-radio>
+                  <ion-item *ngFor="let item of personalidad_items ['Education'].items" lines="none" class="item-radio-height">
+                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
               </ion-list>
@@ -322,11 +324,11 @@
             </ion-col>
   
             <ion-col size="12" class="ion-no-padding">
-              <ion-list>  
+              <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
-                  <ion-item *ngFor="let item of personalidad_items ['Occupation'].items">
-                    <ion-label>{{ item.valor }}</ion-label>
-                    <ion-radio color="dark" slot="start" [value]="item"></ion-radio>
+                  <ion-item *ngFor="let item of personalidad_items ['Occupation'].items" lines="none" class="item-radio-height">
+                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
               </ion-list>
@@ -343,11 +345,11 @@
             </ion-col>
   
             <ion-col size="12" class="ion-no-padding">
-              <ion-list>  
+              <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
-                  <ion-item *ngFor="let item of personalidad_items ['Religion'].items">
-                    <ion-label>{{ item.valor }}</ion-label>
-                    <ion-radio color="dark" slot="start" [value]="item"></ion-radio>
+                  <ion-item *ngFor="let item of personalidad_items ['Religion'].items" lines="none" class="item-radio-height">
+                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
               </ion-list>
@@ -364,11 +366,11 @@
             </ion-col>
   
             <ion-col size="12" class="ion-no-padding">
-              <ion-list>  
+              <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
-                  <ion-item *ngFor="let item of personalidad_items ['Children'].items">
-                    <ion-label>{{ item.valor }}</ion-label>
-                    <ion-radio color="dark" slot="start" [value]="item"></ion-radio>
+                  <ion-item *ngFor="let item of personalidad_items ['Children'].items" lines="none" class="item-radio-height">
+                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
               </ion-list>
@@ -385,10 +387,10 @@
             </ion-col>
   
             <ion-col size="12" class="ion-no-padding">
-              <ion-list>  
-                <ion-item *ngFor="let item of idiomas">
-                  <ion-label>{{ item.nombre }}</ion-label>
-                  <ion-checkbox (ionChange)="checkbox_changed ($event, item.id, idiomas_map)" color="dark" slot="start"></ion-checkbox>
+              <ion-list class="list-scrool">  
+                <ion-item *ngFor="let item of idiomas" lines="none" class="item-check-height">
+                  <ion-label class="label-campo label-chech-radio">{{ item.nombre }}</ion-label>
+                  <ion-checkbox (ionChange)="checkbox_changed ($event, item.id, idiomas_map)" slot="start"></ion-checkbox>
                 </ion-item>
               </ion-list>
             </ion-col>
@@ -411,7 +413,7 @@
       </ng-container>
 
       <ng-container *ngIf="get_slide_type (slide) === 'extras'">
-        <form style="align-self: start;" [formGroup]="extras_form">
+        <form style="align-self: start;" [formGroup]="extras_form" class="row-scrool">
           <ion-grid class="grid-pagging">
             <ion-row style="display: flex;">
               <ion-col size="12" class="ion-no-padding">
@@ -420,7 +422,7 @@
   
               <ion-col size="12" class="ion-no-padding">
                 <ion-item mode="ios">
-                  <ion-label position="stacked">{{ 'Annual income' | translate }}
+                  <ion-label position="stacked" class="label-campo">{{ 'Annual income' | translate }}
                   </ion-label>
                   <ion-select  formControlName="ingreso_anual" interface="popover" okText="Okay" cancelText="Dismiss">
                     <ion-select-option value="< $50,000">
@@ -447,7 +449,7 @@
 
               <ion-col size="12" class="ion-no-padding">
                 <ion-item mode="ios">
-                  <ion-label position="stacked">{{ 'Net. worth' | translate }}</ion-label>
+                  <ion-label position="stacked" class="label-campo">{{ 'Net. worth' | translate }}</ion-label>
                   <ion-select  formControlName="patrimonio" interface="popover" okText="Okay" cancelText="Dismiss">
                     <ion-select-option value="< $500,000">
                       < $500,000
@@ -478,9 +480,9 @@
               <ion-col size="12" class="ion-no-padding">
                 <ion-list>
                   <ion-radio-group formControlName="relocate">            
-                    <ion-item *ngFor="let item of extras [0].extras">
-                      <ion-label>{{ item.valor }}</ion-label>
-                      <ion-radio color="dark" slot="start" [value]="item"></ion-radio>
+                    <ion-item *ngFor="let item of extras [0].extras" lines="none" class="item-radio-height">
+                      <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                      <ion-radio  slot="start" [value]="item"></ion-radio>
                     </ion-item>
                   </ion-radio-group>
                 </ion-list>
@@ -493,9 +495,9 @@
               <ion-col size="12" class="ion-no-padding">
                 <ion-list>
                   <ion-radio-group formControlName="passport_ready">            
-                    <ion-item *ngFor="let item of extras [1].extras">
-                      <ion-label>{{ item.valor }}</ion-label>
-                      <ion-radio color="dark" slot="start" [value]="item"></ion-radio>
+                    <ion-item *ngFor="let item of extras [1].extras" lines="none" class="item-radio-height">
+                      <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                      <ion-radio slot="start" [value]="item"></ion-radio>
                     </ion-item>
                   </ion-radio-group>
                 </ion-list>
@@ -506,13 +508,13 @@
       </ng-container>
 
       <ng-container *ngIf="get_slide_type (slide) === 'gracias'">
-        Gracias por completarme
+        <p class="p-gracias">Gracias por completarme</p>
       </ng-container>
     </ion-slide>
   </ion-slides>
 </ion-content>
 
 <ion-footer class="ion-no-border ion-text-center">
-  <ion-button (click)="next_step ()" class="btn-continuar-footer">{{ 'Next' | translate }}</ion-button>
+  <ion-button (click)="next_step ()" class="btn-continuar-footer" mode="ios">{{ 'Next' | translate }}</ion-button>
   <p (click)="back_step ()" class="p-footer">{{ 'Go back' | translate }}</p>
 </ion-footer>

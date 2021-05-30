@@ -6,9 +6,9 @@
 
 <ion-content>
   <ion-button (click)="back ()" mode="ios" shape="round" class="btn-regresar"><ion-icon name="arrow-back-sharp" class="icon-left"></ion-icon></ion-button>
-  <div style="position: relative;">
+  <div style="position: relative;" class="div-slider">
     <ion-slides pager="true">
-      <ion-slide *ngFor="let item of galeria">
+      <ion-slide *ngFor="let item of galeria" class="slider-fondo">
         <ion-avatar class="avatar-slider">
           <ion-img [src]="item.imagen"></ion-img>
         </ion-avatar>

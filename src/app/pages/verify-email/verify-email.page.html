@@ -6,8 +6,8 @@
     <br>
     {{ 'We have already sent you a validation email to' | translate }} {{ auth.USER_DATA.email }}
   </p>
-  <ion-button (click)="validar_correo ()">{{ 'Let’s go' | translate }}</ion-button>
 </ion-content>
 <ion-footer class="ion-no-border ion-text-center">
+  <ion-button (click)="validar_correo ()" mode="ios">{{ 'Let’s go' | translate }}</ion-button>
   <p class="p-top-footer">{{ 'I didn’t get a code, please' | translate }} <br> <u (click)="resend ()">{{ 'resend it to me >' | translate }} </u></p>
 </ion-footer>

@@ -3,14 +3,16 @@
   {{ error_message }}
   <img src="assets/img/ubicacion.PNG">
   <p class="p">
-    {{ 'Before creating your account, we need to know where you are.' | translate }}
+    {{ 'Using this feature, we can recommend people who are close to you.' | translate }}
     <br>
     <br>
-    {{ 'We will never share your location, without your permission.' | translate }}
+    {{ 'We will never share your location without your permission.' | translate }}
   </p>
 </ion-content>
 <ion-footer class="ion-no-border ion-text-center">
-  <ion-button (click)="check_gps ()" mode="ios">{{ 'Let’s go' | translate }}</ion-button>
-  <p class="p-footer" (click)="later ()">{{ 'Later' | translate }}</p>
-  <p class="p-footer" (click)="back_step ()">{{ 'Go back' | translate }}</p>
+  <div class="div-flex-footer">
+    <p class="p-footer" (click)="back_step ()">{{ 'X Skip' | translate }}</p>
+    <ion-button (click)="check_gps ()" mode="ios">{{ 'OK' | translate }}</ion-button>
+  </div>
+  <!--<p class="p-footer" (click)="later ()">{{ 'Later' | translate }}</p>-->
 </ion-footer>

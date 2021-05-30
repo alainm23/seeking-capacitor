@@ -9,6 +9,28 @@
 ion-content
 {
     --background: #F5F5F5;
+    position: relative;
+}
+.btn-regresar
+{
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    --background: transparent;
+    --background-activated: transparent;
+    z-index: 2;
+    margin: 0px;
+    .icon-left
+    {
+        font-size: 30px;
+    }
+}
+.card-perfil-fondo
+{
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('/assets/img/galeria-daddies-uno.jpg');
 }
 .card-perfil
 {
@@ -68,6 +90,13 @@ ion-content
         width: 20px;
         height: 20px;
     }
+}
+.card-list-perfil-fondo
+{
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('/assets/img/galeria-daddies-uno.jpg');
 }
 .card-list-perfil
 {

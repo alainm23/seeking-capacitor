@@ -1,103 +1,114 @@
 @font-face{
     font-family: AvenirMedium;
     src : url('/assets/font/Avenir-Medium.ttf')
-}
-@font-face{
+  }
+  @font-face{
     font-family: AvenirHeavy;
     src : url('/assets/font/Avenir Heavy.ttf')
-}
-@font-face{
+  }
+  @font-face{
     font-family: Avenirlight;
     src : url('/assets/font/avenirltstd-light.otf')
-}
-ion-content
-{
+  }
+  ion-content
+  {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     --padding-start:  1.25rem;
     --padding-end: 1.25rem;
-    --padding-top: 70px;
-}
-h1
-{
+    --padding-top: 25px;
+  }
+  h1
+  {
     color: #333333;
     font-family: AvenirHeavy;
     margin-bottom: 0px;
-}
-.p
-{
+  }
+  .h5-celeste
+  {
+    color: #77BDF0;
+    font-family: AvenirHeavy;
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  .p
+  {
     color: #555555;
     font-family: Avenirlight;
-    margin-top: 8%;
+    margin-top: 0;
+    margin-bottom: 0px;
     padding: 0px 30px;
-
-}
-ion-button
-{
+  
+  }
+  ion-button
+  {
     width: 55%;
     --background: #77BDF0;
     --background-activated: #77BDF0;
     --color: #ffffff;
     --color-activated: #ffffff;
     font-family: AvenirHeavy;
-    margin-top: 0px;
     --border-radius: 23px;
-    height: 50px;
+    height: 45px;
     text-transform: none;
     --box-shadow: none;
-    font-size: 20px;
-    margin-bottom: 0px;
-}
-
-.p-footer
-{
+  }
+  .p-footer
+  {
     color: #555555;
     font-family: AvenirMedium;
     font-size: 18px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
-.div-flex-footer
-{
+  }
+  .div-flex-footer
+  {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
     padding-bottom: 50px;
-}
-img
-{
-    margin-top: 20%;
-}
-@media (min-width: 411px)
-{
+  }
+  img
+  {
+    margin-top: 15%;
+    width: 80%;
+  }
+  @media (min-width: 411px)
+  {
     ion-content
     {
       --padding-start: 3.125rem;
       --padding-end: 3.125rem;
-      --padding-top: 5rem
+      --padding-top: 40px;
     }
-}
-@media (min-width: 480px)
-{
+  }
+  @media (min-width: 480px)
+  {
     ion-content
     {
       --padding-start: 3.125rem;
       --padding-end: 3.125rem;
     }
-}
-@media (min-width: 540px)
-{
     ion-button
     {
-       
+        margin-top: 20px;
+    }
+  }
+  @media (min-width: 540px)
+  {
+    ion-button
+    {
         width: 45%;
     }
-}
-@media (min-width: 640px)
-{
+    ion-content
+    {
+      --padding-start: 80px;
+      --padding-end: 80px;
+    }
+  }
+  @media (min-width: 640px)
+  {
     ion-content
     {
       --padding-start: 7.5rem;
@@ -108,21 +119,21 @@ img
        
         width: 34%;
     }
-}
-@media (min-width: 768px)
-{
+  }
+  @media (min-width: 768px)
+  {
     ion-content
     {
       --padding-start: 12.5rem;
       --padding-end: 12.5rem;
       --padding-top: 7rem;
     }
-}
-@media (min-width: 1024px)
-{
+  }
+  @media (min-width: 1024px)
+  {
     ion-content
     {
       --padding-start: 18.75rem;
       --padding-end: 18.75rem;
     }
-}
+  }

@@ -222,11 +222,12 @@ ion-slides
     --bullet-width: 30px;
     --bullet-background-active: #C89530;
     z-index: 0;
+    height: 70%;
     ion-thumbnail
     {
         width: 100%;
         --border-radius: 0px;
-        height: 420px;
+        height: 100%;
         ion-img
         {
             width: 100%;
@@ -234,6 +235,13 @@ ion-slides
             object-fit: cover;
         }
     }
+}
+.slider-fondo
+{
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('/assets/img/galeria-daddies-uno.jpg');
 }
 .btn-flecha
 {
@@ -396,6 +404,13 @@ ion-footer
         }
     }
 }
+@media (min-width: 540px)
+{
+    ion-slides
+    {
+        height: 80%;
+    }
+}
 @media (min-width: 640px)
 {
     .div-padding-left-right
@@ -423,12 +438,17 @@ ion-footer
 {
     .div-padding-left-right
     {
-        padding-left: 12.5rem;
-        padding-right: 12.5rem;
+        padding-left: 80px;
+        padding-right: 80px;
     }
     .card-texto-blanco
     {
-        padding: 20px 12.5rem;
+        padding: 20px 80px;
+        .btn-cara-give
+        {
+            width: 50%;
+            margin-left: 25%;
+        }
     }
     ion-footer
     {
@@ -441,17 +461,22 @@ ion-footer
             }
         }
     }
+    .btn-send
+    {
+        width: 50%;
+        margin-left: 25%;
+    }
 }
 @media (min-width: 1024px)
 {
     .div-padding-left-right
     {
-        padding-left: 18.75rem;
-        padding-right: 18.75rem;
+        padding-left: 100px;
+        padding-right: 100px;
     }
     .card-texto-blanco
     {
-        padding: 20px 18.75rem;
+        padding: 20px 100px;
     }
     ion-footer
     {

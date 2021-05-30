@@ -20,6 +20,30 @@ ion-content
 {
     --background: #ffff;
 }
+.p-account
+{
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    z-index: 1;
+    color: #000000;
+    font-family: Avenirlight;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    padding-left: 20px;
+    .img-close
+    {
+        margin-right: 10px;
+        width: 15px;
+    }
+    .link
+    {
+        color: #000000;
+        font-family: Avenirlight;
+        text-decoration: none;
+    }
+}
 .card-cabezera
 {
     margin: 0px;
@@ -162,5 +186,53 @@ ion-list
             font-size: 15px;
             height: 30px;
         }
+    }
+}
+@media (min-width: 540px)
+{
+    ion-list
+    {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .div-blanco
+    {
+        padding: 20px 50px;
+    }
+    .p-account
+    {
+        padding-left: 50px;
+    }
+}
+@media (min-width: 768px)
+{
+    ion-list
+    {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    .div-blanco
+    {
+        padding: 20px 100px;
+    }
+    .p-account
+    {
+        padding-left: 100px;
+    }
+}
+@media (min-width: 768px)
+{
+    ion-list
+    {
+        padding-left: 200px;
+        padding-right: 200px;
+    }
+    .div-blanco
+    {
+        padding: 20px 200px;
+    }
+    .p-account
+    {
+        padding-left: 200px;
     }
 }
