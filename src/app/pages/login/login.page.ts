@@ -18,6 +18,11 @@ export class LoginPage implements OnInit {
   form: FormGroup;
   lang: string;
   location: any;
+
+  data: string [] = ['id', 'creditos', 'email', 'email_verified_at',
+    'estado_cuenta', 'foto_perfil', 'membresia', 'metric_system',
+    'name', 'nombre_ciudad', 'nombre_pais', 'idioma',
+    'registro_incompleto'];
   constructor (private auth: AuthService, 
     private navController: NavController,
     private toastController: ToastController,
@@ -54,18 +59,24 @@ export class LoginPage implements OnInit {
     await loading.present ();
 
     this.auth.login (this.get_trim (this.form.value.email), this.get_trim (this.form.value.password)).subscribe ((res: any) => {
-      console.log (res);
-      if (res.user.estado_cuenta > 0) {
-        this.navController.navigateRoot (['block-page', JSON.stringify (res.user)]).then (() => {
-          loading.dismiss ();
-        });
-      } else {
-        this.auth.save_local_user (res).then (() => {
-          loading.dismiss ();
-          this.navController.navigateRoot ('home');
-          // this.auth.request_notification (res);
-        });
-      }
+      let request: any = res;
+      this.auth.get_fields_access_token (request.access_token, this.data).subscribe (async (user: any) => {-
+        console.log (user);
+        request.user = user;
+        if (request.user.estado_cuenta > 0) {
+          this.navController.navigateRoot (['block-page', JSON.stringify (request.user)]).then (() => {
+            loading.dismiss ();
+          });
+        } else {
+          this.auth.save_local_user (request).then (() => {
+            loading.dismiss ();
+            this.navController.navigateRoot ('home');
+          });
+        }
+      }, error => {
+        loading.dismiss ();
+        console.log (error);
+      });
     }, error => {
       loading.dismiss ();
       console.log (error);
@@ -97,9 +108,13 @@ export class LoginPage implements OnInit {
   }
 
   change_lan (event: any) {
-    moment.locale (event.detail.value);
-    this.translate.setDefaultLang (event.detail.value);
-    this.storage.set ('lang', event.detail.value);
+    moment.locale ();
+    this.set_lang (event.detail.value);
+  }
+
+  async set_lang (lang: any) {
+    this.translate.setDefaultLang (lang);
+    await this.storage.set ('lang', lang);
   }
 
   google () {
@@ -118,19 +133,26 @@ export class LoginPage implements OnInit {
       };
       
       this.auth.login_social (request.userId, 'Google', request.displayName, request.email).subscribe ((res: any) => {
-        console.log (res);
-        if (res.user.estado_cuenta > 0) {
-          this.navController.navigateRoot (['block-page', JSON.stringify (res.user)]).then (() => {
-          });
-        } else {
-          if (res.user.registro_incompleto == 1) {
-            this.navController.navigateForward (['request-gps', res.user.id]);
-          } else {
-            this.auth.save_local_user (res).then (() => {
-              this.navController.navigateRoot ('home');
+        let request: any = res;
+        this.auth.get_fields_access_token (request.access_token, this.data).subscribe (async (user: any) => {
+          request.user = user;
+          console.log (request);
+
+          if (request.user.estado_cuenta > 0) {
+            this.navController.navigateRoot (['block-page', JSON.stringify (request.user)]).then (() => {
             });
+          } else {
+            if (request.user.registro_incompleto == 1) {
+              this.navController.navigateForward (['request-gps', request.user.id]);
+            } else {
+              this.auth.save_local_user (request).then (() => {
+                this.navController.navigateRoot ('home');
+              });
+            }
           }
-        }
+        }, error => {
+          console.log (error);
+        });
       }, error => {
         console.log (error);
       });
@@ -147,18 +169,26 @@ export class LoginPage implements OnInit {
       };
 
       this.auth.login_social (request.id, 'Facebook', request.name, '').subscribe ((res: any) => {
-        console.log (res);
-        if (res.user.estado_cuenta > 0) {
-          this.navController.navigateRoot (['block-page', JSON.stringify (res.user)]);
-        } else {
-          if (res.user.registro_incompleto == 1) {
-            this.navController.navigateForward (['request-gps', res.user.id]);
-          } else {
-            this.auth.save_local_user (res).then (() => {
-              this.navController.navigateRoot ('home');
+        let request: any = res;
+        this.auth.get_fields_access_token (request.access_token, this.data).subscribe (async (user: any) => {
+          request.user = user;
+          console.log (request);
+
+          if (request.user.estado_cuenta > 0) {
+            this.navController.navigateRoot (['block-page', JSON.stringify (request.user)]).then (() => {
             });
+          } else {
+            if (request.user.registro_incompleto == 1) {
+              this.navController.navigateForward (['request-gps', request.user.id]);
+            } else {
+              this.auth.save_local_user (request).then (() => {
+                this.navController.navigateRoot ('home');
+              });
+            }
           }
-        }
+        }, error => {
+          console.log (error);
+        });
       }, error => {
         console.log (error);
       });

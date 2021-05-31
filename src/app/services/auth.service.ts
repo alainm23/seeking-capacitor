@@ -8,7 +8,7 @@ import { FacebookLogin, FacebookLoginResponse } from '@capacitor-community/faceb
 // Google
 // import { GoogleAuth } from '@reslear/capacitor-google-auth'
 import { GooglePlus } from '@ionic-native/google-plus';
-
+import { TranslateService } from '@ngx-translate/core';
 
 import { LoadingController, NavController } from '@ionic/angular';
 import { Subject } from 'rxjs';
@@ -28,7 +28,8 @@ export class AuthService {
   constructor (public http: HttpClient, private storage: Storage,
     private loadingController: LoadingController,
     private navController: NavController,
-    private websocket: WebsocketService) {
+    private websocket: WebsocketService,
+    private translate: TranslateService) {
     this.URL = 'https://seekingterms.com/api/auth/';
   }
 
@@ -161,6 +162,9 @@ export class AuthService {
     };
 
     this.USER_DATA = request.user;
+    
+    this.translate.setDefaultLang (request.user.idioma.code);
+    await this.storage.set ('lang', request.user.idioma.code);
 
     await this.storage.set ('USER_ACCESS', JSON.stringify (this.USER_ACCESS));
     this.websocket.init_websocket (this.USER_DATA.id, this.USER_ACCESS.access_token);
@@ -353,6 +357,16 @@ export class AuthService {
 
     const headers = {
       'Authorization': 'Bearer ' + this.USER_ACCESS.access_token
+    }
+
+    return this.http.post (url, {fields: fields}, { headers });
+  }
+
+  get_fields_access_token (access_token: string, fields: any []) {
+    let url = 'https://seekingterms.com/api/auth/get/specifics/fields/user';
+
+    const headers = {
+      'Authorization': 'Bearer ' + access_token
     }
 
     return this.http.post (url, {fields: fields}, { headers });

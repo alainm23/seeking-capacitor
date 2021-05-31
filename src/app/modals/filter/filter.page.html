@@ -12,9 +12,26 @@
       <ion-icon name="close-outline" class="icon-close"></ion-icon>
     </ion-button>
   </div>
-  <div class="div-disml div-bottom">
-    <h4 class="titulo-campos ion-no-margin">{{ 'Characteristics & preferences' | translate }}</h4>
+
+  <div (click)="show_apariencias = !show_apariencias" class="div-disml div-bottom">
+    <h4 class="titulo-campos ion-no-margin">{{ 'Search locations' | translate }}</h4>
+    <ion-icon name="chevron-forward-outline"></ion-icon>
   </div>
+
+  <ion-searchbar #searchbar [(ngModel)]="search_text" placeholder="{{ 'Search locations' | translate }}"></ion-searchbar>
+
+  <div class="div-disml div-bottom">
+    <h4 class="titulo-campos ion-no-margin">{{ 'General' | translate }}</h4>
+  </div>
+
+  <div class="div-btn-mapa">
+    <ion-label class="label-subtitulo">{{ 'Ages between' | translate }}: {{ edad_range?.lower }}-{{ edad_range?.upper }}</ion-label>
+  </div>
+  <ion-range pin="true" dualKnobs="true" [(ngModel)]="edad_range" min="18" max="100" step="1" snaps="false" mode="ios" class="range-input range-top">
+    <!-- <ion-label slot="start"></ion-label>
+    <ion-label slot="end"></ion-label> -->
+  </ion-range>
+
   <ion-item class="ion-no-padding item-select" button="false" lines="none">
     <label mode="ios" class="label-select">{{ 'Objective relationship' | translate }}</label>
     <ion-select [(ngModel)]="relationship" multiple="true" mode="ios" placeholder="Select">
@@ -33,29 +50,87 @@
     </ion-select>
   </ion-item>
 
+  <!-- Religion -->
+
+  <ion-item class="ion-no-padding item-select" button="false" lines="none">
+    <label mode="ios" class="label-select">{{ 'Religion' | translate }}</label>
+    <ion-select [value]="get_map_value (7, 'personalidad')" (ionChange)="select_changed ($event, 7, 'personalidad')" multiple="true" mode="ios" placeholder="Select">
+      <ion-select-option *ngFor="let item of get_subitems (7, 'personalidad')" [value]="item.id" class="select-interface-option">
+        {{ item.valor }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  
+  <!-- Tiene hijos -->
+
+  <ion-item class="ion-no-padding item-select" button="false" lines="none">
+    <label mode="ios" class="label-select">{{ 'Children' | translate }}</label>
+    <ion-select [value]="get_map_value (8, 'personalidad')" (ionChange)="select_changed ($event, 8, 'personalidad')" multiple="true" mode="ios" placeholder="Select">
+      <ion-select-option *ngFor="let item of get_subitems (8, 'personalidad')" [value]="item.id" class="select-interface-option">
+        {{ item.valor }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
   <ion-item *ngFor="let item of database.EXTRAS" class="ion-no-padding item-select" button="false" lines="none">
     <label mode="ios" class="label-select">{{ item.nombre }}</label>
-    <ion-select [value]="get_map_value (item.nombre, extra_map)" (ionChange)="select_changed ($event, item.nombre, extra_map)" multiple="true" mode="ios" placeholder="Select">
+    <ion-select [value]="get_map_value (item.id, 'extra')" (ionChange)="select_changed ($event, item.id, 'extra')" multiple="true" mode="ios" placeholder="Select">
       <ion-select-option *ngFor="let item of item.items" [value]="item.id" class="select-interface-option">
         {{ item.valor }}
       </ion-select-option>
     </ion-select>
   </ion-item>
 
-  <div class="div-btn-mapa">
-    <ion-label class="label-subtitulo">{{ 'Ages between' | translate }}: {{ edad_range?.lower }}-{{ edad_range?.upper }}</ion-label>
+  <div (click)="show_apariencias = !show_apariencias" class="div-disml div-bottom">
+    <h4 class="titulo-campos ion-no-margin">{{ 'Appearance' | translate }}</h4>
+    <ion-icon name="chevron-forward-outline"></ion-icon>
   </div>
-  <ion-range pin="true" dualKnobs="true" [(ngModel)]="edad_range" min="18" max="100" step="1" snaps="false" mode="ios" class="range-input range-top">
-    <!-- <ion-label slot="start"></ion-label>
-    <ion-label slot="end"></ion-label> -->
-  </ion-range>
 
-  <div class="div-disml div-bottom">
+  <ng-container *ngIf="show_apariencias">
+    <ion-item *ngFor="let item of apariencias" class="ion-no-padding item-select" button="false" lines="none">
+      <label mode="ios" class="label-select">{{ get_nombre (item.id, item.list) }}</label>
+      <ion-select [value]="get_map_value (item.id, item.list)" (ionChange)="select_changed ($event, item.id, item.list)" multiple="true" mode="ios" placeholder="Select">
+        <ion-select-option *ngFor="let x of get_subitems (item.id, item.list)" [value]="x.id" class="select-interface-option">
+          {{ x.valor }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ng-container>
+
+  <div (click)="show_personalidad = !show_personalidad" class="div-disml div-bottom">
     <h4 class="titulo-campos ion-no-margin">{{ 'Personalities' | translate }}</h4>
+    <ion-icon name="chevron-forward-outline"></ion-icon>
   </div>
-  <ion-item *ngFor="let item of database.PERSONALIDADES" class="ion-no-padding item-select" button="false" lines="none">
+
+  <ng-container *ngIf="show_personalidad">
+    <ion-item *ngFor="let item of personalidad" class="ion-no-padding item-select" button="false" lines="none">
+      <label mode="ios" class="label-select">{{ get_nombre (item.id, item.list) }}</label>
+      <ion-select [value]="get_map_value (item.id, item.list)" (ionChange)="select_changed ($event, item.id, item.list)" multiple="true" mode="ios" placeholder="Select">
+        <ion-select-option *ngFor="let x of get_subitems (item.id, item.list)" [value]="x.id" class="select-interface-option">
+          {{ x.valor }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ng-container>
+
+  <div (click)="show_laborales = !show_laborales" class="div-disml div-bottom">
+    <h4 class="titulo-campos ion-no-margin">{{ 'Laborales' | translate }}</h4>
+  </div>
+
+  <ng-container *ngIf="show_laborales">
+    <ion-item *ngFor="let item of laboral" class="ion-no-padding item-select" button="false" lines="none">
+      <label mode="ios" class="label-select">{{ get_nombre (item.id, item.list) }}</label>
+      <ion-select [value]="get_map_value (item.id, item.list)" (ionChange)="select_changed ($event, item.id, item.list)" multiple="true" mode="ios" placeholder="Select">
+        <ion-select-option *ngFor="let x of get_subitems (item.id, item.list)" [value]="x.id" class="select-interface-option">
+          {{ x.valor }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ng-container>
+  
+  <!-- <ion-item *ngFor="let item of database.PERSONALIDADES" class="ion-no-padding item-select" button="false" lines="none">
     <label mode="ios" class="label-select">{{ item.nombre }}</label>
-    <ion-select [value]="get_map_value (item.nombre, personalidad_map)" (ionChange)="select_changed ($event, item.nombre, personalidad_map)" multiple="true" mode="ios" placeholder="Select">
+    <ion-select [value]="get_map_value (item.id, personalidad_map)" (ionChange)="select_changed ($event, item.id, personalidad_map)" multiple="true" mode="ios" placeholder="Select">
       <ion-select-option *ngFor="let item of item.items" [value]="item.id" class="select-interface-option">
         {{ item.valor }}
       </ion-select-option>
@@ -66,10 +141,10 @@
   </div>
   <ion-item *ngFor="let item of database.APARIENCIAS" class="ion-no-padding item-select" button="false" lines="none">
     <label mode="ios" class="label-select">{{ item.nombre }}</label>
-    <ion-select [value]="get_map_value (item.nombre, apariencia_map)" (ionChange)="select_changed ($event, item.nombre, apariencia_map)" multiple="true" mode="ios" placeholder="Select">
+    <ion-select [value]="get_map_value (item.id, apariencia_map)" (ionChange)="select_changed ($event, item.id, apariencia_map)" multiple="true" mode="ios" placeholder="Select">
       <ion-select-option *ngFor="let item of item.items" [value]="item.id" class="select-interface-option">
         {{ item.valor }}
       </ion-select-option>
     </ion-select>
-  </ion-item>
+  </ion-item> -->
 </ion-content>

@@ -64,7 +64,7 @@
     "Best matches": "Best matches",
     "Show all": "Show all",
     "Online now": "Online now",
-    "Verified users": "Verified users",
+    "Verified users": "Premium users",
     "Profile status": "Profile status",
     "Weak": "Weak",
     "More detailed profiles get all the attention": "More detailed profiles get all the attention",
@@ -117,6 +117,8 @@
     "Ages between": "Ages between",
     "Personalities": "Personalities",
     "Appearance": "Appearance",
+    "General": "General",
+    "Search locations": "Search locations",
 
     "COMPLETE PERFIL": "------------------------------------------------",
     "Complete perfil": "Complete perfil",

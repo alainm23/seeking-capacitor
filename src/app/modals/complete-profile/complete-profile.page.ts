@@ -6,6 +6,7 @@ import { IonSlides, Platform, ToastController, LoadingController, IonInput, Moda
 import { report } from 'process';
 import { FormGroup , FormControl, Validators } from '@angular/forms';
 import { UtilsService } from '../../services/utils.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-complete-profile',
@@ -47,16 +48,23 @@ export class CompleteProfilePage implements OnInit {
     private toastController: ToastController,
     private loadingController: LoadingController,
     private modalController: ModalController,
-    private utils: UtilsService) { }
+    private utils: UtilsService,
+    private auth: AuthService) { }
 
   ngOnInit () {
+    console.log (this.auth.USER_DATA);
+
     this.personal_data_form = new FormGroup ({
-      name: new FormControl ('', [Validators.required]),
-      telefono: new FormControl ('', [Validators.required]),
+      name: new FormControl ('', []),
+      telefono: new FormControl ('', []),
       acerca_de_mi: new FormControl ('', [Validators.required]),
       altura: new FormControl ('', [Validators.required]),
       sistema: new FormControl ('metric', [Validators.required]),
     });
+
+    if (this.auth.USER_DATA.id_pais === 'US') {
+      this.personal_data_form.controls ['sistema'].setValue ('');
+    }
 
     this.extras_form = new FormGroup ({
       ingreso_anual: new FormControl ('', [Validators.required]),

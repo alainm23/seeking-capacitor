@@ -38,7 +38,8 @@ export class HomePage implements OnInit {
   promovidos_loading: boolean = false;
   page: number = 0;
   tab_filter: string = null;
-  order_by: string = 'distance';
+  order_by: string = 'favoritos-desc';
+  location: any = null;
   relationship: number [] = [];
   idiomas: number [] = [];
   personalidad_map: Map <string, number []> = new Map <string, number []> ();
@@ -63,7 +64,8 @@ export class HomePage implements OnInit {
     
     this.database.get_porcentaje_perfil ().subscribe (async (res: any) => {
       console.log (res);
-      this.complete_perfil = res;
+      this.complete_perfil = res.porcentaje_perfil;
+      console.log (this.complete_perfil);
     }, error => {
       console.log (error);
     });
@@ -101,7 +103,8 @@ export class HomePage implements OnInit {
       if (response.role === 'update') {
         this.database.get_porcentaje_perfil ().subscribe (async (res: any) => {
           console.log (res);
-          this.complete_perfil = res;
+          this.complete_perfil = res.porcentaje_perfil;
+          console.log (this.complete_perfil);
         }, error => {
           console.log (error);
         });
@@ -188,7 +191,8 @@ export class HomePage implements OnInit {
       length_page: this.length_page,
       relationship: this.relationship,
       idiomas: this.idiomas,
-      rango_edad: [this.edad_range.lower, this.edad_range.upper]
+      rango_edad: [this.edad_range.lower, this.edad_range.upper],
+      location: this.location
     };
 
     if (this.bestMatches === false) {
@@ -290,6 +294,7 @@ export class HomePage implements OnInit {
         apariencia_map: this.apariencia_map,
         extra_map: this.extra_map,
         edad_range: this.edad_range,
+        location: this.location
       }
     });
 
@@ -301,6 +306,7 @@ export class HomePage implements OnInit {
         this.extra_map = response.data.extra_map;
         this.idiomas = response.data.idiomas;
         this.edad_range = response.data.edad_range;
+        this.location = response.data.location;
         this.items = [];
         this.page = 0;
         this.home_loading = true;

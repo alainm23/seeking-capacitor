@@ -169,7 +169,7 @@ export class DatabaseService {
   }
 
   get_porcentaje_perfil () {
-    let url = this.URL + 'users/user/porcentaje/perfil';
+    let url = this.URL + 'users/user/datos/home';
 
     const headers = {
       'Authorization': 'Bearer ' + this.auth.USER_ACCESS.access_token

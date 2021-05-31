@@ -82,7 +82,6 @@ export class RequestGpsPage implements OnInit {
     console.log (coordinates);
 
     if (coordinates.coords) {
-      let directionsService: any = new google.maps.DirectionsService ();
       let geocoder: any = new google.maps.Geocoder ();
 
       let location = new google.maps.LatLng (
@@ -90,29 +89,14 @@ export class RequestGpsPage implements OnInit {
         coordinates.coords.longitude
       );
 
-      let request = {
-        origin: location,
-        destination: location,
-        travelMode: google.maps.TravelMode.WALKING
-      };
+      geocoder.geocode ({'location': location}, (results: any, status: any) => {
+        console.log (results);
+        loading.dismiss ();
 
-      directionsService.route (request, (result: any, status: any) => {
         if (status == 'OK') {
-          geocoder.geocode ({'placeId': result.geocoded_waypoints [0].place_id}, (results: any, status: any) => {
-            loading.dismiss ();
-    
-            if (status == 'OK') {
-              this.get_location (results [0], coordinates.coords.latitude, coordinates.coords.longitude);
-            } else {
-              
-            }
-          });
+          this.get_location (results [0], coordinates.coords.latitude, coordinates.coords.longitude);
         } else {
-          this.presentToast (
-            this.utils.get_translate ('No pudimos obtener tu ubicación, porfavor asegúrate de tener prendido el GPS de tu dispositivo o inténtalo más tarde.'),
-            'danger'
-          );
-          loading.dismiss ();
+          
         }
       });
     } else {
@@ -148,15 +132,7 @@ export class RequestGpsPage implements OnInit {
         referencias.push (element.long_name);
       }
     });
-
-    if (ciudad === '') {
-      result.address_components.forEach ((element: any) => {
-        if (element.types.indexOf ("administrative_area_level_1") > -1) {
-          ciudad = element.long_name;
-        }
-      });
-    }
-
+    
     this.location = {
       ciudad: ciudad,
       pais: pais,

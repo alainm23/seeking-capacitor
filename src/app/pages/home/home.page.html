@@ -24,7 +24,7 @@
         <ion-button mode="ios" [class.btn-active]="tab_filter === 'online'" class="btn-div" (click)="set_tab ('online')">
           {{ 'Online now' | translate }}
         </ion-button>
-        <ion-button mode="ios" [class.btn-active]="tab_filter === 'verificados'" class="btn-div" (click)="set_tab ('verificados')">
+        <ion-button mode="ios" [class.btn-active]="tab_filter === 'membresia'" class="btn-div" (click)="set_tab ('membresia')">
           {{ 'Verified users' | translate }}
         </ion-button>
       </div>
@@ -62,11 +62,11 @@
         <h6 class="h6-blanco">Get girls attention, put your photo right up here.</h6>
       </ion-card>
     </ion-slide>
-  </ion-slides> *ngIf="complete_perfil?.total < 100" -->
+  </ion-slides>-->
 
-  <ng-container>
+  <ng-container *ngIf="complete_perfil?.total < 100">
     <div class="ion-text-center div-amarillo-profile">
-      <h5 class="h5-profile">{{ 'Profile status' | translate }}: {{ complete_perfil?.total }}% - {{ 'Weak' | translate }}</h5>
+      <h5 class="h5-profile">{{ 'Profile status' | translate }}: {{ complete_perfil?.total }}% - {{ complete_perfil?.texto }}</h5>
       <p class="p-profile">{{ 'More detailed profiles get all the attention' | translate }}</p>
     </div>
   
@@ -77,9 +77,6 @@
 
   <ion-item class="item-select" lines="none">
     <ion-select (ionChange)="change_order ($event)" [(ngModel)]="order_by" interface="popover" placeholder="Sort by popularity" class="select-popu" mode="ios">
-      <ion-select-option value="distance" class="select-interface-option">
-        {{ 'Closed to me' | translate }}
-      </ion-select-option>
       <ion-select-option value="favoritos-desc" class="select-interface-option">
         {{ 'Popularity' | translate }}
       </ion-select-option>
@@ -116,7 +113,11 @@
     <ion-grid style="padding-left: 0px;padding-right: 0px;">
       <ion-row>
         <ion-col size="6" *ngFor="let item of items">
-          <ion-card class="card-perfil card-pefil-fondo" (click)="view_profile (item)" mode="ios">
+          <ion-card
+            class="card-perfil card-pefil-fondo"
+            [ngStyle]="{'background-image': 'url(' + item.thumbnail + ')'}"
+            (click)="view_profile (item)"
+            mode="ios">
             <div class="div-sombra">
               <p class="p-nombre">{{ item.usernick }}</p><div *ngIf="item.online === true" class="div-circulo-activo"></div>
               <div class="item-badge">
@@ -154,7 +155,7 @@
               </div>
             </div>
             <ion-thumbnail class="avatar-img">
-              <ion-img [src]="item.thumbnail" class="img-persona"></ion-img>
+              <!-- <ion-img [src]="item.thumbnail" class="img-persona"></ion-img> -->
             </ion-thumbnail>
             <img src="assets/img/grupo926.png" *ngIf="item.membresia === 1" class="img-circulo-amarrilo">
           </ion-card>

@@ -64,7 +64,7 @@
     "Best matches": "Mejores partidos",
     "Show all": "Mostrar todos",
     "Online now": "Solo online",
-    "Verified users": "Solo verificados",
+    "Verified users": "Solo premium",
     "Profile status": "Estado del perfil",
     "Weak": "Guiño",
     "More detailed profiles get all the attention": "Los perfiles más detallados atraen toda la atención",
@@ -114,6 +114,8 @@
     "Ages between": "Edad entre",
     "Personalities": "Personalidad",
     "Appearance": "Apariencia",
+    "General": "General",
+    "Search locations": "Buscar ubicaciones",
 
     "COMPLETE PERFIL": "------------------------------------------------",
     "Complete perfil": "Complete perfil",
