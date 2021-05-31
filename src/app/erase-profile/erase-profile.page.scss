@@ -1,139 +1,337 @@
+/*
 @font-face{
-    font-family: AvenirMedium;
-    src : url('/assets/font/Avenir-Medium.ttf')
+  font-family: AvenirMedium;
+  src : url('/assets/font/Avenir-Medium.ttf')
+}
+@font-face{
+  font-family: AvenirHeavy;
+  src : url('/assets/font/Avenir Heavy.ttf')
+}
+@font-face{
+  font-family: Avenirlight;
+  src : url('/assets/font/avenirltstd-light.otf')
+}
+ion-content
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  --padding-start:  30px;
+  --padding-end: 30px;
+  --padding-top: 60px;
+  position: relative;
+}
+.btn-close-modal
+{
+  position: absolute;
+  top: 2%;
+  right: 5%;
+  --border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  --box-shadow: 0px 3px 6px #00000029;
+  --background: #fff;
+  --background-activated: #fff;
+  font-size: 0px;
+  .icon-close
+  {
+      font-size: 30px;
+      color: #707070;
   }
-  @font-face{
-    font-family: AvenirHeavy;
-    src : url('/assets/font/Avenir Heavy.ttf')
-  }
-  @font-face{
-    font-family: Avenirlight;
-    src : url('/assets/font/avenirltstd-light.otf')
-  }
+}
+h1
+{
+  color: #333333;
+  font-family: AvenirHeavy;
+  margin-bottom: 0px;
+}
+.h5-celeste
+{
+  color: #77BDF0;
+  font-family: AvenirHeavy;
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+.div-bottom
+{
+  margin-bottom: 30px;
+  margin-top: 50px;
+}
+.p
+{
+  color: #555555;
+  font-family: Avenirlight;
+  margin-top: 0;
+  margin-bottom: 0px;
+  padding: 0px 0px;
+
+}
+.p-footer
+{
+  color: #555555;
+  font-family: AvenirMedium;
+  font-size: 18px;
+}
+.div-flex-footer
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-bottom: 50px;
+}
+img
+{
+  margin-top: 15%;
+  width: 80%;
+}
+@media (min-width: 411px)
+{
   ion-content
   {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    --padding-start:  1.25rem;
-    --padding-end: 1.25rem;
-    --padding-top: 25px;
+    --padding-start: 3.125rem;
+    --padding-end: 3.125rem;
+    --padding-top: 40px;
   }
-  h1
+}
+@media (min-width: 480px)
+{
+  ion-content
   {
-    color: #333333;
-    font-family: AvenirHeavy;
-    margin-bottom: 0px;
+    --padding-start: 3.125rem;
+    --padding-end: 3.125rem;
   }
-  .h5-celeste
+}
+@media (min-width: 540px)
+{
+  ion-content
   {
-    color: #77BDF0;
-    font-family: AvenirHeavy;
-    font-size: 24px;
-    margin-bottom: 30px;
+    --padding-start: 80px;
+    --padding-end: 80px;
+    --padding-top: 60px;
   }
-  .p
+  .btn-close-modal
   {
-    color: #555555;
-    font-family: Avenirlight;
-    margin-top: 0;
-    margin-bottom: 0px;
-    padding: 0px 30px;
-  
+    top: 3%;
+    right: 10%;
   }
-  ion-button
+}
+@media (min-width: 640px)
+{
+  ion-content
   {
-    width: 55%;
-    --background: #77BDF0;
-    --background-activated: #77BDF0;
-    --color: #ffffff;
-    --color-activated: #ffffff;
-    font-family: AvenirHeavy;
-    --border-radius: 23px;
-    height: 45px;
-    text-transform: none;
-    --box-shadow: none;
+    --padding-start: 7.5rem;
+    --padding-end: 7.5rem;
   }
-  .p-footer
+}
+@media (min-width: 768px)
+{
+  ion-content
   {
-    color: #555555;
-    font-family: AvenirMedium;
-    font-size: 18px;
+    --padding-start: 12.5rem;
+    --padding-end: 12.5rem;
+    --padding-top: 7rem;
   }
-  .div-flex-footer
+  .btn-close-modal
   {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    padding-bottom: 50px;
+    top: 5%;
+    right: 10%;
+  }
+}
+@media (min-width: 1024px)
+{
+  ion-content
+  {
+    --padding-start: 18.75rem;
+    --padding-end: 18.75rem;
+  }
+}
+*/
+@font-face{
+  font-family: AvenirMedium;
+  src : url('/assets/font/Avenir-Medium.ttf')
+}
+@font-face{
+  font-family: AvenirHeavy;
+  src : url('/assets/font/Avenir Heavy.ttf')
+}
+@font-face{
+  font-family: Avenirlight;
+  src : url('/assets/font/avenirltstd-light.otf')
+}
+ion-content
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  --padding-start:  1.25rem;
+  --padding-end: 1.25rem;
+  --padding-top: 70px;
+}
+h1
+{
+  color: #333333;
+  font-family: AvenirHeavy;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+.h5-celeste
+{
+  color: #77BDF0;
+  font-family: AvenirHeavy;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+.p
+{
+  color: #555555;
+  font-family: AvenirMedium;
+  margin-top: 0;
+  margin-bottom: 0px;
+
+}
+ion-button
+{
+  width: 60%;
+  --background: #77BDF0;
+  --background-activated: #77BDF0;
+  --color: #ffffff;
+  --color-activated: #ffffff;
+  font-family: AvenirHeavy;
+  --border-radius: 23px;
+  height: 50px;
+  text-transform: none;
+  --box-shadow: none;
+  font-size: 20px;
+}
+.btn-erase
+{
+  --background: #FF0000  !important;
+  --background-activated: #FF0000 !important;
+}
+.p-footer
+{
+  color: #555555;
+  font-family: AvenirMedium;
+  font-size: 18px;
+}
+.div-flex-footer
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-bottom: 50px;
+}
+img
+{
+  margin-top: 6%;
+  width: 75%;
+}
+ion-footer
+{
+  padding-bottom: 20px;
+}
+@media (min-width: 375px) and (min-height: 812px)
+{
+  ion-content
+  {
+    --padding-start: 3.125rem;
+    --padding-end: 3.125rem;
+    --padding-top: 80px;
+  }
+  .btn-erase
+  {
+    margin-top: 10px;
   }
   img
   {
-    margin-top: 15%;
-    width: 80%;
+    margin-top: 8%;
+    width: 100%;
   }
-  @media (min-width: 411px)
+}
+@media (min-width: 411px)
+{
+  ion-content
   {
-    ion-content
-    {
-      --padding-start: 3.125rem;
-      --padding-end: 3.125rem;
-      --padding-top: 40px;
-    }
+    --padding-start: 3.125rem;
+    --padding-end: 3.125rem;
+    --padding-top: 60px;
   }
-  @media (min-width: 480px)
+  img
   {
-    ion-content
-    {
-      --padding-start: 3.125rem;
-      --padding-end: 3.125rem;
-    }
-    ion-button
-    {
-        margin-top: 20px;
-    }
+    margin-top: 8%;
+    width: 100%;
   }
-  @media (min-width: 540px)
+}
+@media (min-width: 411px) and (min-height: 812px)
+{
+  ion-content
   {
-    ion-button
-    {
-        width: 45%;
-    }
-    ion-content
-    {
-      --padding-start: 80px;
-      --padding-end: 80px;
-    }
+    --padding-top: 100px;
   }
-  @media (min-width: 640px)
+}
+@media (min-width: 480px)
+{
+  ion-content
   {
-    ion-content
-    {
-      --padding-start: 7.5rem;
-      --padding-end: 7.5rem;
-    }
-    ion-button
-    {
-       
-        width: 34%;
-    }
+    --padding-start: 3.125rem;
+    --padding-end: 3.125rem;
   }
-  @media (min-width: 768px)
+}
+@media (min-width: 540px)
+{
+  ion-button
   {
-    ion-content
-    {
-      --padding-start: 12.5rem;
-      --padding-end: 12.5rem;
-      --padding-top: 7rem;
-    }
+    width: 45%;
   }
-  @media (min-width: 1024px)
+  ion-content
   {
-    ion-content
-    {
-      --padding-start: 18.75rem;
-      --padding-end: 18.75rem;
-    }
+    --padding-start: 80px;
+    --padding-end: 80px;
   }
+}
+@media (min-width: 640px)
+{
+  ion-content
+  {
+    --padding-start: 7.5rem;
+    --padding-end: 7.5rem;
+  }
+  ion-button
+  {
+     
+    width: 34%;
+  }
+}
+@media (min-width: 768px)
+{
+  ion-content
+  {
+    --padding-start: 12.5rem;
+    --padding-end: 12.5rem;
+    --padding-top: 10rem;
+  }
+  .btn-erase
+  {
+    margin-top: 0px;
+  }
+}
+@media (min-width: 1024px)
+{
+  ion-content
+  {
+    --padding-start: 18.75rem;
+    --padding-end: 18.75rem;
+  }
+  ion-footer
+  {
+    padding-bottom: 50px;
+  }
+  ion-button
+  {
+    width: 25%;
+  }
+}
