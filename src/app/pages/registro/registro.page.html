@@ -27,11 +27,11 @@
             <ion-col size="12" class="ion-no-padding">
               <h1 class="ion-text-center">{{ 'What is your email address?' | translate }}</h1>
               <!-- <p class="color-plomo ion-text-center">O regístrate con tu número de teléfono</p> -->
-              <ion-item class="item-llamas ion-item-center" lines="none">
+              <ion-item class="item-llamas ion-item-center item-top-cero" lines="none">
                 <ion-input formControlName="email" placeholder="{{ 'Email' | translate }}" type="email" class="input-llmas"></ion-input>
               </ion-item>
   
-              <ion-item class="item-llamas ion-item-center" lines="none">
+              <ion-item class="item-llamas ion-item-center item-top-cero" lines="none">
                 <ion-input (keyup.enter)="next_step ()" formControlName="confirm_email" placeholder="{{ 'Confirm Email' | translate }}" type="email" class="input-llmas"></ion-input>
               </ion-item>
             </ion-col>

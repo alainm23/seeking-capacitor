@@ -30,6 +30,10 @@ ion-title
     font-family: AvenirHeavy;
     color: #333333;
 }
+.item-top-cero
+{
+    margin-top: 25px !important;
+}
 .item-llamas
 {
     --padding-start: 0px;
@@ -49,6 +53,7 @@ ion-title
         font-family: Avenirlight;
         margin-top: 8px;
         --placeholder-opacity: 1;
+        font-size: 18px;
     }
     .seletc-location
     {
@@ -101,6 +106,7 @@ h1
         border-bottom: 1px solid #D8D8D8;
         --placeholder-opacity: 1;
         text-align: center;
+        font-size: 18px;
     }
     .input-dia-focus
     {
@@ -153,8 +159,8 @@ ion-footer
         color: #555555;
         font-family: AvenirMedium;
         font-size: 18px;
-        margin-top: 22px;
-        margin-bottom: 22px;
+        margin-top: 15px;
+        margin-bottom: 15px;
     }
 }
 .card-foto-fondo
