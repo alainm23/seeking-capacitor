@@ -27,6 +27,10 @@ h1
     margin-top: 30px;
     font-size: 21px;
 }
+.h1-personal-data
+{
+    margin-bottom: 35px !important;
+}
 .grid-pagging
 {
     padding-left: 30px;
@@ -66,6 +70,7 @@ h1
     border: 1px solid rgb(0 0 0 / 50%);
     border-radius: 6px;
     text-align: left;
+    margin-top: 30px;
 }
 .textarea-abaout
 {
@@ -163,7 +168,8 @@ ion-item
     {
         font-family: Avenirlight;
         color: #000000;
-        font-size: 17px;
+        font-size: 18px;
+        font-weight: bold;
     }
     ion-input
     {
@@ -182,6 +188,11 @@ ion-item
         --padding-bottom: 0px;
     }
     .label-chech-radio
+    {
+        margin-top: 1px;
+        margin-bottom: 0px;
+    }
+    .label-radio
     {
         margin-top: 4px;
         margin-bottom: 0px;
@@ -228,6 +239,7 @@ ion-item
 {
     height: 130%;
     overflow-y: scroll;
+    padding-top: 25px;
 }
 .row-scrool
 {

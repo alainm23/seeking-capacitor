@@ -25,6 +25,19 @@ ion-content
     height: 100%;
 }
 
+ion-slide
+{
+    position: relative;
+    .icon-corazon
+    {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: #fff;
+        font-size: 30px;
+    }
+}
+
 .btn-regresar
 {
     position: absolute;

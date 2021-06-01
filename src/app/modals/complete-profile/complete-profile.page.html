@@ -60,7 +60,7 @@
           <ion-grid class="grid-pagging">
             <ion-row style="display: flex;">
               <ion-col size="12" class="ion-no-padding">
-                <h1 class="ion-text-center">{{ 'Personal Data' | translate }}</h1>
+                <h1 class="ion-text-center h1-personal-data">{{ 'Personal Data' | translate }}</h1>
               </ion-col>
     
               <!-- <ion-col size="6">
@@ -116,7 +116,7 @@
               <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'apariencia_', apariencia_map)">            
                   <ion-item *ngFor="let item of apariencia_items ['Body Type'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
                     <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
@@ -137,7 +137,7 @@
               <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'apariencia_', apariencia_map)">            
                   <ion-item *ngFor="let item of apariencia_items ['Ethnicity'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
                     <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
@@ -158,7 +158,7 @@
               <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'apariencia_', apariencia_map)">            
                   <ion-item *ngFor="let item of apariencia_items ['Hair Color'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
                     <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
@@ -179,7 +179,7 @@
               <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'apariencia_', apariencia_map)">            
                   <ion-item *ngFor="let item of apariencia_items ['Eye Color'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
                     <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
@@ -200,7 +200,7 @@
               <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'apariencia_', apariencia_map)">            
                   <ion-item *ngFor="let item of apariencia_items ['Drinking'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
                     <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
@@ -221,7 +221,7 @@
               <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'apariencia_', apariencia_map)">            
                   <ion-item *ngFor="let item of apariencia_items ['Smoking'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
                     <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
@@ -242,7 +242,7 @@
               <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
                   <ion-item *ngFor="let item of personalidad_items ['Orientation'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
                     <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
@@ -263,7 +263,7 @@
               <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
                   <ion-item *ngFor="let item of personalidad_items ['Relationship'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
                     <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
@@ -284,7 +284,7 @@
               <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
                   <ion-item *ngFor="let item of personalidad_items ['Sexually'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
                     <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
@@ -305,7 +305,7 @@
               <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
                   <ion-item *ngFor="let item of personalidad_items ['Education'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
                     <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
@@ -326,7 +326,7 @@
               <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
                   <ion-item *ngFor="let item of personalidad_items ['Occupation'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
                     <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
@@ -347,7 +347,7 @@
               <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
                   <ion-item *ngFor="let item of personalidad_items ['Religion'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
                     <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
@@ -368,7 +368,7 @@
               <ion-list class="list-scrool">  
                 <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
                   <ion-item *ngFor="let item of personalidad_items ['Children'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
                     <ion-radio slot="start" [value]="item"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
@@ -480,7 +480,7 @@
                 <ion-list>
                   <ion-radio-group formControlName="relocate">            
                     <ion-item *ngFor="let item of extras [0].extras" lines="none" class="item-radio-height">
-                      <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                      <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
                       <ion-radio  slot="start" [value]="item"></ion-radio>
                     </ion-item>
                   </ion-radio-group>
