@@ -47,7 +47,7 @@ export class RegistroPage implements OnInit {
   form_terms: FormGroup;
 
   slideOpts = {
-    initialSlide: 0,
+    initialSlide: 6,
     duration: 400,
     slidesPerView: 1
   };
@@ -163,12 +163,6 @@ export class RegistroPage implements OnInit {
     }, error => {
       console.log (error);
     });
-
-    this.database.get_paises ().subscribe ((res: any) => {
-      console.log (res);
-    }, error => {
-      console.log (error);
-    })
   }
 
   ionViewDidEnter () {

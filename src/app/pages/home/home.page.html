@@ -66,7 +66,12 @@
 
   <ng-container *ngIf="complete_perfil?.total < 100">
     <div class="ion-text-center div-amarillo-profile">
-      <h5 class="h5-profile">{{ 'Profile status' | translate }}: {{ complete_perfil?.total }}% - {{ complete_perfil?.texto }}</h5>
+      <h5 class="h5-profile">
+        <ion-spinner *ngIf="loading_complete_perfil === true" name="dots" color="light"></ion-spinner>
+        <span *ngIf="loading_complete_perfil === false">
+          {{ 'Profile status' | translate }}: {{ complete_perfil?.total }}% - {{ complete_perfil?.texto }}
+        </span>
+      </h5>
       <p class="p-profile">{{ 'More detailed profiles get all the attention' | translate }}</p>
     </div>
   
@@ -149,7 +154,7 @@
                   <ion-icon name="camera" class="icon-camara"></ion-icon>
                   {{ item.numero_fotos }}
                 </ion-badge>
-                <ion-icon name="heart-outline" class="icon-favorito"></ion-icon>
+                <ion-icon name="heart-sharp" *ngIf="item.tengo_favorito == 1" class="icon-activo-favorito"></ion-icon>
                 <!--Icono activo de favorito
                 <ion-icon name="heart-sharp" class="icon-activo-favorito"></ion-icon>-->
               </div>

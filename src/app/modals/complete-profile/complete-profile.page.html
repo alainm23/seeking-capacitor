@@ -1,4 +1,4 @@
-<ion-header mode="ios" class="ion-no-border">
+<!-- <ion-header mode="ios" class="ion-no-border">
   <ion-toolbar>
     <ion-title>{{ 'Complete perfil' | translate }}</ion-title>
     <ion-buttons slot="end">
@@ -7,10 +7,10 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
-  <ion-progress-bar mode="ios" [value]="index / slides.length"></ion-progress-bar>
+  <ion-progress-bar mode="ios" [value]="index / _slides.length"></ion-progress-bar>
   
   <ion-grid *ngIf="loading === true" style="height: 100%;" class="grid-pagging ion-text-center">
     <ion-row style="display: flex; height: 100%;">
@@ -20,28 +20,28 @@
     </ion-row>
   </ion-grid>
 
-  <ion-slides mode="md" (ionSlideWillChange)="slides_changed ()" pager="false" [options]="slideOpts">
-    <ion-slide *ngFor="let slide of slides">
-      <ng-container *ngIf="get_slide_type (slide) === 'intereses'">
-        <ion-grid class="grid-pagging">
-          <ion-row style="display: flex;">
-            <ion-col size="12" class="ion-no-padding">
-              <h1 class="ion-text-center">{{ 'Honestly, what are you looking for?' | translate }}</h1>
-            </ion-col>
-  
-            <ion-col size="12" class="ion-no-padding">
-              <ion-list class="list-scrool">  
-                <ion-item *ngFor="let item of intereses" lines="none" class="item-check-height">
-                  <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
-                  <ion-checkbox (ionChange)="checkbox_changed ($event, item.id, intereses_map)" slot="start"></ion-checkbox>
-                </ion-item>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ng-container>
+  <ion-slides mode="md" (ionSlideDidChange)="slides_changed ($event)" pager="false" [options]="slideOpts">
+    <ng-container *ngFor="let slide of slides">
+      <ion-slide *ngIf="slide === 'intereses'">
+          <ion-grid class="grid-pagging">
+            <ion-row style="display: flex;">
+              <ion-col size="12" class="ion-no-padding">
+                <h1 class="ion-text-center">{{ 'Honestly, what are you looking for?' | translate }}</h1>
+              </ion-col>
+    
+              <ion-col size="12" class="ion-no-padding">
+                <ion-list class="list-scrool">  
+                  <ion-item *ngFor="let item of intereses" lines="none" class="item-check-height">
+                    <ion-label class="label-campo label-chech-radio">{{ item.valor }}</ion-label>
+                    <ion-checkbox (ionChange)="checkbox_changed ($event, item.id, intereses_map)" slot="start"></ion-checkbox>
+                  </ion-item>
+                </ion-list>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+      </ion-slide>
 
-      <ng-container *ngIf="get_slide_type (slide) === 'estoy_buscando'">
+      <ion-slide *ngIf="slide === 'estoy_buscando'">
         <ion-grid class="grid-pagging">
           <ion-row style="display: flex;">
             <ion-col size="12" class="ion-no-padding">
@@ -53,30 +53,16 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-      </ng-container>
+      </ion-slide>
 
-      <ng-container *ngIf="get_slide_type (slide) === 'personal_data'">
+      <ion-slide *ngIf="slide === 'personal_data'">
         <form style="align-self: start;" [formGroup]="personal_data_form">
           <ion-grid class="grid-pagging">
             <ion-row style="display: flex;">
               <ion-col size="12" class="ion-no-padding">
                 <h1 class="ion-text-center h1-personal-data">{{ 'Personal Data' | translate }}</h1>
               </ion-col>
-    
-              <!-- <ion-col size="6">
-                <ion-item mode="ios">
-                  <ion-label position="stacked" class="label-campo">{{ 'Name' | translate }}</ion-label>
-                  <ion-input formControlName="name"></ion-input>
-                </ion-item>
-              </ion-col> -->
-    
-              <!-- <ion-col size="6">
-                <ion-item mode="ios">
-                  <ion-label position="stacked" class="label-campo">{{ 'Phone' | translate }}</ion-label>
-                  <ion-input formControlName="telefono"></ion-input>
-                </ion-item>
-              </ion-col> -->
-    
+
               <ion-col size="12">
                 <ion-item mode="ios" lines="none">
                   <ion-label position="stacked" class="label-campo">{{ 'About me' | translate }}</ion-label>
@@ -87,7 +73,7 @@
               <ion-col size="6">
                 <ion-item mode="ios">
                   <ion-label position="stacked" class="label-campo">{{ 'Height' | translate }}</ion-label>
-                  <ion-select  formControlName="sistema" interface="popover" okText="Okay" cancelText="Dismiss">
+                  <ion-select (ionChange)="sistema_changed ()" formControlName="sistema" interface="popover" okText="Ok" cancelText="Cancel">
                     <ion-select-option value="imperial">{{ 'Imperial' | translate }}</ion-select-option>
                     <ion-select-option value="metric">{{ 'Metric' | translate }}</ion-select-option>
                   </ion-select>
@@ -97,288 +83,65 @@
               <ion-col size="6">
                 <ion-item mode="ios" class="item-height">
                   <ion-label position="stacked" class="label-campo"></ion-label>
-                  <ion-input formControlName="altura"></ion-input>
+                  <ion-select cancelText="Cancel" okText="Ok" formControlName="altura" [placeholder]="get_altura_placeholder ()" interface="alert">
+                    <ion-select-option *ngFor="let item of get_alturas ()" [value]="item.id">
+                      {{ item.text }}<span *ngIf="personal_data_form.value.sistema === 'metric'">m</span>
+                    </ion-select-option>
+                  </ion-select>
                 </ion-item>
               </ion-col>
             </ion-row>
           </ion-grid>
         </form>
+      </ion-slide>
+
+      <ng-container *ngIf="slide === 'apariencia'">
+        <ion-slide *ngFor="let item of apariencias">
+          <ion-grid class="grid-pagging">
+            <ion-row style="display: flex;">
+              <ion-col size="12" class="ion-no-padding">
+                <h1 class="ion-text-center">{{ item.name }}</h1>
+              </ion-col>
+    
+              <ion-col size="12" class="ion-no-padding">
+                <ion-list class="list-scrool">  
+                  <ion-radio-group (ionChange)="radio_changed ($event, item.name_space, apariencia_map)">            
+                    <ion-item *ngFor="let item of apariencia_items [item.name_space + item.id].items" lines="none" class="item-radio-height">
+                      <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
+                      <ion-radio slot="start" [value]="item"></ion-radio>
+                    </ion-item>
+                  </ion-radio-group>
+                </ion-list>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
       </ng-container>
 
-      <ng-container *ngIf="get_slide_type (slide) === 'Body Type'">
-        <ion-grid class="grid-pagging">
-          <ion-row style="display: flex;">
-            <ion-col size="12" class="ion-no-padding">
-              <h1 class="ion-text-center">{{ 'Body Type' | translate }}</h1>
-            </ion-col>
-  
-            <ion-col size="12" class="ion-no-padding">
-              <ion-list class="list-scrool">  
-                <ion-radio-group (ionChange)="radio_changed ($event, 'apariencia_', apariencia_map)">            
-                  <ion-item *ngFor="let item of apariencia_items ['Body Type'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
-                    <ion-radio slot="start" [value]="item"></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+      <ng-container *ngIf="slide === 'personalidad'">
+        <ion-slide *ngFor="let item of personalidades">
+          <ion-grid class="grid-pagging">
+            <ion-row style="display: flex;">
+              <ion-col size="12" class="ion-no-padding">
+                <h1 class="ion-text-center">{{ item.name }}</h1>
+              </ion-col>
+    
+              <ion-col size="12" class="ion-no-padding">
+                <ion-list class="list-scrool">  
+                  <ion-radio-group (ionChange)="radio_changed ($event, item.name_space, personalidad_map)">            
+                    <ion-item *ngFor="let item of personalidad_items [item.name_space + item.id].items" lines="none" class="item-radio-height">
+                      <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
+                      <ion-radio slot="start" [value]="item"></ion-radio>
+                    </ion-item>
+                  </ion-radio-group>
+                </ion-list>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
       </ng-container>
 
-      <ng-container *ngIf="get_slide_type (slide) === 'Ethnicity'">
-        <ion-grid class="grid-pagging">
-          <ion-row style="display: flex;">
-            <ion-col size="12" class="ion-no-padding">
-              <h1 class="ion-text-center">{{ 'Ethnicity' | translate }}</h1>
-            </ion-col>
-  
-            <ion-col size="12" class="ion-no-padding">
-              <ion-list class="list-scrool">  
-                <ion-radio-group (ionChange)="radio_changed ($event, 'apariencia_', apariencia_map)">            
-                  <ion-item *ngFor="let item of apariencia_items ['Ethnicity'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
-                    <ion-radio slot="start" [value]="item"></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ng-container>
-
-      <ng-container *ngIf="get_slide_type (slide) === 'Hair Color'">
-        <ion-grid class="grid-pagging">
-          <ion-row style="display: flex;">
-            <ion-col size="12" class="ion-no-padding">
-              <h1 class="ion-text-center">{{ 'Hair Color' | translate }}</h1>
-            </ion-col>
-  
-            <ion-col size="12" class="ion-no-padding">
-              <ion-list class="list-scrool">  
-                <ion-radio-group (ionChange)="radio_changed ($event, 'apariencia_', apariencia_map)">            
-                  <ion-item *ngFor="let item of apariencia_items ['Hair Color'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
-                    <ion-radio slot="start" [value]="item"></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ng-container>
-
-      <ng-container *ngIf="get_slide_type (slide) === 'Eye Color'">
-        <ion-grid class="grid-pagging">
-          <ion-row style="display: flex;">
-            <ion-col size="12" class="ion-no-padding">
-              <h1 class="ion-text-center">{{ 'Eye Color' | translate }}</h1>
-            </ion-col>
-  
-            <ion-col size="12" class="ion-no-padding">
-              <ion-list class="list-scrool">  
-                <ion-radio-group (ionChange)="radio_changed ($event, 'apariencia_', apariencia_map)">            
-                  <ion-item *ngFor="let item of apariencia_items ['Eye Color'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
-                    <ion-radio slot="start" [value]="item"></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ng-container>
-
-      <ng-container *ngIf="get_slide_type (slide) === 'Drinking'">
-        <ion-grid class="grid-pagging">
-          <ion-row style="display: flex;">
-            <ion-col size="12" class="ion-no-padding">
-              <h1 class="ion-text-center">{{ 'Drinking' | translate }}</h1>
-            </ion-col>
-  
-            <ion-col size="12" class="ion-no-padding">
-              <ion-list class="list-scrool">  
-                <ion-radio-group (ionChange)="radio_changed ($event, 'apariencia_', apariencia_map)">            
-                  <ion-item *ngFor="let item of apariencia_items ['Drinking'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
-                    <ion-radio slot="start" [value]="item"></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ng-container>
-
-      <ng-container *ngIf="get_slide_type (slide) === 'Smoking'">
-        <ion-grid class="grid-pagging">
-          <ion-row style="display: flex;">
-            <ion-col size="12" class="ion-no-padding">
-              <h1 class="ion-text-center">{{ 'Smoking' | translate }}</h1>
-            </ion-col>
-  
-            <ion-col size="12" class="ion-no-padding">
-              <ion-list class="list-scrool">  
-                <ion-radio-group (ionChange)="radio_changed ($event, 'apariencia_', apariencia_map)">            
-                  <ion-item *ngFor="let item of apariencia_items ['Smoking'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
-                    <ion-radio slot="start" [value]="item"></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ng-container>
-
-      <ng-container *ngIf="get_slide_type (slide) === 'Orientation'">
-        <ion-grid class="grid-pagging">
-          <ion-row style="display: flex;">
-            <ion-col size="12" class="ion-no-padding">
-              <h1 class="ion-text-center">{{ 'Orientation' | translate }}</h1>
-            </ion-col>
-  
-            <ion-col size="12" class="ion-no-padding">
-              <ion-list class="list-scrool">  
-                <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
-                  <ion-item *ngFor="let item of personalidad_items ['Orientation'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
-                    <ion-radio slot="start" [value]="item"></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ng-container>
-
-      <ng-container *ngIf="get_slide_type (slide) === 'Relationship'">
-        <ion-grid class="grid-pagging">
-          <ion-row style="display: flex;">
-            <ion-col size="12" class="ion-no-padding">
-              <h1 class="ion-text-center">{{ 'Relationship' | translate }}</h1>
-            </ion-col>
-  
-            <ion-col size="12" class="ion-no-padding">
-              <ion-list class="list-scrool">  
-                <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
-                  <ion-item *ngFor="let item of personalidad_items ['Relationship'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
-                    <ion-radio slot="start" [value]="item"></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ng-container>
-
-      <ng-container *ngIf="get_slide_type (slide) === 'Sexually'">
-        <ion-grid class="grid-pagging">
-          <ion-row style="display: flex;">
-            <ion-col size="12" class="ion-no-padding">
-              <h1 class="ion-text-center">{{ 'Sexually' | translate }}</h1>
-            </ion-col>
-  
-            <ion-col size="12" class="ion-no-padding">
-              <ion-list class="list-scrool">  
-                <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
-                  <ion-item *ngFor="let item of personalidad_items ['Sexually'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
-                    <ion-radio slot="start" [value]="item"></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ng-container>
-
-      <ng-container *ngIf="get_slide_type (slide) === 'Education'">
-        <ion-grid class="grid-pagging">
-          <ion-row style="display: flex;">
-            <ion-col size="12" class="ion-no-padding">
-              <h1 class="ion-text-center">{{ 'Education' | translate }}</h1>
-            </ion-col>
-  
-            <ion-col size="12" class="ion-no-padding">
-              <ion-list class="list-scrool">  
-                <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
-                  <ion-item *ngFor="let item of personalidad_items ['Education'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
-                    <ion-radio slot="start" [value]="item"></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ng-container>
-
-      <ng-container *ngIf="get_slide_type (slide) === 'Occupation'">
-        <ion-grid class="grid-pagging">
-          <ion-row style="display: flex;">
-            <ion-col size="12" class="ion-no-padding">
-              <h1 class="ion-text-center">{{ 'Occupation' | translate }}</h1>
-            </ion-col>
-  
-            <ion-col size="12" class="ion-no-padding">
-              <ion-list class="list-scrool">  
-                <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
-                  <ion-item *ngFor="let item of personalidad_items ['Occupation'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
-                    <ion-radio slot="start" [value]="item"></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ng-container>
-
-      <ng-container *ngIf="get_slide_type (slide) === 'Religion'">
-        <ion-grid class="grid-pagging">
-          <ion-row style="display: flex;">
-            <ion-col size="12" class="ion-no-padding">
-              <h1 class="ion-text-center">{{ 'Religion' | translate }}</h1>
-            </ion-col>
-  
-            <ion-col size="12" class="ion-no-padding">
-              <ion-list class="list-scrool">  
-                <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
-                  <ion-item *ngFor="let item of personalidad_items ['Religion'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
-                    <ion-radio slot="start" [value]="item"></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ng-container>
-
-      <ng-container *ngIf="get_slide_type (slide) === 'Children'">
-        <ion-grid class="grid-pagging">
-          <ion-row style="display: flex;">
-            <ion-col size="12" class="ion-no-padding">
-              <h1 class="ion-text-center">{{ 'Children' | translate }}</h1>
-            </ion-col>
-  
-            <ion-col size="12" class="ion-no-padding">
-              <ion-list class="list-scrool">  
-                <ion-radio-group (ionChange)="radio_changed ($event, 'personalidad_', personalidad_map)">            
-                  <ion-item *ngFor="let item of personalidad_items ['Children'].items" lines="none" class="item-radio-height">
-                    <ion-label class="label-campo label-radio">{{ item.valor }}</ion-label>
-                    <ion-radio slot="start" [value]="item"></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ng-container>
-
-      <ng-container *ngIf="get_slide_type (slide) === 'idiomas'">
+      <ion-slide *ngIf="slide === 'idiomas'">
         <ion-grid class="grid-pagging">
           <ion-row style="display: flex;">
             <ion-col size="12" class="ion-no-padding">
@@ -395,9 +158,9 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-      </ng-container>
+      </ion-slide>
 
-      <ng-container *ngIf="get_slide_type (slide) === 'regalo_recibir'">
+      <ion-slide *ngIf="slide === 'regalo_recibir'">
         <ion-grid class="grid-pagging">
           <ion-row style="display: flex;">
             <ion-col size="12" class="ion-no-padding">
@@ -409,9 +172,9 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-      </ng-container>
+      </ion-slide>
 
-      <ng-container *ngIf="get_slide_type (slide) === 'extras'">
+      <ion-slide *ngIf="slide === 'extras'">
         <form style="align-self: start;" [formGroup]="extras_form" class="row-scrool">
           <ion-grid class="grid-pagging">
             <ion-row style="display: flex;">
@@ -419,59 +182,6 @@
                 <h1 class="ion-text-center">{{ 'Extras' | translate }}</h1>
               </ion-col>
   
-              <ion-col size="12" class="ion-no-padding">
-                <ion-item mode="ios">
-                  <ion-label position="stacked" class="label-campo">{{ 'Annual income' | translate }}
-                  </ion-label>
-                  <ion-select  formControlName="ingreso_anual" interface="popover" okText="Okay" cancelText="Dismiss">
-                    <ion-select-option value="< $50,000">
-                      < $50,000
-                    </ion-select-option>
-                    <ion-select-option value="$50,000-$100,000">
-                      $50,000 - $100,000
-                    </ion-select-option>
-                    <ion-select-option value="$100,000-$250,000">
-                      $100,000 - $250,000
-                    </ion-select-option>
-                    <ion-select-option value="$250,000-$500,000">
-                      $250,000 - $500,000
-                    </ion-select-option>
-                    <ion-select-option value="$500,000-$1,000,000">
-                      $500,000 - $1,000,000
-                    </ion-select-option>
-                    <ion-select-option value="> $1,000,000">
-                      +$1,000,000
-                    </ion-select-option>
-                  </ion-select>
-                </ion-item>
-              </ion-col>
-
-              <ion-col size="12" class="ion-no-padding">
-                <ion-item mode="ios">
-                  <ion-label position="stacked" class="label-campo">{{ 'Net. worth' | translate }}</ion-label>
-                  <ion-select  formControlName="patrimonio" interface="popover" okText="Okay" cancelText="Dismiss">
-                    <ion-select-option value="< $500,000">
-                      < $500,000
-                    </ion-select-option>
-                    <ion-select-option value="$500,000-$1,000,000">
-                      $500,000-$1,000,000
-                    </ion-select-option>
-                    <ion-select-option value="$1,000,000-$2,500,000">
-                      $1,000,000-$2,500,000
-                    </ion-select-option>
-                    <ion-select-option value="$2,500,000-$5,000,00">
-                      $2,500,000-$5,000,00
-                    </ion-select-option>
-                    <ion-select-option value="$5,000,000-$10,000,000">
-                      $5,000,000-$10,000,000
-                    </ion-select-option>
-                    <ion-select-option value="> $10,000,000">
-                      > $10,000,000
-                    </ion-select-option>
-                  </ion-select>
-                </ion-item>
-              </ion-col>
-              
               <ion-col size="12" class="ion-no-padding">
                 <h1 class="ion-text-left">{{ 'Would I relocate?' | translate }}</h1>
               </ion-col>
@@ -504,12 +214,49 @@
             </ion-row>
           </ion-grid>
         </form>
-      </ng-container>
+      </ion-slide>
 
-      <ng-container *ngIf="get_slide_type (slide) === 'gracias'">
+      <ion-slide *ngIf="slide === 'galeria'">
+        <ion-grid class="ion-no-padding">
+          <ion-row>
+            <ion-col size="12" class="ion-no-padding">
+              <h1 class="ion-text-center">{{ 'Very good photo!' | translate }}<br>{{ 'The more photos you have, the better' | translate }}</h1>
+              <div class="div-fotos">
+                <ion-card
+                  [class.card-fotos-fondo-general]="get_photos_index (0) !== ''"
+                  [ngStyle]="{'background-image': 'url(' + get_photos_index (0).imagen + ')'}"
+                  (click)="selectImageSource ('photos', 0, fileInput)"
+                  class="card-fotos">
+                  <ion-icon *ngIf="photos [0] === ''" name="add-outline" class="icon-add"></ion-icon>
+                  <input hidden multiple type="file" accept="image/*" #fileInput (change)="changeListener($event, 0)">
+                </ion-card>
+                
+                <ion-button *ngIf="photos [0] !== ''" (click)="delete_image (0)" fill="clear">
+                  <ion-icon name="close-circle-sharp"></ion-icon>
+                </ion-button>
+                
+                <ion-card
+                  [class.card-fotos-fondo-general]="get_photos_index (1) !== ''"
+                  [ngStyle]="{'background-image': 'url(' + get_photos_index (1).imagen + ')'}"
+                  (click)="selectImageSource ('photos', 1, fileInput1)"
+                  class="card-fotos">
+                  <ion-icon *ngIf="photos [1] === ''" name="add-outline" class="icon-add"></ion-icon>
+                  <input hidden multiple type="file" accept="image/*" #fileInput1 (change)="changeListener($event, 1)">
+                </ion-card>
+
+                <ion-button *ngIf="photos [1] !== ''" (click)="delete_image (1)" fill="clear">
+                  <ion-icon name="close-circle-sharp"></ion-icon>
+                </ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-slide>
+
+      <ion-slide *ngIf="slide === 'gracias'">
         <p class="p-gracias">Gracias por completarme</p>
-      </ng-container>
-    </ion-slide>
+      </ion-slide>
+    </ng-container>
   </ion-slides>
 </ion-content>
 

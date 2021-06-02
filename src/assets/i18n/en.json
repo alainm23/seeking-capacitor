@@ -42,7 +42,7 @@
     "The more photos you have, the better": "The more photos you have, the better",
     "Terms and Conditions": "Terms and Conditions",
     "Promoting illegal commercial activities (such as prostitution) is prohibited. If you are an ESCORT, DO NOT use this website.": "Promoting illegal commercial activities (such as prostitution) is prohibited. If you are an ESCORT, DO NOT use this website.",
-    "I agree to the Terms & Privacy Policy.": "I agree to the Terms & Privacy Policy.",
+    "I agree to the Terms & Privacy Policy.": "I agree to terms & conditions.",
     "Next": "Next",
     "The given data was invalid": "The given data was invalid",
     "The selected date is invalid": "The selected date is invalid",
@@ -167,5 +167,15 @@
     "Get credits": "Get credits",
     "Go on for free": "Go on for free",
     "Explore": "Explore",
-    "Free": "Free"
+    "Free": "Free",
+
+    "VERIFY PAGE": "-----------------------------------------------------",
+    "Confirm your e-mail": "Confirm your e-mail",
+    "A validation e-mail was sent to": "A validation e-mail was sent to",
+    "Please confirm e-mail to proceed": "Please confirm e-mail to proceed",
+    "I didnt get a code, please": "I didn’t get a code, please",
+    "resend it to me >": "resend it to me >",
+    "We have already sent you a validation email to": "We have already sent you a validation email to",
+    "We have just sent you a validation email to": "We have just sent you a validation email to",
+    "Please check your spam inbox": "Please check your spam inbox"
 }

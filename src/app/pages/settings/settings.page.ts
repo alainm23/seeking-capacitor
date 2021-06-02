@@ -12,7 +12,7 @@ import { AlertController, LoadingController, NavController, ToastController } fr
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
-  seccion: string = 'profile';
+  seccion: string = 'account';
   modo_incognito: boolean = false;
   send_me_gifts: boolean = false;
   auto_renew: boolean = false;

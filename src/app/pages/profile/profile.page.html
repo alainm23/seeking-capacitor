@@ -7,11 +7,15 @@
 <ion-content>
   <ion-button (click)="back ()" mode="ios" shape="round" class="btn-regresar"><ion-icon name="arrow-back-sharp" class="icon-left"></ion-icon></ion-button>
   <ion-slides pager="true" [options]="slideOpts">
-    <ion-slide *ngFor="let item of galeria" class="slider-fondo">
-      <ion-icon name="heart-outline" class="icon-corazon"></ion-icon>
-      <ion-thumbnail>
+    <ion-slide
+      *ngFor="let item of galeria"
+      [ngStyle]="{'background-image': 'url(' + item.imagen + ')'}"
+      class="slider-fondo">
+      <ion-icon name="heart-outline" class="icon-corazon">
+      </ion-icon>
+      <!-- <ion-thumbnail>
         <ion-img [src]="item.imagen"></ion-img>
-      </ion-thumbnail>
+      </ion-thumbnail> -->
       
       <!-- <ion-avatar class="avatar-slider">
         <img [src]="">
@@ -57,7 +61,7 @@
     <ion-grid class="ion-no-padding">
       <ion-row>
         <ion-col *ngFor="let item of profile?.personalidades" size="4" class="col-bottom">
-          <p class="p-color-plomo-titulo">{{ item.apariencia }}</p>
+          <p class="p-color-plomo-titulo">{{ item.personalidad }}</p>
           <p class="p-subtitulo-medium">{{ item.valor }}</p>
         </ion-col>
       </ion-row>
@@ -71,7 +75,7 @@
   </div>
   <ion-card class="card-texto-blanco card-top">
     <p class="ion-text-center p-plomo-left">{{ 'Let me know you like me' | translate }}</p>
-    <ion-button class="btn-cara-give"><img src="assets/img/iconos_Wink.png" class="img-cara">
+    <ion-button (click)="send_wink ()" class="btn-cara-give"><img src="assets/img/iconos_Wink.png" class="img-cara">
       {{ 'Give me a wink' | translate }}
     </ion-button>
   </ion-card>

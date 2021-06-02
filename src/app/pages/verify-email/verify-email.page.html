@@ -2,12 +2,15 @@
   <h1 class="ion-text-center">{{ 'Confirm your e-mail' | translate }}</h1>
   <img src="assets/img/img-correo.png">
   <p>
+    {{ 'A validation e-mail was sent to' | translate }} {{ auth.USER_DATA.email }}. {{ 'Please confirm e-mail to proceed' | translate }}
+  </p>
+  <!-- <p>
     {{ 'In order to have a valida account we need to confirm your e-mail address' | translate }}
     <br>
-    {{ 'We have already sent you a validation email to' | translate }} {{ auth.USER_DATA.email }}
-  </p>
+    {{ 'We have already sent you a validation email to' | translate }} 
+  </p> -->
 </ion-content>
 <ion-footer class="ion-no-border ion-text-center">
-  <ion-button (click)="validar_correo ()" mode="ios">{{ 'Let’s go' | translate }}</ion-button>
-  <p class="p-top-footer">{{ 'I didn’t get a code, please' | translate }} <br> <u (click)="resend ()">{{ 'resend it to me >' | translate }} </u></p>
+  <ion-button (click)="validar_correo ()" mode="ios">{{ 'Lets go' | translate }}</ion-button>
+  <p class="p-top-footer">{{ 'I didnt get a code, please' | translate }} <br> <u (click)="resend ()">{{ 'resend it to me >' | translate }} </u></p>
 </ion-footer>

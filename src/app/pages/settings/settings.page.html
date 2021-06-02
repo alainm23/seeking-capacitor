@@ -20,30 +20,11 @@
   <div class="div-blanco">
     <ion-item class="item-select" lines="none">
       <ion-select class="select-favo" [(ngModel)]="seccion" interface="popover">
-        <ion-select-option value="profile">Profile</ion-select-option>
         <ion-select-option value="account">Account</ion-select-option>
         <ion-select-option value="emails_notifications">Emails & notifications</ion-select-option>
       </ion-select>
       <div class="div-linea-select"></div>
     </ion-item>
-  </div>
-
-  <div *ngIf="seccion === 'profile'">
-    <ion-list>
-      <ion-list-header>
-        Activity
-      </ion-list-header>
-
-      <ion-item lines="none">
-        <ion-label>Incognito mode</ion-label>
-        <ion-toggle (ionChange)="update ($event, 'modo_incognito')" [checked]="modo_incognito" mode="ios"></ion-toggle>
-      </ion-item>
-
-      <ion-item lines="none">
-        <ion-label>Send me gifts</ion-label>
-        <ion-toggle (ionChange)="update ($event, 'send_me_gifts')" [checked]="send_me_gifts" mode="ios"></ion-toggle>
-      </ion-item>
-    </ion-list>
   </div>
 
   <div *ngIf="seccion === 'account'">
@@ -66,16 +47,18 @@
       <ion-list-header>
         Activity
       </ion-list-header>
-
+      
       <ion-item lines="none">
-        <ion-label>Auto renew</ion-label>
-        <ion-toggle (ionChange)="update ($event, 'auto_renew')" [(ngModel)]="auto_renew" mode="ios"></ion-toggle>
+        <ion-label>Incognito mode</ion-label>
+        <ion-toggle (ionChange)="update ($event, 'modo_incognito')" [checked]="modo_incognito" mode="ios"></ion-toggle>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label>Get newsletter</ion-label>
-        <ion-toggle (ionChange)="update ($event, 'get_newsletter')" [(ngModel)]="get_newsletter" mode="ios"></ion-toggle>
+        <ion-label>Send me gifts</ion-label>
+        <ion-toggle (ionChange)="update ($event, 'send_me_gifts')" [checked]="send_me_gifts" mode="ios"></ion-toggle>
       </ion-item>
+
+      <!-- 1 -->
       <br>
       <ion-list-header>
         Social accounts
@@ -371,8 +354,8 @@
     </ion-list>
   </div>
 </ion-content>
-<ion-footer class="ion-no-border ion-text-center">
+<!-- <ion-footer class="ion-no-border ion-text-center">
   <p class="p-account">
     <a class="link" href="https://www.seekingterms.com/privacy/delete-user"><img src="assets/img/grupo-934.png" class="img-close"> Erase my account</a>
   </p>
-</ion-footer>
+</ion-footer> -->

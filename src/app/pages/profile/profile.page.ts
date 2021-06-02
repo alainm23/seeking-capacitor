@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 // Services
 import { DatabaseService } from '../../services/database.service';
 import { ActivatedRoute } from '@angular/router';
-import { LoadingController, NavController } from '@ionic/angular';
+import { LoadingController, NavController, ToastController } from '@ionic/angular';
 declare var google: any;
 
 @Component({
@@ -31,7 +31,8 @@ export class ProfilePage implements OnInit {
   constructor (private database: DatabaseService,
     private route: ActivatedRoute,
     private loadingController: LoadingController,
-    private navController: NavController) { }
+    private navController: NavController,
+    private toastController: ToastController) { }
 
   async ngOnInit () {
     this.id = this.route.snapshot.paramMap.get ('id');
@@ -68,18 +69,10 @@ export class ProfilePage implements OnInit {
   }
 
   send_wink (item: any) {
-    // if (item.wink_loading === undefined) {
-    //   item.wink_loading = true;
-    // } else {
-    //   item.wink_loading = !item.wink_loading;
-    // }
-
     this.database.send_wink (this.id).subscribe ((res: any) => {
       console.log (res);
-      // item.wink_loading = false;
-      // this.presentToast (res.message, res.status === true ? 'success' : 'danger');
+      this.presentToast (res.message, res.status === true ? 'success' : 'danger');
     }, error => {
-      // item.wink_loading = false;
       console.log (error);
     });
   }
@@ -230,7 +223,31 @@ export class ProfilePage implements OnInit {
     });
   }
 
+  async presentToast (message: any, color: string) {
+    const toast = await this.toastController.create ({
+      message: message,
+      color: color,
+      duration: 2500,
+      position: 'top'
+    });
+
+    toast.present ();
+  }
+
   back () {
       this.navController.back ();
   }
+
+//   toggled_favorite (item: any) {
+//     item.tengo_favorito = !item.tengo_favorito;
+//     this.database.set_favorite (item.id).subscribe ((res: any) => {
+//       if (res.status !== true) {
+//         item.tengo_favorito = !item.tengo_favorito;
+//         this.presentToast ('Unable to set favorite, try one more time.', 'danger');
+//       }
+//     }, error => {
+//       item.tengo_favorito = !item.tengo_favorito;
+//       this.presentToast ('Unable to set favorite, try one more time.', 'danger');
+//     });
+//   }
 }

@@ -71,6 +71,10 @@ const routes: Routes = [
   },  {
     path: 'gracias-profile',
     loadChildren: () => import('./gracias-profile/gracias-profile.module').then( m => m.GraciasProfilePageModule)
+  },
+  {
+    path: 'selector',
+    loadChildren: () => import('./modals/selector/selector.module').then( m => m.SelectorPageModule)
   }
 
 ];

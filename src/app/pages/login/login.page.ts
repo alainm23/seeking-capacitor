@@ -60,7 +60,7 @@ export class LoginPage implements OnInit {
 
     this.auth.login (this.get_trim (this.form.value.email), this.get_trim (this.form.value.password)).subscribe ((res: any) => {
       let request: any = res;
-      this.auth.get_fields_access_token (request.access_token, this.data).subscribe (async (user: any) => {-
+      this.auth.get_fields_access_token (request.access_token, this.data).subscribe (async (user: any) => {
         console.log (user);
         request.user = user;
         if (request.user.estado_cuenta > 0) {

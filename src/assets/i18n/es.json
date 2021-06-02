@@ -135,5 +135,15 @@
     "Get credits": "Obten creditos",
     "Go on for free": "Estaren gratis",
     "Explore": "Explorar",
-    "Free": "Gratis"
+    "Free": "Gratis",
+
+    "VERIFY PAGE": "-----------------------------------------------------",
+    "Confirm your e-mail": "Confirma tu email",
+    "A validation e-mail was sent to": "Un correo de verificacion fue enviando a",
+    "Please confirm e-mail to proceed": "Por favor, confirme para proceder",
+    "I didnt get a code, please": "No recibí un código, por favor",
+    "resend it to me >": "reenviarme >",
+    "We have already sent you a validation email to": "Ya le hemos enviado un correo electrónico de validación a",
+    "We have just sent you a validation email to": "Le acabamos de enviar un correo electrónico de validación a",
+    "Please check your spam inbox": "Por favor revise su bandeja de entrada de spam"
 }

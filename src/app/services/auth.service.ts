@@ -6,7 +6,6 @@ import { Storage } from '@ionic/storage-angular';
 import { FacebookLogin, FacebookLoginResponse } from '@capacitor-community/facebook-login';
 
 // Google
-// import { GoogleAuth } from '@reslear/capacitor-google-auth'
 import { GooglePlus } from '@ionic-native/google-plus';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -24,6 +23,11 @@ export class AuthService {
     foto_perfil: ''
   };
   URL: string;
+
+  data: string [] = ['id', 'creditos', 'email', 'email_verified_at',
+    'estado_cuenta', 'foto_perfil', 'membresia', 'metric_system',
+    'name', 'nombre_ciudad', 'nombre_pais', 'idioma',
+    'registro_incompleto'];
   private user_subject = new Subject<any> ();
   constructor (public http: HttpClient, private storage: Storage,
     private loadingController: LoadingController,
@@ -201,45 +205,47 @@ export class AuthService {
   }
 
   async google () {
-    // const loading = await this.loadingController.create ({
-    //   translucent: true,
-    //   spinner: 'lines-small',
-    //   mode: 'ios'
-    // });
-
-    alert ('Iniciando Google');
- 
-    GooglePlus.login ({}).then (async (request: any) => {
-      alert (JSON.stringify (request));
-    }).catch ((error) => {
-      alert ('error' + JSON.stringify (error));
+    const loading = await this.loadingController.create ({
+      translucent: true,
+      spinner: 'lines-small',
+      mode: 'ios'
     });
 
-    // await loading.present ();
-    // GoogleAuth.signIn ().then ((result: any) => {
-    //   alert ('result' + JSON.stringify (result));
-    // }).catch ((error) => {
-    //   alert ('error' + JSON.stringify (error));
-    // });
+    await loading.present ();
 
-    // this.googlePlus.login ({}).then (async (request: any) => { 
-    //   this.login_social (request.userId, 'Google', request.displayName, request.email).subscribe ((res: any) => {-
-    //     loading.dismiss ();
-    //     if (res.user.registro_incompleto == 1) {
-    //       this.navController.navigateForward (['request-gps', res.user.id]);
-    //     } else {
-    //       this.save_local_user (res).then (() => {
-    //         this.navController.navigateRoot ('home');
-    //       });
-    //     }
-    //   }, error => {
-    //     loading.dismiss ();
-    //     alert (JSON.stringify (error));
-    //   });
-    // }, error => {
-    //   loading.dismiss ();
-    //   alert (JSON.stringify (error));
-    // });
+    GooglePlus.login ({}).then (async (request: any) => { 
+      this.login_social (request.userId, 'Google', request.displayName, request.email).subscribe ((res: any) => {
+        let request: any = res;
+        this.get_fields_access_token (request.access_token, this.data).subscribe (async (user: any) => {
+          request.user = user;
+          console.log (request);
+
+          if (request.user.estado_cuenta > 0) {
+            this.navController.navigateRoot (['block-page', JSON.stringify (request.user)]).then (() => {
+              loading.dismiss ();
+            });
+          } else {
+            if (request.user.registro_incompleto == 1) {
+              loading.dismiss ();
+              this.navController.navigateForward (['request-gps', request.user.id]);
+            } else {
+              this.save_local_user (request).then (() => {
+                loading.dismiss ();
+                this.navController.navigateRoot ('home');
+              });
+            }
+          }
+        }, error => {
+          console.log (error);
+        });
+      }, error => {
+        loading.dismiss ();
+        alert (JSON.stringify (error));
+      });
+    }, error => {
+      loading.dismiss ();
+      alert (JSON.stringify (error));
+    });
   }
 
   get_user (access_token: string='') {
@@ -257,18 +263,36 @@ export class AuthService {
   }
 
   update_user_data (access_token: string) {
-    this.get_user (access_token).subscribe (async (res: any) => {
-      console.log (res);
+    let data: string [] = ['id', 'creditos', 'email', 'email_verified_at',
+    'estado_cuenta', 'foto_perfil', 'membresia', 'metric_system',
+    'name', 'nombre_ciudad', 'nombre_pais', 'idioma',
+    'registro_incompleto', 'galeria'];
 
-      if (res.estado_cuenta > 0) {
-        this.navController.navigateRoot (['block-page', JSON.stringify (res)]);
+    this.get_fields_access_token (access_token, data).subscribe (async (user: any) => {
+      console.log (user);
+
+      if (user.estado_cuenta > 0) {
+        this.navController.navigateRoot (['block-page', JSON.stringify (user)]);
         this.storage.clear ();
         this.logout_social ();
       } else {
-        console.log (res);
-        this.USER_DATA = res;
+        console.log (user);
+        this.USER_DATA = user;
         return await this.storage.set ('USER_DATA', JSON.stringify (this.USER_DATA));
       }
+    });
+  }
+
+  update_user () {
+    let data: string [] = ['id', 'creditos', 'email', 'email_verified_at',
+    'estado_cuenta', 'foto_perfil', 'membresia', 'metric_system',
+    'name', 'nombre_ciudad', 'nombre_pais', 'idioma',
+    'registro_incompleto', 'galeria'];
+
+    this.get_fields (data).subscribe (async (user: any) => {
+      console.log (user);
+      this.USER_DATA = user;
+      await this.storage.set ('USER_DATA', JSON.stringify (this.USER_DATA));
     });
   }
 
@@ -290,8 +314,7 @@ export class AuthService {
 
   async facebook () {
     const current_accesstoken = await FacebookLogin.getCurrentAccessToken ();
-    alert ('current_accesstoken: ' + JSON.stringify (current_accesstoken));
-
+    
     if (current_accesstoken.accessToken) {
       await FacebookLogin.logout ();
     }
@@ -300,16 +323,13 @@ export class AuthService {
     const result: FacebookLoginResponse = await FacebookLogin.login ({ permissions: FACEBOOK_PERMISSIONS });
 
     if (result.accessToken && result.accessToken.userId) {
-      alert (result.accessToken.token);
       this.get_facebook_profile (result.accessToken.token, result.accessToken.userId);
     } else {
-      alert ('Facebook Error');
     }
   }
 
   async get_facebook_profile (token: string, userId: string) {-    
     this.http.get (`https://graph.facebook.com/${userId}?fields=id,name,email&access_token=${token}`).subscribe (async (request: any) => {
-      alert (JSON.stringify (request));
       const loading = await this.loadingController.create ({
         translucent: true,
         spinner: 'lines-small',
@@ -319,21 +339,29 @@ export class AuthService {
       await loading.present ();
 
       this.login_social (request.id, 'Facebook', request.name, '').subscribe ((res: any) => {
-        alert (JSON.stringify (res));
+        let request: any = res;
+        this.get_fields_access_token (request.access_token, this.data).subscribe (async (user: any) => {
+          request.user = user;
+          console.log (request);
 
-        loading.dismiss ();
-
-        if (res.user.estado_cuenta > 0) {
-          this.navController.navigateRoot (['block-page', JSON.stringify (res.user)]);
-        } else {
-          if (res.user.registro_incompleto == 1) {
-            this.navController.navigateForward (['request-gps', res.user.id]);
-          } else {
-            this.save_local_user (res).then (() => {
-              this.navController.navigateRoot ('home');
+          if (request.user.estado_cuenta > 0) {
+            this.navController.navigateRoot (['block-page', JSON.stringify (request.user)]).then (() => {
+              loading.dismiss ();
             });
+          } else {
+            if (request.user.registro_incompleto == 1) {
+              loading.dismiss ();
+              this.navController.navigateForward (['request-gps', request.user.id]);
+            } else {
+              this.save_local_user (request).then (() => {
+                loading.dismiss ();
+                this.navController.navigateRoot ('home');
+              });
+            }
           }
-        }
+        }, error => {
+          console.log (error);
+        });
       }, error => {
         loading.dismiss ();
         alert (JSON.stringify (error));

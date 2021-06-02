@@ -49,6 +49,7 @@ export class HomePage implements OnInit {
   length_page: number = 20;
   edad_range: any = { lower: 18, upper: 50 };
   complete_perfil: any;
+  loading_complete_perfil: boolean = false;
   constructor (private database: DatabaseService,
     private loadingController: LoadingController,
     private navController: NavController,
@@ -58,6 +59,7 @@ export class HomePage implements OnInit {
     private storage: Storage) { }
 
   async ngOnInit () {
+    this.loading_complete_perfil = true;
     this.home_loading = true;
     this.get_data (null, false, '');
     // this.get_promovidos ();
@@ -66,6 +68,7 @@ export class HomePage implements OnInit {
       console.log (res);
       this.complete_perfil = res.porcentaje_perfil;
       console.log (this.complete_perfil);
+      this.loading_complete_perfil = false;
     }, error => {
       console.log (error);
     });
@@ -101,10 +104,12 @@ export class HomePage implements OnInit {
 
     modal.onDidDismiss ().then ((response: any) => {
       if (response.role === 'update') {
+        this.loading_complete_perfil = true;
         this.database.get_porcentaje_perfil ().subscribe (async (res: any) => {
           console.log (res);
           this.complete_perfil = res.porcentaje_perfil;
           console.log (this.complete_perfil);
+          this.loading_complete_perfil = false;
         }, error => {
           console.log (error);
         });
