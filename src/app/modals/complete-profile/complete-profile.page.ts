@@ -64,9 +64,9 @@ export class CompleteProfilePage implements OnInit {
   ngOnInit () {
     console.log (this.auth.USER_DATA);
 
-    for (let index = 0; index < this.auth.USER_DATA.galeria.length; index++) {
-      this.photos [index] = this.auth.USER_DATA.galeria [index];
-    }
+    // for (let index = 0; index < this.auth.USER_DATA.galeria.length; index++) {
+    //   this.photos [index] = this.auth.USER_DATA.galeria [index];
+    // }
 
     console.log (this.photos);
 

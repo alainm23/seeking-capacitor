@@ -47,7 +47,7 @@ export class RegistroPage implements OnInit {
   form_terms: FormGroup;
 
   slideOpts = {
-    initialSlide: 6,
+    initialSlide: 0,
     duration: 400,
     slidesPerView: 1
   };
@@ -421,11 +421,16 @@ export class RegistroPage implements OnInit {
           this.relaciones_map.forEach ((value: boolean, key: string) => {
             relaciones.push (parseInt (key));
           });
+
+          let lenguaje: any = 1;
+          if (this.lang === 'es') {
+            lenguaje = 2;
+          }
           
           let request: any = {};
           request.id = 0;
           request.usernick = this.form_usernick.value.usernick;
-          request.lenguaje = this.lang;
+          request.lenguaje = lenguaje;
           request.sexo = this.form_sexo.value.sexo;
           request.relaciones = relaciones;
           request.generos_interes = generos_interes;
@@ -497,11 +502,16 @@ export class RegistroPage implements OnInit {
           this.relaciones_map.forEach ((value: boolean, key: string) => {
             relaciones.push (parseInt (key));
           });
+
+          let lenguaje: any = 1;
+          if (this.lang === 'es') {
+            lenguaje = 2;
+          }
           
           let request: any = {};
           request.id = 0;
           request.usernick = this.form_usernick.value.usernick;
-          request.lenguaje = this.lang;
+          request.lenguaje = lenguaje;
           request.sexo = this.form_sexo.value.sexo;
           request.relaciones = relaciones;
           request.generos_interes = generos_interes;
@@ -915,5 +925,15 @@ export class RegistroPage implements OnInit {
   change_focus (event: any) {
     this.date_input_focus = event;
     console.log (this.date_input_focus);
+  }
+
+  delete_image (index: number) {
+    if (index === -1) {
+      this.profile_image = '';
+      this.profile_file = null;
+    } else {
+      this.photos [index] = '';
+      this.photos_file [index] = null;
+    }
   }
 }

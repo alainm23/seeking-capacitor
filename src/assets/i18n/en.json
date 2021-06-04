@@ -85,8 +85,12 @@
     "Blocked users": "Blocked users",
 
     "INBOX PAGE": "---------------------------------------------------------",
-    "Conversatoins": "Conversatoins",
+    "Conversatoins": "Inbox",
     "Show": "Show",
+    "Search for a user": "Search for a user",
+    "All conversations": "All conversations",
+    "Unopened": "Unopened",
+    "Ignored": "Ignored",
 
     "PROFILE PAGE": "--------------------------------------------------------",
     "Height": "Height",
@@ -96,6 +100,11 @@
     "About me": "About me",
     "Let me know you like me": "Let me know you like me",
     "Give me a wink": "Give me a wink",
+    "You already sent a wink": "You already sent a wink",
+    "Wink sent": "Wink sent",
+    "Wink has already been sent": "Wink has already been sent",
+    "You can only send 5 winks per day": "You can only send 5 winks per day",
+
 
     "PROFILE MENU": "------------------------------------------------",
     "Edit profile": "Edit profile",
@@ -158,6 +167,7 @@
     "We will never share your location, without your permission.": "We will never share your location, without your permission.",
     "No pudimos obtener tu ubicación, porfavor asegúrate de tener prendido el GPS de tu dispositivo o inténtalo más tarde.": "We couldn't get your location, please make sure you have your device's GPS turned on or try again later.",
     "Please turn on GPS to get location": "Please turn on GPS to get location",
+    "Using this feature, we can recommend people who are close to you.": "Using this feature, we can recommend people who are close to you.",
 
     "SELECT-PLAN": "----------------------------------------------------",
     "Don’t keep the girls waiting": "Don’t keep the girls waiting",
@@ -168,6 +178,13 @@
     "Go on for free": "Go on for free",
     "Explore": "Explore",
     "Free": "Free",
+    "Seeker": "Seeker",
+    "1 free contact per day (Limited to 10 a month)": "1 free contact per day (Limited to 10 a month)",
+    "Same city search": "Same city search",
+    "In-app advertising": "In-app advertising",
+    "Adventure": "Adventure",
+    "$1 X credit": "$1 X credit",
+    "Unblock profile per credit": "Unblock profile per credit",
 
     "VERIFY PAGE": "-----------------------------------------------------",
     "Confirm your e-mail": "Confirm your e-mail",
@@ -177,5 +194,11 @@
     "resend it to me >": "resend it to me >",
     "We have already sent you a validation email to": "We have already sent you a validation email to",
     "We have just sent you a validation email to": "We have just sent you a validation email to",
-    "Please check your spam inbox": "Please check your spam inbox"
+    "Please check your spam inbox": "Please check your spam inbox",
+
+    "REQUEST NOTIFY": "-------------------------------------------------",
+    "Aprove notifications": "Aprove notifications",
+    "Want us to let you know when there’s something going on?": "Want us to let you know when there’s something going on?",
+    "X Skip": "X Skip",
+    "OK": "OK"
 }

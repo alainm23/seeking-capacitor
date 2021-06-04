@@ -41,7 +41,7 @@
     "Very good photo!": "Muy buena foto!",
     "The more photos you have, the better": "Si tienes mas fotos, es mejor",
     "Terms and Conditions": "Términos & Condiciones",
-    "Promoting illegal commercial activities (such as prostitution) is prohibited. If you are an ESCORT, DO NOT use this website.": "Promoting illegal commercial activities (such as prostitution) is prohibited. If you are an ESCORT, DO NOT use this website.",
+    "Promoting illegal commercial activities (such as prostitution) is prohibited. If you are an ESCORT, DO NOT use this website.": "Está prohibido promover actividades comerciales ilegales (como prostitución). Si eres ESCORT, NO utilices este sitio web.",
     "I agree to the Terms & Privacy Policy.": "Estoy de acuerdo con los Términos & Condiciones",
     "Next": "Siguiente",
     "The given data was invalid": "Los datos proporcionados no son válidos",
@@ -79,14 +79,18 @@
     "Filters": "Filtros",
 
     "FAVORITE PAGES": "------------------------------------------------------",
-    "Favorites": "Favoritos",
+    "Favorites": "Mis favoritos",
     "Viewed my profile": "Vieron mi perfil",
-    "Favorited me": "Favoritos de mi",
-    "Blocked users": "Usuarios bloqueados",
+    "Favorited me": "Soy favorito de",
+    "Blocked users": "Bloqueados",
 
     "INBOX PAGE": "---------------------------------------------------------",
-    "Conversatoins": "Conversatoins",
-    "Show": "Show",
+    "Conversatoins": "Inbox",
+    "Show": "Mostrar",
+    "Search for a user": "Buscar algun usuario",
+    "All conversations": "Todas las conversaciones",
+    "Unopened": "No abiertos",
+    "Ignored": "Ignorados",
 
     "PROFILE PAGE": "--------------------------------------------------------",
     "Height": "Height",
@@ -96,6 +100,10 @@
     "About me": "Acerca de mi",
     "Let me know you like me": "Hazme saber que te intereso",
     "Give me a wink": "Enviame un guiño",
+    "You already sent a wink": "Tu ya enviaste un guiño",
+    "Wink sent": "Guiño enviado",
+    "Wink has already been sent": "Tu guiño ya ha sido enviando",
+    "You can only send 5 winks per day": "Solo puedes enviar 5 guiños por dia",
 
     "PROFILE MENU": "------------------------------------------------",
     "Edit profile": "Editar perfil",
@@ -122,8 +130,8 @@
     "REQUEST-GPS": "----------------------------------------------------",
     "Help us find you": "Ayúdanos a encontrarte",
     "Let’s go": "De acuerdo",
-    "Before creating your account, we need to know where you are.": "Antes de crear tu cuenta, necesitamos saber donde estas.",
-    "We will never share your location, without your permission.": "Nunca compartiremos tu ubicacion sin tu permiso.",
+    "Using this feature, we can recommend people who are close to you.": "De esta manera podremos mostrarte a las personas más cercanas a ti.",
+    "We will never share your location, without your permission.": "Nunca compartiremos tu ubicación sin tu permiso.",
     "No pudimos obtener tu ubicación, porfavor asegúrate de tener prendido el GPS de tu dispositivo o inténtalo más tarde.": "No pudimos obtener tu ubicación, porfavor asegúrate de tener prendido el GPS de tu dispositivo o inténtalo más tarde.",
     "Please turn on GPS to get location": "Por favor encienda su GPS para obtener su geolocalización",
 
@@ -136,6 +144,13 @@
     "Go on for free": "Estaren gratis",
     "Explore": "Explorar",
     "Free": "Gratis",
+    "Seeker": "Seeker",
+    "1 free contact per day (Limited to 10 a month)": "1 contacto gratuito por día (limitado a 10 al mes)",
+    "Same city search": "Búsquedas en la misma ciudad.",
+    "In-app advertising": "Publicidad en la aplicación",
+    "Adventure": "Espiritu libre",
+    "$1 X credit": "$1 X credito",
+    "Unblock profile per credit": "Desbloquear perfil por crédito",
 
     "VERIFY PAGE": "-----------------------------------------------------",
     "Confirm your e-mail": "Confirma tu email",
@@ -145,5 +160,11 @@
     "resend it to me >": "reenviarme >",
     "We have already sent you a validation email to": "Ya le hemos enviado un correo electrónico de validación a",
     "We have just sent you a validation email to": "Le acabamos de enviar un correo electrónico de validación a",
-    "Please check your spam inbox": "Por favor revise su bandeja de entrada de spam"
+    "Please check your spam inbox": "Por favor revise su bandeja de entrada de spam",
+
+    "REQUEST NOTIFY": "-------------------------------------------------",
+    "Aprove notifications": "¿Deseas recibir notificaciones?",
+    "Want us to let you know when there’s something going on?": "Asi podemos avisarte cuando pase algo, por ejemplo cuando alguien te escriba por el chat",
+    "X Skip": "X Omitir",
+    "OK": "OK"
 }

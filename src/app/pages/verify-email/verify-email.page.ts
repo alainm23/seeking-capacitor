@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
 import * as moment from 'moment';
 import { UtilsService } from 'src/app/services/utils.service';
+import { ConstantPool } from '@angular/compiler';
 
 @Component({
   selector: 'app-verify-email',
@@ -30,6 +31,8 @@ export class VerifyEmailPage implements OnInit {
 
   async ngOnInit () {
     this.storage.get ('USER_ACCESS').then (async (user: any) => {
+      console.log (user);
+
       if (user !== null) {
         this.auth.USER_ACCESS = JSON.parse (user);
         this.auth.USER_DATA = JSON.parse (await this.storage.get ('USER_DATA'));

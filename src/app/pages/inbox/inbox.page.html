@@ -1,19 +1,29 @@
 <ion-content>
-  <ion-refresher slot="fixed" (ionRefresh)="get_data ($event, false)">
+  <ion-refresher slot="fixed" (ionRefresh)="get_data ($event, false, 'refresher')">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <h1 class="ion-text-center">{{ 'Conversatoins' | translate }}</h1>
   <ion-card class="card-buscador">
-    <ion-input placeholder="{{ 'Search for a sugar user' | translate }}" type="search" class="input-buscador"></ion-input>
+    <ion-input (ionChange)="filter ($event)" placeholder="{{ 'Search for a user' | translate }}" type="search" class="input-buscador"></ion-input>
     <ion-icon name="search-sharp" class="icon-buscador"></ion-icon>
   </ion-card>
   <div class="div-show-select">
     <h6 class="h6-show">{{ 'Show' | translate }}</h6>
     <ion-card class="card-select">
       <ion-icon name="mail-outline" class="icon-mensaje"></ion-icon>
-      <ion-select placeholder="All conversations" mode="ios">
-        <ion-select-option value="f">Female</ion-select-option>
-        <ion-select-option value="m">Male</ion-select-option>
+      <ion-select [(ngModel)]="tab" (ionChange)="select_changed ($event)" mode="ios">
+        <ion-select-option value="all">
+          {{ 'All conversations' | translate }}
+        </ion-select-option>
+        <ion-select-option value="unopened">
+          {{ 'Unopened' | translate }}
+        </ion-select-option>
+        <ion-select-option value="favorites">
+          {{ 'Favorites' | translate }}
+        </ion-select-option>
+        <ion-select-option value="ignored">
+          {{ 'Ignored' | translate }}
+        </ion-select-option>
       </ion-select>
     </ion-card>
   </div>
@@ -21,6 +31,15 @@
     <div *ngIf="is_loading === true" class="ion-text-center loading-box">
       <ion-spinner></ion-spinner>
     </div>
+
+    <div *ngIf="items.length <= 0 && is_loading === false" class="ion-text-center" style="width: 100%;">
+      <ion-item style="--background: transparent;" lines="none" class="ion-text-center">
+        <ion-label>
+          <h1 class="ion-text-wrap h1-result">{{ 'No results, check your filters.' | translate }}</h1>
+        </ion-label>
+      </ion-item>
+    </div>
+
     <ion-item *ngFor="let item of items" (click)="view_chat (item)" class="item-inbox" lines="none">
       <div class="div-linea"></div>
       <ion-avatar>
@@ -28,16 +47,20 @@
       </ion-avatar>
       <div class="div-datos">
         <ion-label class="nombre-label">{{ item.receptor.usernick }}, {{ item.receptor.edad }}</ion-label>
-        <p class="descripcion-label">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has</p>
-        <p class="p-pais-ciudad">Lorem Ipsum</p>
+        <p class="descripcion-label">
+          {{ item.receptor.pais }}<span *ngIf="item.receptor.ciudad">, {{ item.receptor.ciudad }}</span>
+        </p>
+        <!-- <p class="p-pais-ciudad">
+          <ion-icon [ngClass]="{visto: item.last_message.visto === 1}" *ngIf="get_checkmark_visible (item.last_message)" name="checkmark-done-outline"></ion-icon>
+          {{ item.last_message.message }}
+        </p> -->
       </div>
     </ion-item>
   </div>
 
-  <ion-infinite-scroll threshold="100px" (ionInfinite)="get_data ($event, true)">
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="get_data ($event, true, 'infinite-scroll')">
     <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="Loading more data...">
+      loadingSpinner="bubbles">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>

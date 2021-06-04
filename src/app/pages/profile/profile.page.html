@@ -12,7 +12,15 @@
       [ngStyle]="{'background-image': 'url(' + item.imagen + ')'}"
       class="slider-fondo">
       <div class="div-sombre-profile">
-        <ion-icon name="heart-outline" class="icon-corazon"></ion-icon>
+        <ion-button (click)="toggled_favorite ()" fill="clear" class="icon-corazon">
+        <ng-container *ngIf="loadings.favorite === true">
+          <ion-spinner color="light" name="dots"></ion-spinner>
+        </ng-container>
+
+        <ng-container *ngIf="loadings.favorite === false">
+          <ion-icon [name]="profile?.tengo_favorito === true ? 'heart': 'heart-outline'"></ion-icon>
+        </ng-container>
+      </ion-button>
       </div>
       <!-- <ion-thumbnail>
         <ion-img [src]="item.imagen"></ion-img>
@@ -23,7 +31,7 @@
       </ion-avatar> -->
     </ion-slide>
   </ion-slides>
-  <ion-button class="btn-flecha"><ion-icon name="arrow-down" class="icon-flecha"></ion-icon></ion-button>
+  <!-- <ion-button class="btn-flecha"><ion-icon name="arrow-down" class="icon-flecha"></ion-icon></ion-button> -->
   <div class="div-padding-left-right">
     <h1>{{ profile?.usernick }}, {{ profile?.edad }}</h1>
     <p class="p-nombre-lima">{{ profile?.nombre_ciudad }}, {{ profile?.nombre_pais }}. {{ profile?.distance }}</p>
@@ -33,7 +41,10 @@
         {{ item.nombre }}
       </ion-note>
     </ion-card>
-    <ion-button class="btn-send" mode="ios"><ion-icon name="mail-outline" style="margin-right: 8px;"></ion-icon> {{ 'Send me a message' | translate }}</ion-button>
+    <ion-button class="btn-send" mode="ios" (click)="send_message ()">
+      <ion-icon name="mail-outline" style="margin-right: 8px;">
+      </ion-icon>{{ 'Send me a message' | translate }}
+    </ion-button>
   </div>
   <ion-card class="card-texto-blanco">
     <h6 class="h6-titulo">{{ 'I’m looking for' | translate }}</h6>
@@ -79,8 +90,23 @@
   </div>
   <ion-card class="card-texto-blanco card-top">
     <p class="ion-text-center p-plomo-left">{{ 'Let me know you like me' | translate }}</p>
-    <ion-button (click)="send_wink ()" class="btn-cara-give"><img src="assets/img/iconos_Wink.png" class="img-cara">
-      {{ 'Give me a wink' | translate }}
+    <ion-button [disabled]="profile?.winked" (click)="send_wink ()" class="btn-cara-give">
+      <ng-container *ngIf="loadings.wink === true">
+        <ion-spinner name="dots"></ion-spinner>
+      </ng-container>
+
+      <ng-container *ngIf="loadings.wink === false">
+        <img src="assets/img/iconos_Wink.png" class="img-cara">
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <ng-container *ngIf="profile?.winked === false">
+          {{ 'Give me a wink' | translate }}
+        </ng-container>
+        <ng-container *ngIf="profile?.winked === true">
+          {{ 'You already sent a wink' | translate }}
+        </ng-container>
+      </ng-container>
     </ion-button>
   </ion-card>
 </ion-content>

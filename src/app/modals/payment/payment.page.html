@@ -12,9 +12,9 @@
         </span>
       </div>
       <h5 *ngIf="type !== 'credis'" class="ion-no-margin ion-text-start">{{ data?.nombre }}</h5>
-      <h5 *ngIf="type === 'credis'" class="ion-no-margin ion-text-start">{{ data?.text }}</h5>
+      <h5 *ngIf="type === 'credis'" class="ion-no-margin ion-text-start">{{ data.cantidad }} {{ 'Credits' | translate }}</h5>
       <p *ngIf="type !== 'credis'" class="p_card ion-no-margin ion-text-start">$ {{ data?.monto }} x month</p>
-      <p *ngIf="type === 'credis'" class="p_card ion-no-margin ion-text-start">$ {{ data?.value }}</p>
+      <p *ngIf="type === 'credis'" class="p_card ion-no-margin ion-text-start">$ {{ data?.precio }}</p>
       <ion-list mode="ios">
         <ion-item mode="ios" *ngFor="let item of data?.detalles" lines="none">
           <ion-icon name="checkmark-circle-sharp"></ion-icon>

@@ -196,9 +196,12 @@ export class HomePage implements OnInit {
       length_page: this.length_page,
       relationship: this.relationship,
       idiomas: this.idiomas,
-      rango_edad: [this.edad_range.lower, this.edad_range.upper],
-      location: this.location
+      rango_edad: [this.edad_range.lower, this.edad_range.upper]
     };
+
+    if (this.location !== null) {
+      request.location = this.location
+    }
 
     if (this.bestMatches === false) {
       delete request.bestMatches;

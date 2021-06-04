@@ -2,10 +2,10 @@
   <ion-toolbar>
     <ion-card class="card-cabezera">
       <div class="div-flex">
-        <img src="assets/img/icono-flecha-circle.png" class="img-circle">
-        <ion-label class="label-titulo">{{ 'Dont seek, find' | translate }}</ion-label>
-        <img src="assets/img/icono-flecha.png" class="img-iguales img-flore">
-        <img src="assets/img/iconos_Filtrar.png" (click)="filtrar ()" class="img-iguales img-cuadrado">
+        <img src="assets/img/icono-no-favorito.png" class="img-circle">
+        <ion-label class="label-titulo">{{ 'Favorites' | translate }}</ion-label>
+        <!-- <img src="assets/img/icono-flecha.png" class="img-iguales img-flore">
+        <img src="assets/img/iconos_Filtrar.png" (click)="filtrar ()" class="img-iguales img-cuadrado"> -->
       </div>
       <div class="div-botones">
         <ion-button mode="ios" [class.btn-active]="tab_filter === null" class="btn-div" (click)="set_tab (null)">
@@ -14,7 +14,7 @@
         <ion-button mode="ios" [class.btn-active]="tab_filter === 'online'" class="btn-div" (click)="set_tab ('online')">
           {{ 'Online now' | translate }}
         </ion-button>
-        <ion-button mode="ios" [class.btn-active]="tab_filter === 'verificados'" class="btn-div" (click)="set_tab ('verificados')">
+        <ion-button mode="ios" [class.btn-active]="tab_filter === 'membresia'" class="btn-div" (click)="set_tab ('membresia')">
           {{ 'Verified users' | translate }}
         </ion-button>
       </div>
@@ -47,7 +47,7 @@
     <div *ngIf="items.length <= 0 && home_loading === false" class="ion-text-center" style="width: 100%;">
       <ion-item style="--background: transparent;" lines="none" class="ion-text-center">
         <ion-label>
-          <h1 class="h1-result">{{ 'No results, check your filters.' | translate }}</h1>
+          <h1 class="h1-result ion-text-wrap">{{ 'No results, check your filters.' | translate }}</h1>
         </ion-label>
       </ion-item>
     </div>
@@ -55,7 +55,10 @@
     <ion-grid>
       <ion-row>
         <ion-col size="6" *ngFor="let item of items">
-          <ion-card  class="card-perfil card-perfil-fondo">
+          <ion-card
+            [ngStyle]="{'background-image': 'url(' + item.thumbnail + ')'}"
+            (click)="view_profile (item)"
+            class="card-perfil card-perfil-fondo">
             <div class="div-sombra">
               <p class="p-nombre">{{ item.usernick }}
                 <ion-badge *ngIf="item.numero_fotos > 0" slot="end" mode="ios" class="badge-style">
@@ -89,15 +92,19 @@
                     {{ get_relative_format (item.created_at) }}
                   </span>
                 </p>
-                <ion-icon name="heart-outline" class="icon-favorito"></ion-icon>
+                <ion-badge *ngIf="item.numero_fotos > 0" slot="end" mode="ios" class="badge-style">
+                  <ion-icon name="camera" class="icon-camara"></ion-icon>
+                  {{ item.numero_fotos }}
+                </ion-badge>
+                <ion-icon name="heart" class="icon-favorito"></ion-icon>
                 <!--Icono activo de favorito
                 <ion-icon name="heart-sharp" class="icon-activo-favorito"></ion-icon>-->
               </div>
             </div>
             <ion-avatar class="avatar-img">
-              <img [src]="item.thumbnail">
+              <!-- <img [src]="item.thumbnail"> -->
             </ion-avatar>
-            <img src="assets/img/grupo926.png" class="img-circulo-amarrilo">
+            <img src="assets/img/grupo926.png" *ngIf="item.membresia === 1" class="img-circulo-amarrilo">
             <!--<ion-item lines="none" class="item-blanco">
               <ion-button (click)="toggled_favorite (item)" class="btn-iguales-tab btn-border-right">
                 <img *ngIf="item.tengo_favorito === false" src="assets/img/icono-no-favorito.png" class="img-widht-igules">

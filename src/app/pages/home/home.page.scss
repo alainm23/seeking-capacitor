@@ -86,8 +86,8 @@
 .div-circulo-activo
 {
     position: absolute;
-    right: 10px;
-    top: 10px;
+    left: 12px;
+    top: 18px;
     border-radius: 50%;
     height: 14px;
     width: 14px;
@@ -203,8 +203,8 @@ ion-slides
         .img-circulo-amarrilo
         {
             position: absolute;
-            right: 7px;
-            top: 7px;
+            right: 6px;
+            top: 12px;
             z-index: 1;
         }
         .avatar-img

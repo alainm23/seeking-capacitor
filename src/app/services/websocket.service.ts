@@ -50,6 +50,7 @@ export class WebsocketService {
     });
 
     this.echo.channel ('private-chat.' + user_id).listen ('.message', (res: any) => {
+      console.log (res);
       if (this.current_chat_opened !== res.chat.id) {
         this.present_notify ('New Message', res.message.message, res);
       }
@@ -60,12 +61,19 @@ export class WebsocketService {
     return this.echo.channel ('private-chat.' + this.user_id);
   }
 
+  close_channel () {
+    // return this.echo.leave ('private-chat.' + this.user_id);
+  }
+
   async present_notify (header: string, message: string, data: any) {
     const toast = await this.toastController.create ({
       header: header,
       message: message,
-      duration: 3500,
+      duration: 4000,
+      mode: 'ios',
+      translucent: true,
       position: 'top',
+      color: 'light',
       buttons: [
         {
           text: 'View',
@@ -73,8 +81,7 @@ export class WebsocketService {
             const modal = await this.modalController.create({
               component: ChatPage,
               componentProps: {
-                id: data.chat.id,
-                receptor: {}
+                chat_id: data.chat.id,
               }
             });
         

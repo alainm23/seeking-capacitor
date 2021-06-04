@@ -22,6 +22,7 @@ export class DatabaseService {
   APARIENCIAS: any [] = [];
   IDIOMAS: any [] = [];
   EXTRAS: any [] = [];
+  tab_selected: string = 'home';
   constructor (public http: HttpClient,
     public auth: AuthService,
     public modalController: ModalController,
@@ -126,14 +127,16 @@ export class DatabaseService {
     return this.http.post (url, {id_user: id_user}, { headers });
   }
 
-  get_chats (page: number) {
+  get_chats (page: number, tab: any) {
+    console.log (tab);
+
     let url = this.URL + 'chats/all/' + page;
 
     const headers = {
       'Authorization': 'Bearer ' + this.auth.USER_ACCESS.access_token
     }
 
-    return this.http.get (url, { headers });
+    return this.http.get (url, { params: { tab: tab }, headers: headers});
   }
 
   send_message (id_user: string, message: any) {
@@ -148,6 +151,18 @@ export class DatabaseService {
 
   get_chat (id_chat: string, page: number) {
     let url = this.URL + 'chats/messages/' + id_chat + '/' + page;
+
+    console.log (url);
+
+    const headers = {
+      'Authorization': 'Bearer ' + this.auth.USER_ACCESS.access_token
+    }
+
+    return this.http.get (url, { headers });
+  }
+
+  get_chat_data (id_chat: string) {
+    let url = this.URL + 'chats/chat/' + id_chat;
 
     console.log (url);
 
@@ -252,7 +267,7 @@ export class DatabaseService {
     const modal = await this.modalController.create({
       component: SelectPlanPage,
       componentProps: {
-        gender: 0
+        page: 'home'
       }
     });
 
@@ -385,6 +400,16 @@ export class DatabaseService {
 
   edit_profile (request: any) {
     let url = this.URL + 'users/user/profile/edit';
+
+    const headers = {
+      'Authorization': 'Bearer ' + this.auth.USER_ACCESS.access_token
+    }
+
+    return this.http.post (url, request, { headers });
+  }
+
+  open_chat (request: any) {
+    let url = this.URL + 'chats/open/chat';
 
     const headers = {
       'Authorization': 'Bearer ' + this.auth.USER_ACCESS.access_token

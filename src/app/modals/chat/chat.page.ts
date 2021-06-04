@@ -5,7 +5,9 @@ import { DatabaseService } from '../../services/database.service';
 import { AuthService } from '../../services/auth.service';
 import * as moment from 'moment';
 import { WebsocketService } from '../../services/websocket.service';
-import { ModalController, IonContent, IonInfiniteScroll } from '@ionic/angular';
+import { ModalController, IonContent, IonInfiniteScroll, AlertController } from '@ionic/angular';
+import { UtilsService } from 'src/app/services/utils.service';
+import { CompleteProfilePage } from '../../modals/complete-profile/complete-profile.page';
 
 @Component({
   selector: 'app-chat',
@@ -17,6 +19,7 @@ export class ChatPage implements OnInit {
   @ViewChild ('content') private content: any;
   @Input () chat_id: any;
   @Input () perfil: any;
+  abierto: boolean = false;
   
   id_sender: string;
   id_recipient: string;
@@ -24,44 +27,66 @@ export class ChatPage implements OnInit {
   message: string = '';
   messages: any [] = [];
   page: number = 0;
-  is_loading: boolean = false;
+
+  loadings: any = {
+    page: false,
+    message: false
+  };
   
   constructor (private database: DatabaseService,
     private modalController: ModalController,
     public auth: AuthService,
-    public websocket: WebsocketService) { }
+    public websocket: WebsocketService,
+    public alertController: AlertController,
+    public utils: UtilsService) { }
 
   ngOnInit () {
-    
+    console.log (this.chat_id);
+
+    if (this.chat_id !== null) {
+      this.loadings.page = true;
+      this.database.get_chat_data (this.chat_id).subscribe ((res: any) => {
+        this.perfil = res.receptor;
+  
+        if (res.abierto_por_membresia === 1 || res.creditos > 0) {
+          this.abierto = true;
+        }
+  
+        this.init_chat_page ();
+      }, error => {
+        console.log (error);
+      });
+    } else {
+      this.id_recipient = this.perfil.id;
+    }
   }
 
-  ionViewDidEnter () {
+  init_chat_page () {
     this.websocket.current_chat_opened = this.chat_id;
     this.infiniteScroll.disabled = true;
 
     this.id_recipient = this.perfil.id;
     this.id_sender = this.auth.USER_DATA.id;
 
-    console.log ('id_recipient', this.id_recipient);
-    console.log ('id_sender', this.id_sender);
+    console.log ('Recipient', this.id_recipient);
+    console.log ('Sender', this.id_sender);
+    console.log ('Abierto', this.abierto);
     
     this.get_data (null, false);
-
-    this.database.ver_mensajes_vistos (this.chat_id).subscribe ((res: any) => {
-      console.log (res);
-    }, error => {
-
-    });
   }
 
   ionViewDidLeave () {
     this.websocket.current_chat_opened = 0;
+    // this.close_channel ();
   }
 
   get_data (event: any, join: boolean) {
     this.page++;
+
+    console.log (this.page);
+
     this.database.get_chat (this.chat_id, this.page).subscribe ((res: any []) => {
-      // console.log (res);
+      console.log (res);
       if (join) {
         res.forEach ((e: any) => {
           this.messages.unshift (e);
@@ -74,6 +99,7 @@ export class ChatPage implements OnInit {
         this.messages = res.reverse ();
       }
 
+      this.loadings.page = false;
       console.log (this.messages);
 
       if (event === null) {
@@ -107,11 +133,12 @@ export class ChatPage implements OnInit {
   send_message () {
     if (this.message.trim () != "") {
       let message = new String (this.message);
-      this.is_loading = true;
+
+      let id: string = Math.random ().toString ();
 
       this.messages.push ({
         created_at: new Date ().toISOString (),
-        id: -1,
+        id: id,
         id_chat: this.chat_id,
         id_recipient: this.id_recipient,
         id_sender: this.id_sender,
@@ -119,19 +146,51 @@ export class ChatPage implements OnInit {
         updated_at: new Date ().toISOString (),
         visto: 0
       });
+
       this.message = '';
       this.scrollToBottom ();
       
       this.database.send_message (this.perfil.id, message).subscribe ((res: any) => {
-        this.is_loading = false;
         console.log (res);
         if (res.status === false) {
-          
+          this.delete_message_by_id (id);
         }
       }, error => {
-        this.is_loading = false;
+        this.delete_message_by_id (id);
         console.log (error);
+        this.show_complete_alert (error.error.message);
       });
+    }
+  }
+
+  async show_complete_alert (message: string) {
+    const alert = await this.alertController.create({
+      header: this.utils.get_translate ('Profile not completed'),
+      message: message,
+      mode: 'ios',
+      buttons: [
+        {
+          text: this.utils.get_translate ('Complete profile'),
+          handler: (blah) => {
+            this.complete_profile ();
+          }
+        }, {
+          text: this.utils.get_translate ('Later'),
+          handler: () => {
+            
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  delete_message_by_id (id: string) {
+    for (let index = 0; index < this.messages.length; index++) {
+      if (this.messages [index].id === id) {
+        this.messages.splice (index, 1);
+      }
     }
   }
 
@@ -143,7 +202,6 @@ export class ChatPage implements OnInit {
 
   init_channel () {
     this.websocket.create_channel ().listen ('.message', (res: any) => {
-      console.log (res);
       if (res.chat.id === this.chat_id) {
         this.messages.push (res.message);
         this.scrollToBottom ();
@@ -165,5 +223,49 @@ export class ChatPage implements OnInit {
     } else {
       return moment (date).format ('lll');
     }
+  }
+
+  pagar_credito () {
+    this.loadings.page = true;
+
+    let request: any = {
+      id_user: this.id_recipient
+    };
+
+    console.log (request);
+
+    this.database.open_chat (request).subscribe ((res: any) => {
+      console.log (res);
+      if (res.status === true) {
+        this.auth.update_user ();
+        this.page = 0;
+        this.loadings.page = true;
+        this.abierto = true;
+        this.chat_id = res.chat.id;
+        this.init_chat_page ();
+      } else {
+        this.loadings.page = false;
+      }
+    }, error => {
+      this.loadings.page = false;
+      console.log (error);
+    });
+  }
+
+  async complete_profile () {
+    const modal = await this.modalController.create ({
+      component: CompleteProfilePage,
+      swipeToClose: true,
+      // presentingElement: this.routerOutlet.nativeEl,
+      mode: 'ios'
+    });
+
+    modal.onDidDismiss ().then ((response: any) => {
+      if (response.role === 'update') {
+
+      }
+    });
+
+    return await modal.present ();
   }
 }
