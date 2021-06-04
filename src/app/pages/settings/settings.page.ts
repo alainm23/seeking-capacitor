@@ -133,7 +133,7 @@ export class SettingsPage implements OnInit {
     request.valor = event.detail.checked; 
 
     this.auth.save_settings (request).subscribe ((res: any) => {
-      this.presentToast ('Success', 'success');
+      // this.presentToast ('Success', 'success');
     }, error => {
       console.log (error);
     });
@@ -150,7 +150,7 @@ export class SettingsPage implements OnInit {
 
     this.auth.save_settings (request).subscribe ((res: any) => {
       console.log (res);
-      this.presentToast ('Success', 'success');
+      // this.presentToast ('Success', 'success');
     }, error => {
       console.log (error);
     });

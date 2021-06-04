@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../../services/database.service';
 import { FilterPage } from '../../modals/filter/filter.page';
 import * as moment from 'moment';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-favorites',
@@ -20,7 +20,8 @@ export class FavoritesPage implements OnInit {
   seccion: string = 'favoritos';
 
   constructor (private database: DatabaseService,
-    private modalController: ModalController) { }
+    private modalController: ModalController,
+    private navController: NavController) { }
 
   ngOnInit () {
     this.home_loading = true;
@@ -133,5 +134,10 @@ export class FavoritesPage implements OnInit {
 
   async open_upgrade_menu () {
     this.database.open_upgrade_menu ();
+  }
+
+  view_profile (item: any) {
+    console.log (item);
+    this.navController.navigateForward (['profile', item.id]);
   }
 }

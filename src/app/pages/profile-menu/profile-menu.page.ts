@@ -34,57 +34,20 @@ export class ProfileMenuPage implements OnInit {
   }
 
   async complete_profile () {
-    // const loading = await this.loadingCo1ntroller.create({
-    //   translucent: true,
-    //   spinner: 'lines-small',
-    //   mode: 'ios'
-    // });
-
-    // await loading.present ();
-
-    // this.database.get_porcentaje_perfil ().subscribe (async (res: any) => {
-    //   console.log (res);
-    //   loading.dismiss ();
-    //   if (res.total < 100) {
-    //     this.complete_profile_modal ();
-    //   } else {
-    //     this.navController.navigateForward (['edit-profile']);
-    //   }
-    // }, error => {
-    //   loading.dismiss ();
-    //   console.log (error);
-    // });
-
     this.navController.navigateForward (['edit-profile']);
-  }
-
-  async complete_profile_modal () {
-    const modal = await this.modalController.create ({
-      component: CompleteProfilePage,
-      swipeToClose: true,
-      // presentingElement: this.routerOutlet.nativeEl,
-      mode: 'ios'
-    });
-
-    modal.onDidDismiss ().then ((response: any) => {
-      if (response.role === 'update') {
-        
-      }
-    });
-
-    return await modal.present ();
   }
 
   async logout () {
     const alert = await this.alertController.create({
       header: 'Cerrar sesión',
       message: '¿Está seguro que desea cerrar sesión?',
+      mode: 'ios',
       buttons: [
         {
           text: 'Cancelar',
           role: 'cancel'
         }, {
-          text: 'Si',
+          text: 'Confirmar',
           handler: async () => {
             const loading = await this.loadingCo1ntroller.create({
               translucent: true,
@@ -119,6 +82,11 @@ export class ProfileMenuPage implements OnInit {
 
   go_page (page: string) {
     this.navController.navigateForward ([page]);
+  }
+
+  root_page (page: string) {
+    this.database.tab_selected = 'favorites';
+    this.navController.navigateRoot (page);
   }
 
   async open_upgrade_menu () {

@@ -16,8 +16,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./tabs.page.scss'],
 })
 export class TabsPage implements OnInit {
-  tab_selected: string = 'home';
-  constructor (private database: DatabaseService,
+  constructor (public database: DatabaseService,
     private modalController: ModalController,
     private loadingController: LoadingController,
     private auth: AuthService,
@@ -28,23 +27,22 @@ export class TabsPage implements OnInit {
   }
 
   set_tab (tab: string) {
-    this.tab_selected = tab;
+    this.database.tab_selected = tab;
   }
 
   async open_upgrade_menu () {
-    this.tab_selected = 'sale';
+    this.database.tab_selected = 'sale';
 
     const modal = await this.modalController.create ({
       component: UpgradeAccountMenuPage,
       swipeToClose: true,
       cssClass: 'modal-verify',
-      showBackdrop: false,
+      showBackdrop: true,
       mode: 'ios'
     });
 
     modal.onDidDismiss ().then ((response: any) => {
-      this.tab_selected = 'home';
-
+      // this.database.tab_selected = 'home';
       if (response.role === 'upgrade') {
         this.open_select_plan ();
       } else if (response.role === 'credits') {

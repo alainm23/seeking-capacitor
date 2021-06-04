@@ -3,7 +3,9 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 // Services
 import { DatabaseService } from '../../services/database.service';
 import { ActivatedRoute } from '@angular/router';
-import { LoadingController, NavController, ToastController } from '@ionic/angular';
+import { LoadingController, ModalController, NavController, ToastController } from '@ionic/angular';
+import { ChatPage } from '../../modals/chat/chat.page';
+import { UtilsService } from 'src/app/services/utils.service';
 declare var google: any;
 
 @Component({
@@ -28,15 +30,26 @@ export class ProfilePage implements OnInit {
       dynamicBullets: true,
     },
   };
+
+  loadings: any = {
+    wink: false,
+    favorite: false
+  };
+
   constructor (private database: DatabaseService,
     private route: ActivatedRoute,
     private loadingController: LoadingController,
     private navController: NavController,
-    private toastController: ToastController) { }
+    private toastController: ToastController,
+    private modalController: ModalController,
+    private utils: UtilsService) { }
 
   async ngOnInit () {
     this.id = this.route.snapshot.paramMap.get ('id');
+    this.get_profile ();
+  }
 
+  async get_profile () {
     const loading = await this.loadingController.create ({
       translucent: true,
       spinner: 'lines-small',
@@ -56,12 +69,6 @@ export class ProfilePage implements OnInit {
 
       this.init_map (res.latitud, res.longitud);
       loading.dismiss ();
-
-    //   this.database.perfil_visitado (this.id).subscribe ((res: any) => {
-    //     console.log (res);
-    //   }, error => {
-    //     console.log (error);
-    //   });
     }, error => {
       console.log (error);
       loading.dismiss ();
@@ -69,10 +76,21 @@ export class ProfilePage implements OnInit {
   }
 
   send_wink (item: any) {
+    this.loadings.wink = true
     this.database.send_wink (this.id).subscribe ((res: any) => {
+      this.loadings.wink = false;
       console.log (res);
-      this.presentToast (res.message, res.status === true ? 'success' : 'danger');
+      if (res.status === true) {
+        this.presentToast (this.utils.get_translate ('Wink sent'), 'success');
+        this.profile.winked = true;
+        this.profile.id_chat = res.id_chat;
+      } else if (res.status === false) {
+        this.presentToast (this.utils.get_translate ('Wink has already been sent'), 'danger');
+      } else if (res.status === null) {
+        this.presentToast (this.utils.get_translate ('You can only send 5 winks per day'), 'danger');
+      }
     }, error => {
+      this.loadings.wink = false;
       console.log (error);
     });
   }
@@ -238,16 +256,41 @@ export class ProfilePage implements OnInit {
       this.navController.back ();
   }
 
-//   toggled_favorite (item: any) {
-//     item.tengo_favorito = !item.tengo_favorito;
-//     this.database.set_favorite (item.id).subscribe ((res: any) => {
-//       if (res.status !== true) {
-//         item.tengo_favorito = !item.tengo_favorito;
-//         this.presentToast ('Unable to set favorite, try one more time.', 'danger');
-//       }
-//     }, error => {
-//       item.tengo_favorito = !item.tengo_favorito;
-//       this.presentToast ('Unable to set favorite, try one more time.', 'danger');
-//     });
-//   }
+  toggled_favorite () {
+    this.loadings.favorite = true;
+    this.profile.tengo_favorito = !this.profile.tengo_favorito;
+    this.database.set_favorite (this.id).subscribe ((res: any) => {
+      console.log (res);
+      this.loadings.favorite = false;
+      if (res.status !== true) {
+        this.profile.tengo_favorito = !this.profile.tengo_favorito;
+      }
+    }, error => {
+      this.loadings.favorite = false;
+      this.profile.tengo_favorito = !this.profile.tengo_favorito;
+    });
+  }
+
+  async send_message () {
+    const modal = await this.modalController.create({
+      component: ChatPage,
+      componentProps: {
+        chat_id: this.profile.id_chat,
+        perfil: {
+          id: this.profile.id,
+          usernick: this.profile.usernick,
+          edad: this.profile.edad,
+          pais: this.profile.nombre_pais,
+          ciudad: this.profile.nombre_ciudad,
+          thumbnail: this.profile.foto_perfil
+        }
+      }
+    });
+
+    modal.onDidDismiss ().then ((response: any) => {
+      this.get_profile ();
+    });
+
+    return await modal.present ();
+  }
 }

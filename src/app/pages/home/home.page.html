@@ -82,19 +82,19 @@
 
   <ion-item class="item-select" lines="none">
     <ion-select (ionChange)="change_order ($event)" [(ngModel)]="order_by" interface="popover" placeholder="Sort by popularity" class="select-popu" mode="ios">
-      <ion-select-option value="favoritos-desc" class="select-interface-option">
+      <ion-select-option value="favoritos-desc" class="ion-text-wrap select-interface-option">
         {{ 'Popularity' | translate }}
       </ion-select-option>
-      <ion-select-option value="created_at-desc" class="select-interface-option">
+      <ion-select-option value="created_at-desc" class="ion-text-wrap select-interface-option">
         {{ 'Newest member' | translate }}
       </ion-select-option>
-      <ion-select-option value="last_seen-desc" class="select-interface-option">
+      <ion-select-option value="last_seen-desc" class="ion-text-wrap select-interface-option">
         {{ 'Recently connected' | translate }}
       </ion-select-option>
-      <ion-select-option value="edad-desc" class="select-interface-option">
+      <ion-select-option value="edad-desc" class="ion-text-wrap select-interface-option">
         {{ 'Older' | translate }}
       </ion-select-option>
-      <ion-select-option value="edad-asc" class="select-interface-option">
+      <ion-select-option value="edad-asc" class="ion-text-wrap select-interface-option">
         {{ 'Younger' | translate }}
       </ion-select-option>
     </ion-select>

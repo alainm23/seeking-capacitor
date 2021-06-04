@@ -19,20 +19,27 @@
   <ion-slides pager="false" [options]="slideOpts">
     <ion-slide>
       <ion-card mode="ios" class="ion-text-center">
-        <h5 class="ion-no-margin ion-text-start">{{ 'Explore' | translate }}</h5>
+        <h5 class="ion-no-margin ion-text-start">{{ 'Seeker' | translate }}</h5>
         <p class="p_card ion-no-margin ion-text-start">{{ 'Free' | translate }}</p>
         <ion-list mode="ios">
           <ion-item mode="ios" lines="none">
             <ion-icon name="checkmark-circle-sharp"></ion-icon>
-            <ion-label class="ion-no-margin">Create your profile</ion-label>
+            <ion-label class="ion-no-margin">
+              {{ '1 free contact per day (Limited to 10 a month)' | translate }}
+            </ion-label>
           </ion-item>
           <ion-item mode="ios" lines="none">
             <ion-icon name="checkmark-circle-sharp"></ion-icon>
-            <ion-label class="ion-no-margin">Upload images</ion-label>
+            <ion-label class="ion-no-margin">
+              {{ 'Same city search' | translate }}
+            </ion-label>
           </ion-item>
+
           <ion-item mode="ios" lines="none">
             <ion-icon name="checkmark-circle-sharp"></ion-icon>
-            <ion-label class="ion-no-margin">Search and view girls</ion-label>
+            <ion-label class="ion-no-margin">
+              {{ 'In-app advertising' | translate }}
+            </ion-label>
           </ion-item>
         </ion-list>
         <ion-button *ngIf="membresia === 0 && page === 'registro'" (click)="select_plan ('free')" class="plan_button" mode="ios">
@@ -47,25 +54,21 @@
 
     <ion-slide>
       <ion-card mode="ios" class="ion-text-center">
-        <h5 class="ion-no-margin ion-text-start">Free spirit</h5>
-        <p class="p_card ion-no-margin ion-text-start">Pay as you go</p>
+        <h5 class="ion-no-margin ion-text-start">{{ 'Adventure' | translate }}</h5>
+        <p class="p_card ion-no-margin ion-text-start">{{ '$1 X credit' | translate }}</p>
         <ion-list mode="ios">
-          <h6 class="ion-text-start">Buy as many credits.</h6>
+          <!-- <h6 class="ion-text-start">Buy as many credits.</h6> -->
           <ion-item mode="ios" lines="none">
             <ion-icon name="checkmark-circle-sharp"></ion-icon>
-            <ion-label class="ion-no-margin"> Start conversation</ion-label>
+            <ion-label class="ion-no-margin">
+              {{ 'Unblock profile per credit' | translate }}
+            </ion-label>
           </ion-item>
           <ion-item mode="ios" lines="none">
             <ion-icon name="checkmark-circle-sharp"></ion-icon>
-            <ion-label class="ion-no-margin">Respond to girls</ion-label>
-          </ion-item>
-          <ion-item mode="ios" lines="none">
-            <ion-icon name="checkmark-circle-sharp"></ion-icon>
-            <ion-label class="ion-no-margin">Respond to girls</ion-label>
-          </ion-item>
-          <ion-item mode="ios" lines="none">
-            <ion-icon name="checkmark-circle-sharp"></ion-icon>
-            <ion-label class="ion-no-margin">Respond to girls</ion-label>
+            <ion-label class="ion-no-margin">
+              {{ 'Same city search' | translate }}
+            </ion-label>
           </ion-item>
         </ion-list>
         <ion-button mode="ios" class="plan_button" (click)="select_plan ('free-spirit')">
@@ -85,7 +88,7 @@
         <h5 class="ion-no-margin ion-text-start">{{ item.nombre }}</h5>
         <p class="p_card ion-no-margin ion-text-start">$ {{ item.monto }} x month</p>
         <ion-list mode="ios">
-          <ion-item *ngFor="let detalle of item.detalles" mode="ios" lines="none">
+          <ion-item class="ion-text-wrap" *ngFor="let detalle of item.detalles" mode="ios" lines="none">
             <ion-icon name="checkmark-circle-sharp"></ion-icon>
             <ion-label class="ion-no-margin">{{ detalle.nombre }}</ion-label>
           </ion-item>

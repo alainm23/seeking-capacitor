@@ -70,7 +70,7 @@ export class PaymentPage implements OnInit {
               return actions.order.create ({
                 purchase_units: [{
                   amount: {
-                    value: this.data.value
+                    value: parseFloat (this.data.precio)
                   }
                 }]
               });
@@ -102,5 +102,9 @@ export class PaymentPage implements OnInit {
         });
       }
     }, 1000);
+  }
+
+  close () {
+    this.modalController.dismiss ();
   }
 }

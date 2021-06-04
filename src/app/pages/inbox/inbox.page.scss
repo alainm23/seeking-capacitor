@@ -21,6 +21,11 @@ ion-content
     --padding-top: 1rem;
     position: relative;
 }
+
+.visto {
+    color: #3fc2fa;
+}
+
 h1
 {
     color: #333333;
@@ -145,7 +150,6 @@ h1
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            height: 40px;
         }
         .p-pais-ciudad
         {

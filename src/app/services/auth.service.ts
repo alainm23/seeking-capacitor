@@ -127,6 +127,7 @@ export class AuthService {
     formData.append ('ciudad', request.ciudad);
     formData.append ('pais', request.pais);
     formData.append ('pais_codigo', request.pais_codigo);
+    formData.append ('lenguaje', request.lenguaje);
     formData.append ('latitud', request.latitud);
     formData.append ('longitud', request.longitud);
     formData.append ('year', request.year);
@@ -269,14 +270,11 @@ export class AuthService {
     'registro_incompleto', 'galeria'];
 
     this.get_fields_access_token (access_token, data).subscribe (async (user: any) => {
-      console.log (user);
-
       if (user.estado_cuenta > 0) {
         this.navController.navigateRoot (['block-page', JSON.stringify (user)]);
         this.storage.clear ();
         this.logout_social ();
       } else {
-        console.log (user);
         this.USER_DATA = user;
         return await this.storage.set ('USER_DATA', JSON.stringify (this.USER_DATA));
       }

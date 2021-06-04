@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 // Services
-import { ModalController } from '@ionic/angular';
+import { LoadingController, ModalController } from '@ionic/angular';
 import { AuthService } from '../../services/auth.service';
+import { DatabaseService } from '../../services/database.service';
 
 @Component({
   selector: 'app-buy-single-credits',
@@ -10,32 +11,29 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./buy-single-credits.page.scss'],
 })
 export class BuySingleCreditsPage implements OnInit {
-  prices: any [] = [
-    {
-      text: '20 Credits',
-      value: 19.99,
-      creditos: 20
-    },
-    {
-      text: '50 Credits',
-      value: 29.99,
-      creditos: 50
-    },
-    {
-      text: '75 Credits',
-      value: 39.99,
-      creditos: 75
-    },
-    {
-      text: '100 Credits',
-      value: 52.99,
-      creditos: 100
-    }
-  ]
+  prices: any [] = [];
   constructor (private modalController: ModalController,
-    public auth: AuthService) { }
+    public auth: AuthService,
+    public database: DatabaseService,
+    public loadingController: LoadingController) { }
 
-  ngOnInit() {
+  async ngOnInit () {
+    const loading = await this.loadingController.create ({
+      translucent: true,
+      spinner: 'lines-small',
+      mode: 'ios'
+    });
+
+    await loading.present ();
+
+    this.database.get_datos ('paquete_creditos').subscribe ((res: any []) => {
+      console.log (res);
+      loading.dismiss ();
+      this.prices = res;
+    }, error => {
+      loading.dismiss ();
+      console.log (error);
+    });
   }
 
   select_price (item: any) {

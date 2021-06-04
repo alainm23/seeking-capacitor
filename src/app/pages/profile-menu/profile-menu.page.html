@@ -22,7 +22,7 @@
     <img src="assets/img/iconos_settings.png" class="img-configure-menu img-margin-right">
     {{ 'Account settings' | translate }}
   </ion-label>
-  <ion-label class="label-menu">
+  <ion-label (click)="root_page ('tabs/favorites')" class="label-menu">
     <img src="assets/img/icono-no-favorito.png" class="img-corazon-menu img-margin-right">
     {{ 'My favorites' | translate }}
   </ion-label>

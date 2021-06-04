@@ -153,9 +153,143 @@
       </ion-grid>
     </form>
   </ng-container>
+
+  <ng-container *ngIf="form === 'intereses'">
+    <ion-grid class="grid-pagging">
+      <ion-row style="display: flex;">
+        <ion-col size="12" class="ion-no-padding">
+          <h1 class="ion-text-center h1-textarea">{{ 'About me' | translate }}</h1>
+        </ion-col>
+
+        <ion-col size="12" class="ion-no-padding">
+          <ion-list class="list-scroll">
+            <ion-item style="display: contents;" *ngFor="let item of intereses" lines="none" class="ion-text-wrap item-radio item-check-height">
+              <ion-checkbox
+                [checked]="get_checked (item.id, intereses_map)"
+                (ionChange)="checkbox_changed ($event, item.id, intereses_map)"
+                slot="start"
+                class="checbox"></ion-checkbox>
+              <ion-label class="label-chech-radio ion-text-wrap">{{ item.valor }}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-container>
+
+  <ng-container *ngIf="form === 'idiomas'">
+    <ion-grid class="grid-pagging">
+      <ion-row style="display: flex;">
+        <ion-col size="12" class="ion-no-padding">
+          <h1 class="ion-text-center h1-textarea">Idiomas</h1>
+        </ion-col>
+
+        <ion-col size="12" class="ion-no-padding">
+          <ion-list class="list-scroll">
+            <ion-item style="display: contents;" *ngFor="let item of idiomas" lines="none" class="ion-text-wrap item-radio item-check-height">
+              <ion-checkbox
+                [checked]="get_checked (item.id, idiomas_map)"
+                (ionChange)="checkbox_changed ($event, item.id, idiomas_map)"
+                slot="start"
+                class="checbox"></ion-checkbox>
+              <ion-label class="label-chech-radio ion-text-wrap">{{ item.nombre }}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-container>
+
+  <ng-container *ngIf="form === 'personalidades'">
+    <ion-grid class="grid-pagging">
+      <ion-row style="display: flex;">
+        <ion-col size="12" class="ion-no-padding">
+          <h1 class="ion-text-center h1-textarea">Personalidades</h1>
+        </ion-col>
+
+        <ion-col size="12" *ngFor="let personalidad of personalidades">
+          <ion-item>
+            <ion-label>{{ personalidad.nombre }}</ion-label>
+            <ion-select [selectedText]="get_selected_text (personalidad.id, personalidades_map)" (ionChange)="select_changed ($event, personalidad.id, personalidades_map)">
+              <ion-select-option [value]="item" *ngFor="let item of personalidad.items">
+                {{ item.valor }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-container>
+
+  <ng-container *ngIf="form === 'apariencias'">
+    <ion-grid class="grid-pagging">
+      <ion-row style="display: flex;">
+        <ion-col size="12" class="ion-no-padding">
+          <h1 class="ion-text-center h1-textarea">Apariencias</h1>
+        </ion-col>
+
+        <ion-col size="12" *ngFor="let apariencia of apariencias">
+          <ion-item>
+            <ion-label>{{ apariencia.nombre }}</ion-label>
+            <ion-select [selectedText]="get_selected_text (apariencia.id, apariencias_map)" (ionChange)="select_changed ($event, apariencia.id, apariencias_map)">
+              <ion-select-option [value]="item" *ngFor="let item of apariencia.items">
+                {{ item.valor }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-container>
+
+  <ng-container *ngIf="form === 'generos_interes'">
+    <ion-grid class="grid-pagging">
+      <ion-row style="display: flex;">
+        <ion-col size="12" class="ion-no-padding">
+          <h1 class="ion-text-center h1-textarea">Generos</h1>
+        </ion-col>
+
+        <ion-col size="12" class="ion-no-padding">
+          <ion-list class="list-scroll">
+            <ion-item style="display: contents;" *ngFor="let item of generos_interes" lines="none" class="ion-text-wrap item-radio item-check-height">
+              <ion-checkbox
+                [checked]="get_checked (item.id, generos_interes_map)"
+                (ionChange)="checkbox_changed ($event, item.id, generos_interes_map)"
+                slot="start"
+                class="checbox"></ion-checkbox>
+              <ion-label class="label-chech-radio ion-text-wrap">{{ item.nombre }}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-container>
+
+  <ng-container *ngIf="form === 'relaciones'">
+    <ion-grid class="grid-pagging">
+      <ion-row style="display: flex;">
+        <ion-col size="12" class="ion-no-padding">
+          <h1 class="ion-text-center h1-textarea">Relaciones</h1>
+        </ion-col>
+
+        <ion-col size="12" class="ion-no-padding">
+          <ion-list class="list-scroll">
+            <ion-item style="display: contents;" *ngFor="let item of relaciones" lines="none" class="ion-text-wrap item-radio item-check-height">
+              <ion-checkbox
+                [checked]="get_checked (item.id, relaciones_map)"
+                (ionChange)="checkbox_changed ($event, item.id, relaciones_map)"
+                slot="start"
+                class="checbox"></ion-checkbox>
+              <ion-label class="label-chech-radio ion-text-wrap">{{ item.nombre }}</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-container>
 </ion-content>
 
 <ion-footer class="ion-no-border ion-text-center">
   <ion-button [disabled]="check_disabled ()" (click)="submit ()" class="btn-continuar-footer">{{ 'Save' | translate }}</ion-button>
-  <p class="p-footer">{{ 'Go back' | translate }}</p>
+  <p class="p-footer" (click)="back ()">{{ 'Go back' | translate }}</p>
 </ion-footer>

@@ -63,7 +63,8 @@ ion-card
             --inner-padding-end: 0px;
             display: flex;
             align-content: center;
-            height: 23px;
+            line-height: 1;
+            height: 2rem;
             ion-icon
             {
                 color: #85B745;
@@ -75,6 +76,7 @@ ion-card
                 font-family: AvenirMedium;
                 font-size: 18px;
                 margin-left: 5px;
+                white-space: normal;
                 .span_morado
                 {
                     color: #9437D8;
