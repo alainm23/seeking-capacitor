@@ -28,7 +28,7 @@ h1
 .btn-regresar
 {
     position: absolute;
-    left: 5px;
+    left: 0px;
     top: 10px;
     --background: transparent;
     --background-activated: transparent;
@@ -230,6 +230,27 @@ ion-slides
         }
     }
     
+}
+ion-slide
+{
+    position: relative;
+    .div-sombre-profile
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgb(0,0,0);
+        background: linear-gradient(0deg, rgba(0,0,0,0.8939950980392157) 4%, rgba(255,254,254,0.025647759103641476) 40%);
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 15px;
+        padding-left: 15px;
+        .icon-corazon
+        {
+            color: #fff;
+            font-size: 35px;
+        }
+    }
 }
 .slider-fondo
 {

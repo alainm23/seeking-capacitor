@@ -78,13 +78,17 @@ h1
     color: #333333;
     font-family: AvenirHeavy;
     margin-top: 0px;
-    font-size: 21px;
+    font-size: 20px;
 }
 .color-plomo
 {
-    color: #8F8F8F;
-    font-family: Avenirlight;
+    color: #555555;
+    font-family: AvenirMedium;
     margin-top: 20px;
+}
+.img-terminos
+{
+    margin-top: 20%;
 }
 .p-dia-mes-ano
 {
@@ -141,11 +145,9 @@ h1
 }
 ion-footer
 {
-    padding-left: 30px;
-    padding-right: 30px;
     .btn-continuar-footer
     {
-        width: 100%;
+        width: 65%;
         --background: #77BDF0;
         --box-shadow: none;
         --border-radius: 23px;
@@ -158,9 +160,9 @@ ion-footer
     {
         color: #555555;
         font-family: AvenirMedium;
-        font-size: 18px;
-        margin-top: 15px;
-        margin-bottom: 15px;
+        font-size: 20px;
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
 }
 .card-foto-fondo
@@ -173,10 +175,10 @@ ion-footer
 .card-foto
 {
     --background: #F9F6FF;
-    width: 90%;
+    width: 60%;
     box-shadow: none;
     border-radius: 34px;
-    margin: 10% 5% 0px 5%;
+    margin: 10% 5% 0px 20%;
     text-align: center;
     padding: 30px 0px;
     height: 250px;
@@ -201,18 +203,20 @@ ion-footer
 .card-fotos
 {
     --background: #F9F6FF;
-    width: 46%;
+    width: 94%;
     box-shadow: none;
     border-radius: 10px;
     margin: 0px;
-    height: 105px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0px 4px 8px 4px;
+    margin: 0px 4px 8px 3%;
+    border-radius: 0px;
+    position: relative;
     ion-avatar
     {
-        --border-radius: 10px;
+        --border-radius: 0px;
         width: 100%;
         height: 100%;
         img
@@ -225,6 +229,26 @@ ion-footer
     {
         font-size: 35px;
         color: #CB9229;
+    }
+    .btn-close-fotos
+    {
+        position: absolute;
+        --background: #fff;
+        --background-activated: #fff;
+        --color: #707070;
+        --border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        right: 5px;
+        top: 5px;
+        --box-shadow: 0px 3px 6px #00000029;
+        margin: 0;
+        font-size: 0px;
+        .icon-close-foto
+        {
+            color: #707070;
+            font-size: 18px;
+        }
     }
 }
 .card-fotos-fondo
@@ -243,13 +267,13 @@ ion-footer
 .item-radio-height
 {
     align-items: baseline;
-    height: 30px;
+    height: 50px;
     margin-bottom: 5px;
 }
 .item-check-height
 {
     align-items: baseline;
-    height: 30px;
+    height: 50px;
     margin-bottom: 10px;
 }
 .item-radio
@@ -259,13 +283,19 @@ ion-footer
     .label-chech-radio
     {
         font-family: AvenirMedium;
-        font-size: 18px;
+        font-size: 20px;
         margin-top: 0px;
         margin-bottom: 0px;
+        line-height: 1.2;
     }
     .label-policy
     {
-        font-size: 15px !important;
+        font-size: 18px !important;
+        .link-privacy
+        {
+            color: #555555;
+            text-decoration: none;
+        }
     }
     ion-radio
     {
@@ -273,7 +303,7 @@ ion-footer
         margin-right: 15px;
         --color-checked: #CB9229;
         --color: #E3E3E3;
-        margin-top: 4px;
+        margin-top: 0px;
         margin-bottom: 0px;
     }
     .checbox
@@ -289,14 +319,18 @@ ion-footer
         margin-bottom: 0px;
     }
 }
+.item-top-privacy
+{
+    margin-top: 20%;
+}
 ion-select
 {
     width: 100%;
 }
 ion-slide
 {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
     padding-top: 50px;
     align-items: flex-start;
     form
@@ -304,59 +338,47 @@ ion-slide
         width: 100%;
     }
 }
-.list-scroll
+.slide-padding-start-end
 {
-    height: 85%;
-    overflow-y: scroll;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
 }
-.list-scroll::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+.slide-fotos
+{
+    padding-left: 20px !important;
+    padding-right: 20px !important;
 }
-.list-scroll::-webkit-scrollbar-thumb {
-    background: #cdcdd1;
-    border-radius: 0px;
-}
-.list-scroll::-webkit-scrollbar-thumb:hover{
-    background: #CDCDD1;
-}
-.list-scroll::-webkit-scrollbar-track{
-    background: #ffffff;
-    border-radius: 0px;
+.div-flex-footer
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 @media(min-width: 375px) and (min-height: 667px)
 {
-    .list-scroll
-    {
-        height: 90%;
-    }
     .card-fotos
     {
         height: 112px;
     }
 }
-@media(min-width: 375px) and (min-height: 812px)
+/*@media(min-width: 375px) and (min-height: 812px)
 {
     .list-scroll
     {
         height: 100%;
     }
-    .card-fotos
-    {
-        height: 130px;
-    }
-}
+}*/
 @media(min-width: 411px)
 {
     .card-foto
     {
         padding: 45px 0px;
         height: 300px;
-    }
-    .card-fotos
-    {
-        width: 31%;
-        height: 130px;
     }
     .list-scroll
     {
@@ -370,10 +392,6 @@ ion-slide
         padding: 50px 0px;
         height: 350px;
     }
-    .card-fotos
-    {
-        height: 160px;
-    }
 }
 @media(min-width: 540px)
 {
@@ -382,15 +400,31 @@ ion-slide
         padding-left: 70px;
         padding-right: 70px;
     }
-    ion-footer
-    {
-        padding-left: 70px;
-        padding-right: 70px;
-    }
     .card-fotos
     {
-        height: 160px;
-        width: 31%;
+        height: 200px;
+    }
+    .div-flex-footer
+    {
+        justify-content: center;
+    }
+    ion-footer
+    {
+        .btn-continuar-footer
+        {
+            width: 45%;
+            margin-left: 40px;
+        }
+    }
+}
+@media(min-width: 640px)
+{
+    ion-footer
+    {
+        .btn-continuar-footer
+        {
+            width: 34%;
+        }
     }
 }
 @media(min-width: 768px)
@@ -400,14 +434,14 @@ ion-slide
         padding-left: 150px;
         padding-right: 150px;
     }
-    ion-footer
-    {
-        padding-left: 150px;
-        padding-right: 150px;
-    }
     .card-fotos
     {
-        height: 195px;
+        height: 250px;
+    }
+    .slide-fotos 
+    {
+        padding-left: 80px;
+        padding-right: 80px;
     }
     ion-slide
     {
@@ -418,6 +452,7 @@ ion-slide
     {
         width: 60%;
         margin: 10% 20% 0px 20%;
+        height: 400px;
     }
 }
 @media(min-width: 1024px)
@@ -432,16 +467,9 @@ ion-slide
         padding: 60px 0px;
         width: 50%;
         margin: 5% 25% 0px 25%;
-        height: 400px;
-    }
-    ion-footer
-    {
-        padding-left: 300px;
-        padding-right: 300px;
     }
     .card-fotos
     {
-        width: 32%;
         height: 240px;
     }
     ion-slide

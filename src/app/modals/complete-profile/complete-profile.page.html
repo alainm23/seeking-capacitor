@@ -22,7 +22,7 @@
 
   <ion-slides mode="md" (ionSlideDidChange)="slides_changed ($event)" pager="false" [options]="slideOpts">
     <ng-container *ngFor="let slide of slides">
-      <ion-slide *ngIf="slide === 'intereses'">
+      <ion-slide *ngIf="slide === 'intereses'" style="overflow-y: scroll;">
           <ion-grid class="grid-pagging">
             <ion-row style="display: flex;">
               <ion-col size="12" class="ion-no-padding">
@@ -96,7 +96,7 @@
       </ion-slide>
 
       <ng-container *ngIf="slide === 'apariencia'">
-        <ion-slide *ngFor="let item of apariencias">
+        <ion-slide *ngFor="let item of apariencias" style="overflow-y: scroll;">
           <ion-grid class="grid-pagging">
             <ion-row style="display: flex;">
               <ion-col size="12" class="ion-no-padding">
@@ -119,7 +119,7 @@
       </ng-container>
 
       <ng-container *ngIf="slide === 'personalidad'">
-        <ion-slide *ngFor="let item of personalidades">
+        <ion-slide *ngFor="let item of personalidades" style="overflow-y: scroll;">
           <ion-grid class="grid-pagging">
             <ion-row style="display: flex;">
               <ion-col size="12" class="ion-no-padding">
@@ -141,7 +141,7 @@
         </ion-slide>
       </ng-container>
 
-      <ion-slide *ngIf="slide === 'idiomas'">
+      <ion-slide *ngIf="slide === 'idiomas'" style="overflow-y: scroll;">
         <ion-grid class="grid-pagging">
           <ion-row style="display: flex;">
             <ion-col size="12" class="ion-no-padding">
@@ -174,7 +174,7 @@
         </ion-grid>
       </ion-slide>
 
-      <ion-slide *ngIf="slide === 'extras'">
+      <ion-slide *ngIf="slide === 'extras'" style="overflow-y: scroll;">
         <form style="align-self: start;" [formGroup]="extras_form" class="row-scrool">
           <ion-grid class="grid-pagging">
             <ion-row style="display: flex;">
@@ -220,34 +220,36 @@
         <ion-grid class="ion-no-padding">
           <ion-row>
             <ion-col size="12" class="ion-no-padding">
-              <h1 class="ion-text-center">{{ 'Very good photo!' | translate }}<br>{{ 'The more photos you have, the better' | translate }}</h1>
-              <div class="div-fotos">
-                <ion-card
+              <h1 class="ion-text-center">{{ 'Very good photo!' | translate }}</h1>
+              <p class="color-plomo ion-text-center">{{ 'The more photos you have, the better' | translate }}</p>
+              <ion-row>
+                <ion-col size="6">
+                  <ion-card
                   [class.card-fotos-fondo-general]="get_photos_index (0) !== ''"
                   [ngStyle]="{'background-image': 'url(' + get_photos_index (0).imagen + ')'}"
                   (click)="selectImageSource ('photos', 0, fileInput)"
                   class="card-fotos">
-                  <ion-icon *ngIf="photos [0] === ''" name="add-outline" class="icon-add"></ion-icon>
-                  <input hidden multiple type="file" accept="image/*" #fileInput (change)="changeListener($event, 0)">
-                </ion-card>
-                
-                <ion-button *ngIf="photos [0] !== ''" (click)="delete_image (0)" fill="clear">
-                  <ion-icon name="close-circle-sharp"></ion-icon>
-                </ion-button>
-                
-                <ion-card
+                    <ion-icon *ngIf="photos [0] === ''" name="add-outline" class="icon-add"></ion-icon>
+                    <input hidden multiple type="file" accept="image/*" #fileInput (change)="changeListener($event, 0)">
+                    <ion-button *ngIf="photos [0] !== ''" (click)="delete_image (0)" fill="clear" class="btn-close-fotos">
+                      <ion-icon name="close-outline" class="icon-close-foto"></ion-icon>
+                    </ion-button>
+                  </ion-card>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-card
                   [class.card-fotos-fondo-general]="get_photos_index (1) !== ''"
                   [ngStyle]="{'background-image': 'url(' + get_photos_index (1).imagen + ')'}"
                   (click)="selectImageSource ('photos', 1, fileInput1)"
                   class="card-fotos">
-                  <ion-icon *ngIf="photos [1] === ''" name="add-outline" class="icon-add"></ion-icon>
-                  <input hidden multiple type="file" accept="image/*" #fileInput1 (change)="changeListener($event, 1)">
-                </ion-card>
-
-                <ion-button *ngIf="photos [1] !== ''" (click)="delete_image (1)" fill="clear">
-                  <ion-icon name="close-circle-sharp"></ion-icon>
-                </ion-button>
-              </div>
+                    <ion-icon *ngIf="photos [1] === ''" name="add-outline" class="icon-add"></ion-icon>
+                    <input hidden multiple type="file" accept="image/*" #fileInput1 (change)="changeListener($event, 1)">
+                    <ion-button *ngIf="photos [1] !== ''" (click)="delete_image (1)" fill="clear">
+                      <ion-icon name="close-outline"></ion-icon>
+                    </ion-button>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -261,6 +263,9 @@
 </ion-content>
 
 <ion-footer class="ion-no-border ion-text-center">
-  <ion-button (click)="next_step ()" class="btn-continuar-footer" mode="ios">{{ 'Next' | translate }}</ion-button>
-  <p (click)="back_step ()" class="p-footer">{{ 'Go back' | translate }}</p>
+  <div class="div-flex-footer">
+    <ion-icon name="chevron-back-circle-outline" (click)="back_step ()" class="icon-footer-profile"></ion-icon>
+    <ion-button (click)="next_step ()" class="btn-continuar-footer" mode="ios">{{ 'Next' | translate }}</ion-button>
+    <ion-icon name="play-skip-forward-circle-outline" class="icon-footer-profile"></ion-icon>
+  </div>
 </ion-footer>
