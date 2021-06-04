@@ -16,8 +16,8 @@ ion-content
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    --padding-start:  1.25rem;
-    --padding-end: 1.25rem;
+    --padding-start:  3.125rem;
+    --padding-end: 3.125rem;
     --padding-top: 70px;
 }
 h1
@@ -25,18 +25,19 @@ h1
     color: #333333;
     font-family: AvenirHeavy;
     margin-bottom: 0px;
+    font-size: 20px;
 }
 .p
 {
     color: #555555;
-    font-family: Avenirlight;
+    font-family: AvenirMedium;
     margin-top: 8%;
-    padding: 0px 30px;
-
+    padding: 0px 0px;
+    font-size: 20px;
 }
 ion-button
 {
-    width: 55%;
+    width: 65%;
     --background: #77BDF0;
     --background-activated: #77BDF0;
     --color: #ffffff;
@@ -55,7 +56,7 @@ ion-button
 {
     color: #555555;
     font-family: AvenirMedium;
-    font-size: 18px;
+    font-size: 20px;
     margin-top: 0px;
     margin-bottom: 0px;
 }
@@ -63,37 +64,40 @@ ion-button
 {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    padding-bottom: 50px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 3.125rem;
+    padding-right: 3.125rem;
 }
 img
 {
-    margin-top: 20%;
+    margin-top: 35%;
+    width: 30%;
 }
 @media (min-width: 411px)
 {
     ion-content
     {
-      --padding-start: 3.125rem;
-      --padding-end: 3.125rem;
       --padding-top: 5rem
     }
 }
-@media (min-width: 480px)
+/*@media (min-width: 480px)
 {
-    ion-content
-    {
-      --padding-start: 3.125rem;
-      --padding-end: 3.125rem;
-    }
-}
+    
+}*/
 @media (min-width: 540px)
 {
     ion-button
     {
        
         width: 45%;
+        margin-left: 40px;
+    }
+    .div-flex-footer
+    {
+        justify-content: center;
     }
 }
 @media (min-width: 640px)

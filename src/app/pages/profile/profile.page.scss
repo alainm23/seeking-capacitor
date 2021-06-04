@@ -28,20 +28,29 @@ ion-content
 ion-slide
 {
     position: relative;
-    .icon-corazon
+    .div-sombre-profile
     {
         position: absolute;
-        bottom: 20px;
-        left: 20px;
-        color: #fff;
-        font-size: 30px;
+        width: 100%;
+        height: 100%;
+        background: rgb(0,0,0);
+        background: linear-gradient(0deg, rgba(0,0,0,0.8939950980392157) 4%, rgba(255,254,254,0.025647759103641476) 40%);
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 15px;
+        padding-left: 15px;
+        .icon-corazon
+        {
+            color: #fff;
+            font-size: 35px;
+        }
     }
 }
 
 .btn-regresar
 {
     position: absolute;
-    left: 5px;
+    left: 0px;
     top: 10px;
     --background: transparent;
     --background-activated: transparent;
@@ -71,8 +80,8 @@ h1
 {
     color: #333333;
     font-family: AvenirMedium;
-    margin-top: 6px;
-    margin-bottom: 6px;
+    margin-top: 4px;
+    margin-bottom: 4px;
     font-size: 20px;
 }
 .p-height
@@ -226,7 +235,7 @@ h1
 }
 .col-bottom
 {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 ion-slides
 {
@@ -363,13 +372,17 @@ ion-footer
     border: 8px solid #fff;
     border-radius: 10px;
     margin-top: 26px;
-    height: 350px;
+    height: 40%;
     .img-mapa
     {
         width: 100%;
         height: 100%;
         border-radius: 10px;
     }
+}
+.h5-bottom-perso
+{
+    margin-bottom: 20px;
 }
 @media (min-width: 411px)
 {

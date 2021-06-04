@@ -11,8 +11,9 @@
       *ngFor="let item of galeria"
       [ngStyle]="{'background-image': 'url(' + item.imagen + ')'}"
       class="slider-fondo">
-      <ion-icon name="heart-outline" class="icon-corazon">
-      </ion-icon>
+      <div class="div-sombre-profile">
+        <ion-icon name="heart-outline" class="icon-corazon"></ion-icon>
+      </div>
       <!-- <ion-thumbnail>
         <ion-img [src]="item.imagen"></ion-img>
       </ion-thumbnail> -->
@@ -60,6 +61,9 @@
   <div class="div-padding-left-right div-margin-top">
     <ion-grid class="ion-no-padding">
       <ion-row>
+        <ion-col size="12">
+          <h5 class="h5-im h5-bottom-perso">{{ 'Personality:' | translate }}</h5>
+        </ion-col>
         <ion-col *ngFor="let item of profile?.personalidades" size="4" class="col-bottom">
           <p class="p-color-plomo-titulo">{{ item.personalidad }}</p>
           <p class="p-subtitulo-medium">{{ item.valor }}</p>
