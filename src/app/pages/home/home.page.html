@@ -133,11 +133,11 @@
                   <span class="span-edad">
                     {{ item.edad }}
                   </span>
-                  <span *ngIf="order_by === 'distance'">
-                    {{ item.nombre_pais }}, {{ item.distance }}{{ item.distance_format }}
+                  <span>
+                    {{ item.id_pais }}, {{ item.distance }}{{ item.distance_format }}
                   </span>
     
-                  <span *ngIf="order_by === 'favoritos-desc'">
+                  <!-- <span *ngIf="order_by === 'favoritos-desc'">
                     {{ item.favoritos }} Likes
                   </span>
     
@@ -151,9 +151,9 @@
     
                   <span *ngIf="order_by === 'created_at-desc'">
                     {{ get_relative_format (item.created_at) }}
-                  </span>
+                  </span> -->
                 </p>
-                <ion-icon name="heart-sharp" *ngIf="item.tengo_favorito == 1" class="icon-activo-favorito"></ion-icon>
+                <ion-icon name="heart-outline" class="icon-activo-favorito"></ion-icon>
                 <!--Icono activo de favorito
                 <ion-icon name="heart-sharp" class="icon-activo-favorito"></ion-icon>-->
               </div>

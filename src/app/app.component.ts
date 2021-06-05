@@ -79,7 +79,8 @@ export class AppComponent {
       this.location.isCurrentPathEqualTo ('/tabs/profile-menu') ||
       this.location.isCurrentPathEqualTo ('/login')) {
         console.log('Show Exit Alert!');
-        this.showExitConfirm ();
+        // this.showExitConfirm ();
+        App.exitApp ();
       } else {
         console.log('Navigate to back page');
         this.navController.back ();
@@ -132,7 +133,7 @@ export class AppComponent {
       }, {
         text: 'Exit',
         handler: () => {
-          navigator['app'].exitApp();
+          
         }
       }]
     }).then (alert => {
