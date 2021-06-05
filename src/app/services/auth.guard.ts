@@ -31,7 +31,6 @@ export class AuthGuard implements CanActivate {
 
         return true;
       } else {
-        console.log ('login');
         this.navController.navigateRoot ('login');
         return false;
       }

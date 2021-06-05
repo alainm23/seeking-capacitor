@@ -13,6 +13,7 @@ import { BuySingleCreditsPage } from '../../modals/buy-single-credits/buy-single
 import { PaymentPage } from '../../modals/payment/payment.page';
 import { AuthService } from '../../services/auth.service';
 import { Storage } from '@ionic/storage-angular';
+import { Location } from '@angular/common';
 // import { AdmobService } from '../../services/admob.service';
 
 @Component({
@@ -56,9 +57,12 @@ export class HomePage implements OnInit {
     private modalController: ModalController,
     private toastController: ToastController,
     private auth: AuthService,
-    private storage: Storage) { }
+    private storage: Storage,
+    private _location: Location) { }
 
   async ngOnInit () {
+    console.log ('Path:', this._location.path ());
+
     this.loading_complete_perfil = true;
     this.home_loading = true;
     this.get_data (null, false, '');

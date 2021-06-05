@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { AlertController, Platform, NavController} from '@ionic/angular';
 
 // Services
 import { Storage } from '@ionic/storage-angular';
@@ -9,6 +9,8 @@ import { WebsocketService } from './services/websocket.service';
 import { OnesignalService } from './services/onesignal.service';
 import { AuthService } from './services/auth.service';
 import { Capacitor } from "@capacitor/core";
+import { App } from '@capacitor/app';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -21,15 +23,45 @@ export class AppComponent {
     private translate: TranslateService,
     private websocket: WebsocketService,
     private onesignal: OnesignalService,
-    private auth: AuthService) {
+    private auth: AuthService,
+    private location: Location,
+    private alertController: AlertController,
+    private navController: NavController) {
     this.OnInit ();
   }
 
   async OnInit () {
+    // this.platform.backButton.subscribeWithPriority (10, (processNextHandler) => {
+    //   console.log('Back press handler!');
+    //   if (this.location.isCurrentPathEqualTo ('tabs/home') || 
+    //   this.location.isCurrentPathEqualTo ('tabs/inbox') || 
+    //   this.location.isCurrentPathEqualTo ('tabs/favorites') ||
+    //   this.location.isCurrentPathEqualTo ('tabs/profile-menu') ||
+    //   this.location.isCurrentPathEqualTo ('login')) {
+    //     console.log('Show Exit Alert!');
+    //     processNextHandler ();
+    //     this.showExitConfirm ();
+    //   } else {
+    //     console.log('Navigate to back page');
+    //     this.location.back ();
+    //   }
+    // });
+
+    // this.platform.backButton.subscribeWithPriority(5, () => {
+    //   console.log('Handler called to force close!');
+    //   this.alertController.getTop().then(r => {
+    //     if (r) {
+    //       navigator['app'].exitApp();
+    //     }
+    //   }).catch(e => {
+    //     console.log(e);
+    //   })
+    // });
+
     await this.storage.create ();
+
     if (Capacitor.isNativePlatform ()) {
       this.platform.ready ().then (() => {
-        this.auth.google_init ();
         this.init ();
       });
     } else {
@@ -38,6 +70,22 @@ export class AppComponent {
   }
 
   async init () {
+    App.addListener ('backButton', () => {
+      console.log('Back press handler!');
+
+      if (this.location.isCurrentPathEqualTo ('/tabs/home') || 
+      this.location.isCurrentPathEqualTo ('/tabs/inbox') || 
+      this.location.isCurrentPathEqualTo ('/tabs/favorites') ||
+      this.location.isCurrentPathEqualTo ('/tabs/profile-menu') ||
+      this.location.isCurrentPathEqualTo ('/login')) {
+        console.log('Show Exit Alert!');
+        this.showExitConfirm ();
+      } else {
+        console.log('Navigate to back page');
+        this.navController.back ();
+      }
+    });
+    
     let user_data: any = JSON.parse (await this.storage.get ('USER_DATA'));
     let user_access: any = JSON.parse (await this.storage.get ('USER_ACCESS'));
 
@@ -68,5 +116,27 @@ export class AppComponent {
       this.translate.setDefaultLang (lang);
       await this.storage.set ('lang', lang);
     }
+  }
+
+  showExitConfirm() {
+    this.alertController.create ({
+      header: 'App termination',
+      message: 'Do you want to close the app?',
+      backdropDismiss: false,
+      buttons: [{
+        text: 'Stay',
+        role: 'cancel',
+        handler: () => {
+          console.log('Application exit prevented!');
+        }
+      }, {
+        text: 'Exit',
+        handler: () => {
+          navigator['app'].exitApp();
+        }
+      }]
+    }).then (alert => {
+      alert.present();
+    });
   }
 }

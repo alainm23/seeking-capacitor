@@ -5,7 +5,7 @@ import { DatabaseService } from '../../services/database.service';
 import { AuthService } from '../../services/auth.service';
 import * as moment from 'moment';
 import { WebsocketService } from '../../services/websocket.service';
-import { ModalController, IonContent, IonInfiniteScroll, AlertController } from '@ionic/angular';
+import { ModalController, IonContent, IonInfiniteScroll, AlertController, ToastController } from '@ionic/angular';
 import { UtilsService } from 'src/app/services/utils.service';
 import { CompleteProfilePage } from '../../modals/complete-profile/complete-profile.page';
 
@@ -38,7 +38,8 @@ export class ChatPage implements OnInit {
     public auth: AuthService,
     public websocket: WebsocketService,
     public alertController: AlertController,
-    public utils: UtilsService) { }
+    public utils: UtilsService, 
+    public toastController: ToastController) { }
 
   ngOnInit () {
     console.log (this.chat_id);
@@ -244,12 +245,24 @@ export class ChatPage implements OnInit {
         this.chat_id = res.chat.id;
         this.init_chat_page ();
       } else {
+        this.presentToast (res.message, 'danger');
         this.loadings.page = false;
       }
     }, error => {
       this.loadings.page = false;
       console.log (error);
     });
+  }
+
+  async presentToast (message: any, color: string) {
+    const toast = await this.toastController.create ({
+      message: message,
+      color: color,
+      duration: 2000,
+      position: 'top'
+    });
+
+    toast.present ();
   }
 
   async complete_profile () {

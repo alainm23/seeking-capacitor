@@ -201,10 +201,6 @@ export class AuthService {
     return this.http.get (url, { headers });
   }
 
-  google_init () {
-    // GoogleAuth.init ();
-  }
-
   async google () {
     const loading = await this.loadingController.create ({
       translucent: true,
