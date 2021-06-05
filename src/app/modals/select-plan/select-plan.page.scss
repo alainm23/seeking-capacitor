@@ -41,13 +41,13 @@ p
 {
     font-family: Avenirlight;
     color: #333333;
-    padding: 0px 6.25rem;
+    font-size: 20px;
 }
 ion-card
 {
     border-radius: 16px;
     box-shadow: 0px 6px 11px #00000029;
-    padding: 30px;
+    padding: 30px 25px;
     position: relative;
     margin: 0px;
     width: 100%;
@@ -57,14 +57,14 @@ ion-card
     {
         height: 165px;
         margin-top: 16px;
+        overflow-y: scroll;
         ion-item
         {
             --padding-start: 0px;
             --inner-padding-end: 0px;
             display: flex;
-            align-content: center;
+            align-items: flex-start;
             line-height: 1;
-            height: 2rem;
             ion-icon
             {
                 color: #85B745;
@@ -83,6 +83,22 @@ ion-card
                 }
             }
         }
+    }
+     ion-list::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+     ion-list::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 0px;
+    }
+     ion-list::-webkit-scrollbar-thumb:hover{
+    background: #ffffff;
+    }
+     ion-list::-webkit-scrollbar-track{
+    background: #ffffff;
+    border-radius: 0px;
+    box-shadow: inset 7px 10px 12px #ffffff;
     }
     h5
     {
@@ -297,6 +313,11 @@ ion-slides
         {
             width: 50%;
         }
+        ion-list
+        {
+            height: 230px;
+            overflow-y: initial;
+        } 
     }
     .img_persona
     {
