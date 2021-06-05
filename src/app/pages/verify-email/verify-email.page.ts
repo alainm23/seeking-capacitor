@@ -130,4 +130,47 @@ export class VerifyEmailPage implements OnInit {
 
     toast.present ();
   }
+
+  async logout () {
+    const alert = await this.alertController.create({
+      header: 'Cerrar sesión',
+      message: '¿Está seguro que desea cerrar sesión?',
+      mode: 'ios',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        }, {
+          text: 'Confirmar',
+          handler: async () => {
+            const loading = await this.loadingController.create({
+              translucent: true,
+              spinner: 'lines-small',
+              mode: 'ios'
+            });
+
+            await loading.present ();
+
+            this.auth.logout ().subscribe (async (res: any) => {
+              await loading.dismiss ();
+              this.borrar_user_access ();
+              this.auth.logout_social ();
+            }, async error => {
+              await loading.dismiss ();
+              this.borrar_user_access ();
+              this.auth.logout_social ();
+            });
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  borrar_user_access () {
+    this.storage.clear ().then (() => {
+      this.navController.navigateRoot ('login');
+    });
+  }
 }

@@ -22,6 +22,8 @@ export class FilterPage implements OnInit {
   @Input () edad_range: any;
   @Input () location: any;
 
+  search_text: string = '';
+
   // Lista para mostrar
   apariencias: any [] = [
     {
@@ -210,7 +212,7 @@ export class FilterPage implements OnInit {
     }, 'filter');
   }
 
-  select_changed (event: any, key: string, list: string) {
+  select_changed (event: any, key: any, list: string) {
     let map: Map <string, number []>;
 
     if (list === 'personalidad') {
@@ -225,7 +227,7 @@ export class FilterPage implements OnInit {
     console.log (map);
   }
 
-  get_map_value (key: string, list: string) {
+  get_map_value (key: any, list: string) {
     let map: Map <string, number []>;
 
     if (list === 'personalidad') {

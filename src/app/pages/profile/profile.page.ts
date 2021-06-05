@@ -75,7 +75,7 @@ export class ProfilePage implements OnInit {
     });
   }
 
-  send_wink (item: any) {
+  send_wink () {
     this.loadings.wink = true
     this.database.send_wink (this.id).subscribe ((res: any) => {
       this.loadings.wink = false;

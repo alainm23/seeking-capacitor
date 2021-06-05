@@ -266,6 +266,6 @@
   <div class="div-flex-footer">
     <ion-icon name="chevron-back-circle-outline" (click)="back_step ()" class="icon-footer-profile"></ion-icon>
     <ion-button (click)="next_step ()" class="btn-continuar-footer" mode="ios">{{ 'Next' | translate }}</ion-button>
-    <ion-icon name="play-skip-forward-circle-outline" class="icon-footer-profile"></ion-icon>
+    <ion-icon name="play-skip-forward-circle-outline" (click)="skip_step ()" class="icon-footer-profile"></ion-icon>
   </div>
 </ion-footer>

@@ -47,7 +47,7 @@ export class RegistroPage implements OnInit {
   form_terms: FormGroup;
 
   slideOpts = {
-    initialSlide: 0,
+    initialSlide: 8,
     duration: 400,
     slidesPerView: 1
   };

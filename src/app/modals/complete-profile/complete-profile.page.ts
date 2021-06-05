@@ -744,6 +744,15 @@ export class CompleteProfilePage implements OnInit {
     }
   }
 
+  skip_step () {
+    this.ion_slides.lockSwipeToNext (false);
+    this.ion_slides.slideNext ();
+
+    setTimeout (() => {
+      this.ion_slides.lockSwipeToNext (true);
+    }, 400);
+  }
+
   is_string (item: any) {
     return typeof item === 'string'
   }

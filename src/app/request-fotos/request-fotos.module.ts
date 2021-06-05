@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { RequestFotosPageRoutingModule } from './request-fotos-routing.module';
 
 import { RequestFotosPage } from './request-fotos.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RequestFotosPageRoutingModule
+    RequestFotosPageRoutingModule,
+    TranslateModule
   ],
   declarations: [RequestFotosPage]
 })

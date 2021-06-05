@@ -4,6 +4,7 @@
   <p>
     {{ 'A validation e-mail was sent to' | translate }} {{ auth.USER_DATA.email }}. {{ 'Please confirm e-mail to proceed' | translate }}
   </p>
+  
   <!-- <p>
     {{ 'In order to have a valida account we need to confirm your e-mail address' | translate }}
     <br>
@@ -12,5 +13,6 @@
 </ion-content>
 <ion-footer class="ion-no-border ion-text-center">
   <ion-button (click)="validar_correo ()" mode="ios">{{ 'Lets go' | translate }}</ion-button>
+  <ion-button (click)="logout ()" mode="ios">{{ 'Log out' | translate }}</ion-button>
   <p class="p-top-footer">{{ 'I didnt get a code, please' | translate }} <br> <u (click)="resend ()">{{ 'resend it to me >' | translate }} </u></p>
 </ion-footer>

@@ -13,22 +13,15 @@
       class="slider-fondo">
       <div class="div-sombre-profile">
         <ion-button (click)="toggled_favorite ()" fill="clear" class="icon-corazon">
-        <ng-container *ngIf="loadings.favorite === true">
-          <ion-spinner color="light" name="dots"></ion-spinner>
-        </ng-container>
+          <ng-container *ngIf="loadings.favorite === true">
+            <ion-spinner color="light" name="dots"></ion-spinner>
+          </ng-container>
 
-        <ng-container *ngIf="loadings.favorite === false">
-          <ion-icon [name]="profile?.tengo_favorito === true ? 'heart': 'heart-outline'"></ion-icon>
-        </ng-container>
-      </ion-button>
+          <ng-container *ngIf="loadings.favorite === false">
+            <ion-icon [name]="profile?.tengo_favorito === true ? 'heart': 'heart-outline'"></ion-icon>
+          </ng-container>
+        </ion-button>
       </div>
-      <!-- <ion-thumbnail>
-        <ion-img [src]="item.imagen"></ion-img>
-      </ion-thumbnail> -->
-      
-      <!-- <ion-avatar class="avatar-slider">
-        <img [src]="">
-      </ion-avatar> -->
     </ion-slide>
   </ion-slides>
   <!-- <ion-button class="btn-flecha"><ion-icon name="arrow-down" class="icon-flecha"></ion-icon></ion-button> -->
