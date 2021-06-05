@@ -68,13 +68,13 @@ const routes: Routes = [
   {
     path: 'erase-profile',
     loadChildren: () => import('./erase-profile/erase-profile.module').then( m => m.EraseProfilePageModule)
-  },  {
-    path: 'gracias-profile',
-    loadChildren: () => import('./gracias-profile/gracias-profile.module').then( m => m.GraciasProfilePageModule)
   },
   {
-    path: 'selector',
-    loadChildren: () => import('./modals/selector/selector.module').then( m => m.SelectorPageModule)
+    path: 'gracias-profile',
+    loadChildren: () => import('./gracias-profile/gracias-profile.module').then( m => m.GraciasProfilePageModule)
+  },  {
+    path: 'report-user',
+    loadChildren: () => import('./modals/report-user/report-user.module').then( m => m.ReportUserPageModule)
   }
 
 ];

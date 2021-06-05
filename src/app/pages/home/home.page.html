@@ -27,6 +27,12 @@
         <ion-button mode="ios" [class.btn-active]="tab_filter === 'membresia'" class="btn-div" (click)="set_tab ('membresia')">
           {{ 'Verified users' | translate }}
         </ion-button>
+        <ion-button mode="ios" [class.btn-active]="tab_filter === 'nuevos'" class="btn-div" (click)="set_tab ('nuevos')">
+          {{ 'Newest member' | translate }}
+        </ion-button>
+        <ion-button mode="ios" [class.btn-active]="tab_filter === 'membresia'" class="btn-div" (click)="set_tab ('membresia')">
+          {{ 'Recently connected' | translate }}
+        </ion-button>
       </div>
     </ion-card>
   </ion-toolbar>
@@ -80,7 +86,7 @@
     </div>
   </ng-container>
 
-  <ion-item class="item-select" lines="none">
+  <!-- <ion-item class="item-select" lines="none">
     <ion-select (ionChange)="change_order ($event)" [(ngModel)]="order_by" interface="popover" placeholder="Sort by popularity" class="select-popu" mode="ios">
       <ion-select-option value="favoritos-desc" class="ion-text-wrap select-interface-option">
         {{ 'Popularity' | translate }}
@@ -99,7 +105,7 @@
       </ion-select-option>
     </ion-select>
     <ion-icon name="chevron-down-sharp" class="icon-select"></ion-icon>
-  </ion-item>
+  </ion-item> -->
   
   <ion-list class="div-list-card">
     <div *ngIf="home_loading === true" class="ion-text-center loading-box">
@@ -134,7 +140,7 @@
                     {{ item.edad }}
                   </span>
                   <span>
-                    {{ item.id_pais }}, {{ item.distance }}{{ item.distance_format }}
+                    {{ item.nombre_ciudad }}, {{ item.distance }}{{ item.distance_format }}
                   </span>
     
                   <!-- <span *ngIf="order_by === 'favoritos-desc'">

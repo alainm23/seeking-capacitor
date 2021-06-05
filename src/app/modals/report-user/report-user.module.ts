@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SelectorPageRoutingModule } from './selector-routing.module';
+import { ReportUserPageRoutingModule } from './report-user-routing.module';
 
-import { SelectorPage } from './selector.page';
+import { ReportUserPage } from './report-user.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SelectorPageRoutingModule
+    ReportUserPageRoutingModule
   ],
-  declarations: [SelectorPage]
+  declarations: [ReportUserPage]
 })
-export class SelectorPageModule {}
+export class ReportUserPageModule {}

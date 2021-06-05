@@ -7,7 +7,6 @@ import { report } from 'process';
 import { FormGroup , FormControl, Validators } from '@angular/forms';
 import { UtilsService } from '../../services/utils.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { SelectorPage } from '../../modals/selector/selector.page';
 import { Capacitor } from "@capacitor/core";
 import { Camera, CameraResultType, CameraSource, ImageOptions, Photo } from '@capacitor/camera';
 import { Storage } from '@ionic/storage-angular';
@@ -789,24 +788,5 @@ export class CompleteProfilePage implements OnInit {
     }
 
     return "5'";
-  }
-
-  async select_altura () {
-    const modal = await this.modalController.create ({
-      component: SelectorPage,
-      componentProps: {
-        items: this.alturas,
-        type: 'altura'
-      },
-      swipeToClose: true,
-      mode: 'ios'
-    });
-
-    modal.onDidDismiss ().then ((response: any) => {
-      if (response.role === 'response') {
-      }
-    });
-
-    return await modal.present ();
   }
 }

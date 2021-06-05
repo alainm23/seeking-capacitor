@@ -218,10 +218,13 @@
             <p class="color-plomo ion-text-center">{{ 'The more photos you have, the better' | translate }}</p>
             <ion-row>
               <ion-col size="4">
-                <ion-card class="card-fotos">
-                  <ion-avatar>
+                <ion-card
+                  [class.card-fotos-fondo-general]="profile_image !== ''"
+                  [ngStyle]="{'background-image': 'url(' + profile_image + ')'}"
+                  class="card-fotos">
+                  <!-- <ion-avatar>
                     <img [src]="profile_image">
-                  </ion-avatar>
+                  </ion-avatar> -->
                   <!-- <ion-button class="btn-close-fotos">
                     <ion-icon name="close-outline" class="icon-close-foto"></ion-icon>
                   </ion-button> -->
