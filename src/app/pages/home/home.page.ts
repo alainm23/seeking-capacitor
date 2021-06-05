@@ -194,7 +194,7 @@ export class HomePage implements OnInit {
   get_filter_data () {
     let request: any = {
       page: this.page,
-      orden: this.order_by,
+      // orden: this.order_by,
       tab: this.tab_filter,
       bestMatches: this.bestMatches,
       length_page: this.length_page,
