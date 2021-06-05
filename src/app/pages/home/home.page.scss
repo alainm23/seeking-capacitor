@@ -274,8 +274,8 @@ ion-slides
                     position: absolute;
                     right: 5px;
                     color: #ffffff;
-                    font-size: 21px;
-                    top: -10px;
+                    font-size: 1.875rem;
+                    bottom: 0px;
                 }
             }
             .p-nombre
@@ -285,7 +285,7 @@ ion-slides
                 font-size: 16px;
                 margin: 0px;
                 padding: 0px 7px;
-                width: 90%;
+                width: 78%;
                 position: relative;
                 padding-right: 40px;
                 display: -webkit-box;
@@ -304,7 +304,7 @@ ion-slides
                     --padding-bottom: 3px;
                     position: absolute;
                     right: 0;
-                    top: 2px;
+                    top: 0.25rem;
                     .icon-camara
                     {
                         color: #FFFFFF;
