@@ -58,10 +58,29 @@ h1
 .pcolor-formato
 {
     color: #333333;
-    font-family: Avenirlight;
+    font-family: AvenirMedium;
     margin: 0px;
     margin-top: 5px;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
+    font-size: 20px;
+}
+.p-mensaje
+{
+    margin-top: 30% !important;
+}
+.btn-ok-chats
+{
+    width: 90%;
+    --background: #77BDF0;
+    --background-activated: #77BDF0;
+    --color: #ffffff;
+    --color-activated: #ffffff;
+    font-family: AvenirHeavy;
+    --border-radius: 23px;
+    height: 45px;
+    text-transform: none;
+    --box-shadow: none;
+    margin-top: 5%;
 }
 .item-derecha
 {
@@ -255,6 +274,13 @@ ion-footer
         --padding-end: 1.875rem;
     }
 }
+@media (min-width: 540px)
+{
+    .btn-ok-chats
+    {
+        width: 50%;
+    }
+}
 @media (min-width: 640px)
 {
   ion-content
@@ -279,7 +305,7 @@ ion-footer
 {
   ion-content
   {
-    --padding-start: 9.375rem;
-    --padding-end: 9.375rem;
+    --padding-start: 100px;
+    --padding-end: 100px;
   }
 }

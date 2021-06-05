@@ -52,10 +52,10 @@
   <img *ngIf="abierto && loadings.page === false" src="assets/img/Imagen-11.png" class="img-llave">
   
   <ng-container *ngIf="abierto === false && loadings.page === false">
-    <p>
+    <p class="pcolor-formato p-mensaje">
       {{ 'Para abrir este chat es necesario un credito' | translate }}
     </p>
-    <ion-button (click)="pagar_credito ()" *ngIf="abierto === false">
+    <ion-button (click)="pagar_credito ()" *ngIf="abierto === false" mode="ios" class="btn-ok-chats">
       Ok
     </ion-button>
   </ng-container>
