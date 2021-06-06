@@ -30,7 +30,7 @@ import { UpgradeAccountMenuPageModule } from './modals/upgrade-account-menu/upgr
 import { PaymentPageModule } from './modals/payment/payment.module';
 import { EditProfileFormPageModule } from './modals/edit-profile-form/edit-profile-form.module';
 import { EditFotosPageModule } from './modals/edit-fotos/edit-fotos.module';
-import { SelectorPageModule } from './modals/selector/selector.module';
+import { ReportUserPageModule } from './modals/report-user/report-user.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -62,7 +62,7 @@ import { SelectorPageModule } from './modals/selector/selector.module';
     PaymentPageModule,
     EditProfileFormPageModule,
     EditFotosPageModule,
-    SelectorPageModule
+    ReportUserPageModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

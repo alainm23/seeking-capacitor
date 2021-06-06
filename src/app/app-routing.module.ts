@@ -68,7 +68,12 @@ const routes: Routes = [
   {
     path: 'erase-profile',
     loadChildren: () => import('./erase-profile/erase-profile.module').then( m => m.EraseProfilePageModule)
+  },
+  {
+    path: 'gracias-profile',
+    loadChildren: () => import('./gracias-profile/gracias-profile.module').then( m => m.GraciasProfilePageModule)
   },  {
+<<<<<<< HEAD
     path: 'gracias-profile',
     loadChildren: () => import('./gracias-profile/gracias-profile.module').then( m => m.GraciasProfilePageModule)
   },
@@ -79,6 +84,10 @@ const routes: Routes = [
   {
     path: 'settings-notifications',
     loadChildren: () => import('./settings-notifications/settings-notifications.module').then( m => m.SettingsNotificationsPageModule)
+=======
+    path: 'report-user',
+    loadChildren: () => import('./modals/report-user/report-user.module').then( m => m.ReportUserPageModule)
+>>>>>>> 8494c2fecb22c9cbcf9a291cddd82b24426bf683
   }
 
 ];
