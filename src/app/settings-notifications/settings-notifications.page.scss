@@ -1,0 +1,107 @@
+
+@font-face{
+    font-family: AvenirMedium;
+    src : url('/assets/font/Avenir-Medium.ttf')
+  }
+  @font-face{
+    font-family: AvenirHeavy;
+    src : url('/assets/font/Avenir Heavy.ttf')
+  }
+  @font-face{
+    font-family: Avenirlight;
+    src : url('/assets/font/avenirltstd-light.otf')
+  }
+  .icon-left-header
+  {
+    color: #707070;
+    font-size: 30px;
+    position: absolute;
+  }
+  ion-title
+  {
+    color: #333333;
+    font-family: AvenirHeavy;
+    font-size: 1.25rem;
+    margin-top: 18%;
+  }
+  ion-toolbar
+  {
+    --padding-start: 1.25rem;
+    --padding-end: 1.25rem;
+  }
+  ion-content
+  {
+    --padding-top: 10%;
+  }
+  ion-item
+  {
+    --inner-padding-end: 0px;
+    ion-label
+    {
+      margin-left: 8px;
+      color: #000000;
+      font-family: Avenirlight;
+      font-size: 1.125rem;
+    }
+    ion-checkbox
+    {
+      --border-color: #707070;
+      --border-style: solid;
+      --border-width: 1px;
+      margin-right: 0px;
+      --background-checked: #707070;
+      --border-color-checked: #707070;
+      --size: 25px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      --border-radius: 6px;
+    }
+  }
+  .label-list
+  {
+    color: #555555;
+    font-family: AvenirHeavy;
+    font-size: 1.125rem;
+  }
+  ion-list
+  {
+    padding-left: 1.875rem;
+    padding-right: 1.875rem;
+  }
+  .col-padding-eft-right
+  {
+    padding: 0px 1rem;
+  }
+  @media(min-width: 540px)
+  {
+    ion-title
+    {
+      margin-top: 10%;
+    }
+    ion-content
+    {
+      --padding-top: 5%;
+    }
+  }
+  @media(min-width: 768px)
+  {
+    ion-title
+    {
+      margin-top: 8%;
+    }
+    ion-list
+    {
+      padding-left: 6.25rem;
+      padding-right: 6.25rem;
+    }
+    
+  }
+  @media(min-width: 1024px)
+  {
+    ion-list
+    {
+      padding-left: 12.5rem;
+      padding-right: 12.5rem;
+    }
+    
+  }

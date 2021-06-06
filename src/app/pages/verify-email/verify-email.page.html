@@ -13,6 +13,6 @@
 </ion-content>
 <ion-footer class="ion-no-border ion-text-center">
   <ion-button (click)="validar_correo ()" mode="ios">{{ 'Lets go' | translate }}</ion-button>
-  <ion-button (click)="logout ()" mode="ios">{{ 'Log out' | translate }}</ion-button>
+  <p class="p-top-footer" mode="ios">{{ 'Connect with another account' | translate }} <br> <u (click)="logout ()">{{ 'Log out' | translate }} </u></p>
   <p class="p-top-footer">{{ 'I didnt get a code, please' | translate }} <br> <u (click)="resend ()">{{ 'resend it to me >' | translate }} </u></p>
 </ion-footer>

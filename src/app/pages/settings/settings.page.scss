@@ -89,7 +89,8 @@ ion-content
 .div-blanco
 {
     background: #ffffff;
-    padding: 20px 25px;
+    padding: 0px 25px;
+    padding-top: 10%;
     .item-select
     {
         --padding-start: 20px;
@@ -119,6 +120,18 @@ ion-content
             height: 70%;
         }
     }
+    .label-noti
+    {
+        color: #000000;
+        font-family: AvenirMedium;
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+    .icon-right-noti
+    {
+        color: #707070;
+        font-size: 1.875rem;
+    }
 }
 ion-list
 {
@@ -129,7 +142,7 @@ ion-list
         padding-left: 0px;
         color: #333333;
         font-family: AvenirHeavy;
-        font-size: 20px;
+        font-size: 1.25rem;
     }
     ion-item
     {
@@ -139,6 +152,8 @@ ion-list
         {
             color: #000000;
             font-family: Avenirlight;
+            margin-top: 0px;
+            margin-bottom: 0px;
         }
         ion-toggle
         {
@@ -146,10 +161,10 @@ ion-list
             --background-checked: #CB9229;
             --handle-background: #ffffff;
             --handle-background-checked: #ffffff;
-            width: 50px;
-            height: 26px;
+            width: 18%;
+            height: 28px;
             --handle-border-radius: 50%;
-            --border-radius: 13px;
+            --border-radius: 23px;
             --handle-width: 20px;
             --handle-height: 20px; 
             margin-left: 10px;
@@ -168,23 +183,26 @@ ion-list
         .delete_button {
             --background: red;
             --background-activated: red;
-            --border-radius: 13px;
+            --border-radius: 23px;
             font-family: AvenirHeavy;
             margin-left: 10px;
             margin-right: 10px;
-            font-size: 15px;
+            font-size: 18px;
             height: 30px;
         }
         ion-button
         {
             --background: #77BDF0;
             --background-activated: #77BDF0;
-            --border-radius: 13px;
+            --border-radius: 23px;
             font-family: AvenirHeavy;
             margin-left: 10px;
             margin-right: 10px;
-            font-size: 15px;
+            font-size: 18px;
             height: 30px;
+            width: 35%;
+            margin-top: 0px;
+            margin-bottom: 0px;
         }
     }
 }
@@ -197,7 +215,8 @@ ion-list
     }
     .div-blanco
     {
-        padding: 20px 50px;
+        padding: 0px 50px;
+        padding-top: 5% !important;
     }
     .p-account
     {
@@ -213,7 +232,7 @@ ion-list
     }
     .div-blanco
     {
-        padding: 20px 100px;
+        padding: 0px 100px;
     }
     .p-account
     {
@@ -229,7 +248,7 @@ ion-list
     }
     .div-blanco
     {
-        padding: 20px 200px;
+        padding: 0px 200px;
     }
     .p-account
     {

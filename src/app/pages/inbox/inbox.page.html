@@ -42,7 +42,8 @@
 
     <ion-item *ngFor="let item of items" (click)="view_chat (item)" class="item-inbox" lines="none">
       <div class="div-linea"></div>
-      <ion-avatar>
+      <!-- Esto es la clase ( avatar-img-fondo) para que lo pongas las imagenes en fondo-->
+      <ion-avatar class="avatar-img-fondo">
         <img [src]="item.receptor.thumbnail">
       </ion-avatar>
       <div class="div-datos">
