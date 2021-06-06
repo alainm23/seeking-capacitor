@@ -27,17 +27,7 @@
         <ion-button mode="ios" [class.btn-active]="tab_filter === 'membresia'" class="btn-div" (click)="set_tab ('membresia')">
           {{ 'Verified users' | translate }}
         </ion-button>
-<<<<<<< HEAD
       </div>-->
-=======
-        <ion-button mode="ios" [class.btn-active]="tab_filter === 'nuevos'" class="btn-div" (click)="set_tab ('nuevos')">
-          {{ 'Newest member' | translate }}
-        </ion-button>
-        <ion-button mode="ios" [class.btn-active]="tab_filter === 'membresia'" class="btn-div" (click)="set_tab ('membresia')">
-          {{ 'Recently connected' | translate }}
-        </ion-button>
-      </div>
->>>>>>> 8494c2fecb22c9cbcf9a291cddd82b24426bf683
     </ion-card>
     <ion-slides pager="false" [options]="slideOpts" class="slides-header">
       <ion-slide class="slide-header">
@@ -137,12 +127,8 @@
     </div>
   </ng-container>
 
-<<<<<<< HEAD
   <!--
   <ion-item class="item-select" lines="none">
-=======
-  <!-- <ion-item class="item-select" lines="none">
->>>>>>> 8494c2fecb22c9cbcf9a291cddd82b24426bf683
     <ion-select (ionChange)="change_order ($event)" [(ngModel)]="order_by" interface="popover" placeholder="Sort by popularity" class="select-popu" mode="ios">
       <ion-select-option value="favoritos-desc" class="ion-text-wrap select-interface-option">
         {{ 'Popularity' | translate }}
@@ -161,7 +147,6 @@
       </ion-select-option>
     </ion-select>
     <ion-icon name="chevron-down-sharp" class="icon-select"></ion-icon>
-<<<<<<< HEAD
   </ion-item>
   -->
   <ion-card class="card-badge">
@@ -172,10 +157,6 @@
     <ion-badge mode="ios" class="badge-filtros">Filtro 1.<span class="span-close">x</span></ion-badge>
   </ion-card>
 
-=======
-  </ion-item> -->
-  
->>>>>>> 8494c2fecb22c9cbcf9a291cddd82b24426bf683
   <ion-list class="div-list-card">
     <div *ngIf="home_loading === true" class="ion-text-center loading-box">
       <ion-spinner></ion-spinner>
