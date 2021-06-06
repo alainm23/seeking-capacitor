@@ -17,7 +17,7 @@
 
         <img src="assets/img/iconos_Filtrar.png" (click)="filtrar ()" class="img-iguales img-cuadrado">
       </div>
-      <div class="div-botones">
+      <!--<div class="div-botones">
         <ion-button mode="ios" [class.btn-active]="tab_filter === null" class="btn-div" (click)="set_tab (null)">
           {{ 'Show all' | translate }}
         </ion-button>
@@ -27,8 +27,55 @@
         <ion-button mode="ios" [class.btn-active]="tab_filter === 'membresia'" class="btn-div" (click)="set_tab ('membresia')">
           {{ 'Verified users' | translate }}
         </ion-button>
-      </div>
+      </div>-->
     </ion-card>
+    <ion-slides pager="false" [options]="slideOpts" class="slides-header">
+      <ion-slide class="slide-header">
+        <p class="p-slide">Show all</p>
+      </ion-slide>
+      <ion-slide class="slide-header">
+        <p class="p-slide">Online now</p>
+      </ion-slide>
+      <ion-slide class="slide-header slider-activo">
+        <p class="p-slide">Verified</p>
+      </ion-slide>
+      <ion-slide class="slide-header">
+        <p class="p-slide">Closest</p>
+      </ion-slide>
+      <ion-slide class="slide-header">
+        <p class="p-slide">Closest</p>
+      </ion-slide>
+      <ion-slide class="slide-header">
+        <p class="p-slide">Show all</p>
+      </ion-slide>
+      <ion-slide class="slide-header">
+        <p class="p-slide">Online now</p>
+      </ion-slide>
+      <ion-slide class="slide-header">
+        <p class="p-slide">Verified</p>
+      </ion-slide>
+      <ion-slide class="slide-header">
+        <p class="p-slide">Closest</p>
+      </ion-slide>
+      <ion-slide class="slide-header">
+        <p class="p-slide">Closest</p>
+      </ion-slide>
+      <ion-slide class="slide-header">
+        <p class="p-slide">Show all</p>
+      </ion-slide>
+      <ion-slide class="slide-header">
+        <p class="p-slide">Online now</p>
+      </ion-slide>
+      <ion-slide class="slide-header">
+        <p class="p-slide">Verified</p>
+      </ion-slide>
+      <ion-slide class="slide-header">
+        <p class="p-slide">Closest</p>
+      </ion-slide>
+      <ion-slide class="slide-header">
+        <p class="p-slide">Closest</p>
+      </ion-slide>
+    </ion-slides>
   </ion-toolbar>
 </ion-header>
 
@@ -80,6 +127,7 @@
     </div>
   </ng-container>
 
+  <!--
   <ion-item class="item-select" lines="none">
     <ion-select (ionChange)="change_order ($event)" [(ngModel)]="order_by" interface="popover" placeholder="Sort by popularity" class="select-popu" mode="ios">
       <ion-select-option value="favoritos-desc" class="ion-text-wrap select-interface-option">
@@ -100,7 +148,15 @@
     </ion-select>
     <ion-icon name="chevron-down-sharp" class="icon-select"></ion-icon>
   </ion-item>
-  
+  -->
+  <ion-card class="card-badge">
+    <ion-badge mode="ios" class="badge-filtros">Age.<span class="span-close">x</span></ion-badge>
+    <ion-badge mode="ios" class="badge-filtros">Ingles.<span class="span-close">x</span></ion-badge>
+    <ion-badge mode="ios" class="badge-filtros">Filtro 1.<span class="span-close">x</span></ion-badge>
+    <ion-badge mode="ios" class="badge-filtros">Este es otro filtro.<span class="span-close">x</span></ion-badge>
+    <ion-badge mode="ios" class="badge-filtros">Filtro 1.<span class="span-close">x</span></ion-badge>
+  </ion-card>
+
   <ion-list class="div-list-card">
     <div *ngIf="home_loading === true" class="ion-text-center loading-box">
       <ion-spinner></ion-spinner>
@@ -115,9 +171,9 @@
       </ion-item>
     </div>
     
-    <ion-grid style="padding-left: 0px;padding-right: 0px;">
+    <ion-grid style="padding-left: 0px;padding-right: 0px;padding-top: 0px;">
       <ion-row>
-        <ion-col size="6" *ngFor="let item of items">
+        <ion-col size="6" size-md="4" *ngFor="let item of items">
           <ion-card
             class="card-perfil card-pefil-fondo"
             [ngStyle]="{'background-image': 'url(' + item.thumbnail + ')'}"

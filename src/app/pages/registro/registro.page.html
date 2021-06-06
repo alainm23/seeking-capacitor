@@ -202,7 +202,7 @@
               <input hidden multiple type="file" accept="image/*" #fileInput (change)="changeListener($event)">
             </ion-card>
 
-            <ion-button *ngIf="profile_image !== ''"  (click)="selectImageSource ('profile', 0, fileInput)" fill="clear">
+            <ion-button *ngIf="profile_image !== ''"  (click)="selectImageSource ('profile', 0, fileInput)" fill="clear" mode="ios" class="btn-cambiar">
               Cambiar
             </ion-button>
           </ion-col>
@@ -217,7 +217,7 @@
             <h1 class="ion-text-center">{{ 'Very good photo!' | translate }}</h1>
             <p class="color-plomo ion-text-center">{{ 'The more photos you have, the better' | translate }}</p>
             <ion-row>
-              <ion-col size="4">
+              <ion-col size="4" size-lg="3">
                 <ion-card class="card-fotos">
                   <ion-avatar>
                     <img [src]="profile_image">
@@ -227,7 +227,7 @@
                   </ion-button> -->
                 </ion-card>
               </ion-col>
-              <ion-col size="4">
+              <ion-col size="4" size-lg="3">
                 <ion-card
                   [class.card-fotos-fondo-general]="photos [0] !== ''"
                   [ngStyle]="{'background-image': 'url(' + get_photos_index (0) + ')'}"
@@ -240,7 +240,7 @@
                   <input hidden multiple type="file" accept="image/*" #fileInput (change)="changeListener($event)">
                 </ion-card>
               </ion-col>
-              <ion-col size="4">
+              <ion-col size="4" size-lg="3">
                 <ion-card
                   [class.card-fotos-fondo-general]="photos [1] !== ''"
                   [ngStyle]="{'background-image': 'url(' + get_photos_index (1) + ')'}"
@@ -252,7 +252,7 @@
                   </ion-button>
                 </ion-card>
               </ion-col>
-              <ion-col size="4">
+              <ion-col size="4" size-lg="3">
                 <ion-card
                   [class.card-fotos-fondo-general]="photos [2] !== ''"
                   [ngStyle]="{'background-image': 'url(' + get_photos_index (2) + ')'}"

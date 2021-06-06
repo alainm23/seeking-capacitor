@@ -75,6 +75,10 @@ const routes: Routes = [
   {
     path: 'selector',
     loadChildren: () => import('./modals/selector/selector.module').then( m => m.SelectorPageModule)
+  },
+  {
+    path: 'settings-notifications',
+    loadChildren: () => import('./settings-notifications/settings-notifications.module').then( m => m.SettingsNotificationsPageModule)
   }
 
 ];
