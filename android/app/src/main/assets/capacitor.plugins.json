@@ -1,5 +1,9 @@
 [
 	{
+		"pkg": "@capacitor-community/admob",
+		"classpath": "com.getcapacitor.community.admob.AdMob"
+	},
+	{
 		"pkg": "@capacitor-community/facebook-login",
 		"classpath": "com.getcapacitor.community.facebooklogin.FacebookLogin"
 	},

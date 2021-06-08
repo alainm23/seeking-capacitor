@@ -85,10 +85,8 @@ export class RequestGpsPage implements OnInit {
       let geocoder: any = new google.maps.Geocoder ();
 
       let location = new google.maps.LatLng (
-        // coordinates.coords.latitude,
-        // coordinates.coords.longitude
-        -13.5302925,
-        -71.9528784
+        coordinates.coords.latitude,
+        coordinates.coords.longitude
       );
 
       geocoder.geocode ({'location': location}, (results: any, status: any) => {

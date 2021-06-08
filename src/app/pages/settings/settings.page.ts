@@ -96,7 +96,7 @@ export class SettingsPage implements OnInit {
     this.auth.get_settings ().subscribe ((res: any) => {
       console.log (res);
 
-      this.modo_incognito = res.send_me_gifts;
+      this.modo_incognito = res.modo_incognito;
       this.send_me_gifts = res.send_me_gifts;
       this.auto_renew = res.auto_renew;
       this.get_newsletter = res.get_newsletter;

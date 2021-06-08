@@ -30,7 +30,7 @@
         <ion-button mode="ios" [class.btn-active]="tab_filter === 'nuevos'" class="btn-div" (click)="set_tab ('nuevos')">
           {{ 'Newest member' | translate }}
         </ion-button>
-        <ion-button mode="ios" [class.btn-active]="tab_filter === 'membresia'" class="btn-div" (click)="set_tab ('membresia')">
+        <ion-button mode="ios" [class.btn-active]="tab_filter === 'membresia'" class="btn-div" (click)="set_tab ('recientes')">
           {{ 'Recently connected' | translate }}
         </ion-button>
       </div>
@@ -137,10 +137,10 @@
               <div class="item-badge">
                 <p class="label-miles">
                   <span class="span-edad">
-                    {{ item.edad }}, {{ item.id_pais }}
+                    {{ item.edad }}, {{ item.nombre_ciudad }}
                   </span>
                   <span>
-                    {{ item.nombre_ciudad }}, {{ item.distance }}{{ item.distance_format }}
+                    ({{ item.distance }}{{ item.distance_format }})
                   </span>
     
                   <!-- <span *ngIf="order_by === 'favoritos-desc'">

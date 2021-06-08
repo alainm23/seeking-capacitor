@@ -11,6 +11,7 @@ import { AuthService } from './services/auth.service';
 import { Capacitor } from "@capacitor/core";
 import { App } from '@capacitor/app';
 import { Location } from '@angular/common';
+import { AdmobService } from './services/admob.service';
 
 @Component({
   selector: 'app-root',
@@ -26,38 +27,12 @@ export class AppComponent {
     private auth: AuthService,
     private location: Location,
     private alertController: AlertController,
-    private navController: NavController) {
+    private navController: NavController,
+    private admob: AdmobService) {
     this.OnInit ();
   }
 
   async OnInit () {
-    // this.platform.backButton.subscribeWithPriority (10, (processNextHandler) => {
-    //   console.log('Back press handler!');
-    //   if (this.location.isCurrentPathEqualTo ('tabs/home') || 
-    //   this.location.isCurrentPathEqualTo ('tabs/inbox') || 
-    //   this.location.isCurrentPathEqualTo ('tabs/favorites') ||
-    //   this.location.isCurrentPathEqualTo ('tabs/profile-menu') ||
-    //   this.location.isCurrentPathEqualTo ('login')) {
-    //     console.log('Show Exit Alert!');
-    //     processNextHandler ();
-    //     this.showExitConfirm ();
-    //   } else {
-    //     console.log('Navigate to back page');
-    //     this.location.back ();
-    //   }
-    // });
-
-    // this.platform.backButton.subscribeWithPriority(5, () => {
-    //   console.log('Handler called to force close!');
-    //   this.alertController.getTop().then(r => {
-    //     if (r) {
-    //       navigator['app'].exitApp();
-    //     }
-    //   }).catch(e => {
-    //     console.log(e);
-    //   })
-    // });
-
     await this.storage.create ();
 
     if (Capacitor.isNativePlatform ()) {
@@ -95,6 +70,7 @@ export class AppComponent {
       this.websocket.init_websocket (user_data.id, user_access.access_token);
       this.auth.update_user_data (user_access.access_token);
       if (Capacitor.isNativePlatform ()) {
+        this.admob.init ();
         this.onesignal.init_onesignal ({USER_ACCESS: user_access, USER_DATA: user_data});
       }
     }
@@ -104,6 +80,7 @@ export class AppComponent {
       this.websocket.init_websocket (res.USER_DATA.id, res.USER_ACCESS.access_token);
 
       if (Capacitor.isNativePlatform ()) {
+        this.admob.init ();
         this.onesignal.init_onesignal (res);
       }
     });

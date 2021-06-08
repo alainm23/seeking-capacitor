@@ -11,5 +11,8 @@ public class MainActivity extends BridgeActivity {
 
     // Facebook
     registerPlugin (com.getcapacitor.community.facebooklogin.FacebookLogin.class);
+
+    // AdMob
+    registerPlugin(com.getcapacitor.community.admob.AdMob.class);
   }
 }
