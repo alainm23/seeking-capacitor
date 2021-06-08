@@ -27,11 +27,12 @@
         flex-wrap: wrap;
         margin-top: 40px;
         justify-content: space-evenly;
+        margin-bottom: 1.25rem;
         .label-titulo
         {
             color: #000000;
             font-family: Avenirlight;
-            font-size: 20px;
+            font-size: 1.375rem;
             margin-left: 8px;
             width: 150px;
             margin-top: 6px;
@@ -182,7 +183,7 @@ ion-slides
     padding: 0px 6px;
     --background: transparent;
     box-shadow: none;
-    margin-top: 30px;
+    margin-top: 0px;
     .card-pefil-fondo
     {
         background-position: top center;
@@ -195,7 +196,7 @@ ion-slides
         width: 100%;
         border-radius: 0px;
         margin: 0px;
-        height: 250px;
+        height: 15.625rem;
         overflow: hidden;
         box-shadow: 0px 6px 12px #00000029;
         margin-bottom: 0px;
@@ -282,7 +283,7 @@ ion-slides
             {
                 font-family: AvenirHeavy;
                 color: #ffffff;
-                font-size: 16px;
+                font-size: 1rem;
                 margin: 0px;
                 padding: 0px 7px;
                 width: 78%;
@@ -509,6 +510,62 @@ ion-footer
     font-size: 20px;
     height: 50px;
 }
+.slides-header
+{
+    background: #FFFFFF !important;
+    padding: 10px 0px !important;
+    box-shadow: 0px 3px 6px #00000029;
+    .slide-header
+    {
+        width: auto !important;
+        padding: 3px 18px;
+        border-radius: 19px;
+        .p-slide
+        {
+            color: #707070;
+            margin: 0px;
+            font-size: 1.125rem;
+            font-family: AvenirMedium;
+        }
+    }
+    .slider-activo
+    {
+        background-color: #C89530 !important;
+        .p-slide
+        {
+            color: #ffffff !important;
+        }
+    }
+}
+.card-badge
+{
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+    box-shadow: none;
+    padding: 1.25rem 10px;
+    z-index: -1;
+    .badge-filtros
+    {
+        --background: #F5F5F5;
+        --color: #555555;
+        font-size: 1rem;
+        font-family: AvenirMedium;
+        --padding-top: 8px;
+        --padding-bottom: 8px;
+        --padding-start: 1.25rem;
+        --padding-end: 1.25rem;
+        border-radius: 19px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        .span-close
+        {
+            margin-left: 10px;
+        }
+    }
+}
 @media(min-width: 411px)
 {
     .card-cabezera
@@ -577,7 +634,14 @@ ion-footer
     {
         .card-perfil
         {
-            height: 350px;
+            height: 21.875rem;
+            .div-sombra
+            {
+                .p-nombre
+                {
+                    width: 85%;
+                }
+            }
         }
     }
 }
@@ -658,6 +722,7 @@ ion-footer
         padding: 0px 45px;
         .div-flex
         {
+            flex-wrap: nowrap;
             .label-titulo
             {
                 width: 508px;
@@ -673,10 +738,27 @@ ion-footer
     }
     .div-list-card
     {
-        padding: 0px 45px;
+        padding: 0px 2.8125rem;
         .card-perfil
         {
-            height: 450px;
+            height: 18.75rem;
+            .div-sombra
+            {
+                .p-nombre
+                {
+                    width: 85%;
+                    padding: 0px 20px
+                }
+                .item-badge
+                {
+                    padding-left: 18px;
+                    padding-right: 50px;
+                    .icon-activo-favorito
+                    {
+                        right: 15px;
+                    }
+                }
+            }
         }
     }
     ion-footer
@@ -698,6 +780,10 @@ ion-footer
         {
             right: 55px;
         }
+    }
+    .card-badge
+    {
+        padding: 1.25rem 2.8125rem;
     }
 }
 @media(min-width: 1024px)
@@ -722,10 +808,9 @@ ion-footer
     }
     .div-list-card
     {
-        padding: 0px 120px;
         .card-perfil
         {
-            height: 600px;
+            height: 23.75rem;
         }
     }
     ion-slides

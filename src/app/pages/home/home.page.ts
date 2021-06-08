@@ -28,9 +28,10 @@ export class HomePage implements OnInit {
   }
 
   slideOpts = {
-    initialSlide: 3,
-    slidesPerView: 2.5,
-    spaceBetween: 9,
+    initialSlide: 1,
+    slidesPerView: 3,
+    spaceBetween: 0,
+    centeredSlides: true,
   };
 
   items: any [] = [];

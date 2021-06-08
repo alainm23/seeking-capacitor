@@ -279,4 +279,8 @@ export class SettingsPage implements OnInit {
       this.navController.navigateRoot ('login');
     });
   }
+
+  buttonClick () {
+    this.navController.navigateForward (['settings-notifications']);
+  }
 }

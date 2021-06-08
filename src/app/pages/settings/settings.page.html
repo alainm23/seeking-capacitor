@@ -18,12 +18,21 @@
 
 <ion-content>
   <div class="div-blanco">
+    <!--
     <ion-item class="item-select" lines="none">
+      
       <ion-select class="select-favo" [(ngModel)]="seccion" interface="popover">
         <ion-select-option value="account">Account</ion-select-option>
         <ion-select-option value="emails_notifications">Emails & notifications</ion-select-option>
       </ion-select>
       <div class="div-linea-select"></div>
+      <ion-lbael>Notificaciones</ion-lbael>
+      <ion-icon name="chevron-forward-sharp" slot="end"></ion-icon>
+    </ion-item>
+    -->
+    <ion-item lines="none" class="ion-no-padding" button (click)="buttonClick()" >
+      <ion-label class="ion-no-margin label-noti">Notificaciones</ion-label>
+      <ion-icon name="chevron-forward-sharp" slot="end" class="ion-no-margin icon-right-noti"></ion-icon>
     </ion-item>
   </div>
 

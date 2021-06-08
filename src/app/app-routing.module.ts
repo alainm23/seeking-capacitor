@@ -72,9 +72,18 @@ const routes: Routes = [
   {
     path: 'gracias-profile',
     loadChildren: () => import('./gracias-profile/gracias-profile.module').then( m => m.GraciasProfilePageModule)
-  },  {
-    path: 'report-user',
-    loadChildren: () => import('./modals/report-user/report-user.module').then( m => m.ReportUserPageModule)
+  },
+  {
+    path: 'gracias-profile',
+    loadChildren: () => import('./gracias-profile/gracias-profile.module').then( m => m.GraciasProfilePageModule)
+  },
+  /*{
+    path: 'selector',
+    loadChildren: () => import('./modals/selector/selector.module').then( m => m.SelectorPageModule)
+  },*/
+  {
+    path: 'settings-notifications',
+    loadChildren: () => import('./settings-notifications/settings-notifications.module').then( m => m.SettingsNotificationsPageModule)
   }
 
 ];

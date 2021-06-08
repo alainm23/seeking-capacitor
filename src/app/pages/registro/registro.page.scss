@@ -78,13 +78,14 @@ h1
     color: #333333;
     font-family: AvenirHeavy;
     margin-top: 0px;
-    font-size: 20px;
+    font-size: 1.5625rem;
 }
 .color-plomo
 {
     color: #555555;
     font-family: AvenirMedium;
     margin-top: 20px;
+    font-size: 1.125rem;
 }
 .img-terminos
 {
@@ -149,6 +150,7 @@ ion-footer
     {
         width: 65%;
         --background: #77BDF0;
+        --background-activated: #77BDF0;
         --box-shadow: none;
         --border-radius: 23px;
         height: 50px;
@@ -359,6 +361,20 @@ ion-slide
     padding-left: 30px;
     padding-right: 30px;
 }
+.btn-cambiar
+{
+    width: 65%;
+    --background: #77BDF0;
+    --background-activated: #77BDF0;
+    --box-shadow: none;
+    --border-radius: 23px;
+    height: 50px;
+    text-transform: none;
+    font-family: AvenirMedium;
+    font-size: 1.25rem;
+    --color: #fff;
+    margin-top: 5%;
+}
 @media(min-width: 375px) and (min-height: 667px)
 {
     .card-fotos
@@ -454,6 +470,10 @@ ion-slide
         margin: 10% 20% 0px 20%;
         height: 400px;
     }
+    .btn-cambiar
+    {
+        width: 40%;
+    }
 }
 @media(min-width: 1024px)
 {
@@ -476,5 +496,9 @@ ion-slide
     {
         padding-left: 120px;
         padding-right: 120px;
+    }
+    .btn-cambiar
+    {
+        width: 30%;
     }
 }
