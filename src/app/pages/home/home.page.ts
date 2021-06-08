@@ -100,30 +100,30 @@ export class HomePage implements OnInit {
   // }
 
   async complete_profile () {
-    // const modal = await this.modalController.create ({
-    //   component: CompleteProfilePage,
-    //   swipeToClose: true,
-    //   // presentingElement: this.routerOutlet.nativeEl,
-    //   mode: 'ios'
-    // });
+    const modal = await this.modalController.create ({
+      component: CompleteProfilePage,
+      swipeToClose: true,
+      // presentingElement: this.routerOutlet.nativeEl,
+      mode: 'ios'
+    });
 
-    // modal.onDidDismiss ().then ((response: any) => {
-    //   if (response.role === 'update') {
-    //     this.loading_complete_perfil = true;
-    //     this.database.get_porcentaje_perfil ().subscribe (async (res: any) => {
-    //       console.log (res);
-    //       this.complete_perfil = res.porcentaje_perfil;
-    //       console.log (this.complete_perfil);
-    //       this.loading_complete_perfil = false;
-    //     }, error => {
-    //       console.log (error);
-    //     });
-    //   }
-    // });
+    modal.onDidDismiss ().then ((response: any) => {
+      if (response.role === 'update') {
+        this.loading_complete_perfil = true;
+        this.database.get_porcentaje_perfil ().subscribe (async (res: any) => {
+          console.log (res);
+          this.complete_perfil = res.porcentaje_perfil;
+          console.log (this.complete_perfil);
+          this.loading_complete_perfil = false;
+        }, error => {
+          console.log (error);
+        });
+      }
+    });
 
-    // return await modal.present ();
+    return await modal.present ();
 
-    this.admob.rewardVideo ();
+    // this.admob.rewardVideo ();
   }
 
   get_data (event: any, join: boolean, type: string) {
