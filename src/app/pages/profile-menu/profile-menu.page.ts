@@ -7,6 +7,7 @@ import { IonRouterOutlet } from '@ionic/angular';
 import { DatabaseService } from '../../services/database.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Storage } from '@ionic/storage-angular';
+import { AdmobService } from 'src/app/services/admob.service';
 
 @Component({
   selector: 'app-profile-menu',
@@ -23,7 +24,8 @@ export class ProfileMenuPage implements OnInit {
     private storage: Storage,
     private alertController: AlertController,
     private loadingCo1ntroller: LoadingController,
-    private navController: NavController) { }
+    private navController: NavController,
+    private admob: AdmobService) { }
 
   ngOnInit () {
     
@@ -78,6 +80,14 @@ export class ProfileMenuPage implements OnInit {
     this.storage.clear ().then (() => {
       this.navController.navigateRoot ('login');
     });
+  }
+
+  ver_video () {
+    // this.admob.rewardVideo ();
+  }
+
+  ver_interstitial () {
+    // this.admob.interstitial ();
   }
 
   go_page (page: string) {

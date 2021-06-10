@@ -82,6 +82,8 @@ export class FilterPage implements OnInit {
   show_personalidad: boolean = false;
   show_laborales: boolean = false;
 
+  relaciones_map: Map <number, string> = new Map <number, string> ();
+
   constructor (private modalController: ModalController,
     public database: DatabaseService) { }
 
@@ -89,7 +91,6 @@ export class FilterPage implements OnInit {
     if (this.database.RELACIONES.length <= 0)  {
       this.database.get_datos ('relaciones').subscribe ((res: any) => {
         this.database.RELACIONES = res;
-        // console.log (res);
       }, error => {
         console.log (error);
       });

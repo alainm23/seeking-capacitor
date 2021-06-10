@@ -48,22 +48,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/block-page/block-page.module').then( m => m.BlockPagePageModule)
   },
   {
-    path: '',
-    canActivate: [AuthGuard],
-    loadChildren: () => import ('./pages/tabs/tabs.module').then (m => m.TabsPageModule)
-  },
-  {
     path: 'request-fotos',
     loadChildren: () => import('./request-fotos/request-fotos.module').then( m => m.RequestFotosPageModule)
   },
   {
     path: 'restore-password',
     loadChildren: () => import('./pages/restore-password/restore-password.module').then( m => m.RestorePasswordPageModule)
-  },
-  {
-    path: '',
-    canActivate: [AuthGuard],
-    loadChildren: () => import ('./pages/tabs/tabs.module').then (m => m.TabsPageModule)
   },
   {
     path: 'erase-profile',
@@ -77,15 +67,16 @@ const routes: Routes = [
     path: 'gracias-profile',
     loadChildren: () => import('./gracias-profile/gracias-profile.module').then( m => m.GraciasProfilePageModule)
   },
-  /*{
-    path: 'selector',
-    loadChildren: () => import('./modals/selector/selector.module').then( m => m.SelectorPageModule)
-  },*/
   {
     path: 'settings-notifications',
-    loadChildren: () => import('./settings-notifications/settings-notifications.module').then( m => m.SettingsNotificationsPageModule)
-  }
-
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/settings-notifications/settings-notifications.module').then( m => m.SettingsNotificationsPageModule)
+  },
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    loadChildren: () => import ('./pages/tabs/tabs.module').then (m => m.TabsPageModule)
+  },
 ];
 
 @NgModule({

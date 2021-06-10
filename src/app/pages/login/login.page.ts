@@ -44,44 +44,58 @@ export class LoginPage implements OnInit {
     });
 
     this.form = new FormGroup ({
-      email: new FormControl ('', [Validators.required]),
+      email: new FormControl ('', [Validators.required, Validators.email]),
       password: new FormControl ('', [Validators.required])
     });
   }
   
   async submit () {
-    const loading = await this.loadingController.create ({
-      translucent: true,
-      spinner: 'lines-small',
-      mode: 'ios'
-    });
-
-    await loading.present ();
-
-    this.auth.login (this.get_trim (this.form.value.email), this.get_trim (this.form.value.password)).subscribe ((res: any) => {
-      let request: any = res;
-      this.auth.get_fields_access_token (request.access_token, this.data).subscribe (async (user: any) => {
-        console.log (user);
-        request.user = user;
-        if (request.user.estado_cuenta > 0) {
-          this.navController.navigateRoot (['block-page', JSON.stringify (request.user)]).then (() => {
-            loading.dismiss ();
-          });
-        } else {
-          this.auth.save_local_user (request).then (() => {
-            loading.dismiss ();
-            this.navController.navigateRoot ('home');
-          });
-        }
+    if (this.form.valid) {
+      const loading = await this.loadingController.create ({
+        translucent: true,
+        spinner: 'lines-small',
+        mode: 'ios'
+      });
+  
+      await loading.present ();
+  
+      this.auth.login (this.get_trim (this.form.value.email), this.get_trim (this.form.value.password)).subscribe ((res: any) => {
+        let request: any = res;
+        this.auth.get_fields_access_token (request.access_token, this.data).subscribe (async (user: any) => {
+          console.log (user);
+          request.user = user;
+          if (request.user.estado_cuenta > 0) {
+            this.navController.navigateRoot (['block-page', JSON.stringify (request.user)]).then (() => {
+              loading.dismiss ();
+            });
+          } else {
+            this.auth.save_local_user (request).then (() => {
+              loading.dismiss ();
+              this.navController.navigateRoot ('home');
+            });
+          }
+        }, error => {
+          loading.dismiss ();
+          console.log (error);
+        });
       }, error => {
         loading.dismiss ();
         console.log (error);
+        this.presentToast (this.translate.instant ('The access data is incorrect'), 'danger');
       });
-    }, error => {
-      loading.dismiss ();
-      console.log (error);
-      this.presentToast (this.translate.instant ('The access data is incorrect'), 'danger');
-    });
+    } else {
+      ['email', 'password'].forEach ((control: string) => {
+        if (this.form.controls [control].errors !== null) {
+          if (this.form.controls [control].errors.email === true) {
+            this.presentToast (this.translate.instant ('Enter a valid email address'), 'danger');
+          } else if (this.form.controls [control].errors.equalTo === true) {
+            this.presentToast (this.translate.instant ('The confirm email and email must match'), 'danger');
+          } else if (this.form.controls [control].errors.required === true) {
+            this.presentToast (this.translate.instant ('Your email is required'), 'danger');
+          }
+        }
+      });
+    }
   }
 
   get_trim (value: string) {

@@ -66,7 +66,6 @@ export class AppComponent {
     let user_access: any = JSON.parse (await this.storage.get ('USER_ACCESS'));
 
     if (user_data !== undefined && user_data !== null) {
-      console.log ('Iniciamos WebSocket & OneSignal');
       this.websocket.init_websocket (user_data.id, user_access.access_token);
       this.auth.update_user_data (user_access.access_token);
       if (Capacitor.isNativePlatform ()) {
@@ -76,7 +75,6 @@ export class AppComponent {
     }
 
     this.auth.get_user_observable ().subscribe ((res: any) => {
-      console.log ('Iniciamos WebSocket & OneSignal', res);
       this.websocket.init_websocket (res.USER_DATA.id, res.USER_ACCESS.access_token);
 
       if (Capacitor.isNativePlatform ()) {

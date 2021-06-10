@@ -82,16 +82,16 @@ export class SelectPlanPage implements OnInit {
           if (this.membresia > 0) {
             setTimeout (() => {
               this.slides.slideTo (this.membresia + 1);
-            }, 300);
+            }, 250);
           } else {
             setTimeout (() => {
               this.slides.slideTo (0);
-            }, 300);
+            }, 250);
           }
         } else {
           setTimeout (() => {
-            this.slides.slideTo (2);
-          }, 300);
+            this.slides.slideTo (0);
+          }, 250);
         }
       }, error => {
         loading.dismiss ();

@@ -17,109 +17,31 @@
 
         <img src="assets/img/iconos_Filtrar.png" (click)="filtrar ()" class="img-iguales img-cuadrado">
       </div>
-      <!--<div class="div-botones">
-        <ion-button mode="ios" [class.btn-active]="tab_filter === null" class="btn-div" (click)="set_tab (null)">
-          {{ 'Show all' | translate }}
-        </ion-button>
-        <ion-button mode="ios" [class.btn-active]="tab_filter === 'online'" class="btn-div" (click)="set_tab ('online')">
-          {{ 'Online now' | translate }}
-        </ion-button>
-        <ion-button mode="ios" [class.btn-active]="tab_filter === 'membresia'" class="btn-div" (click)="set_tab ('membresia')">
-          {{ 'Verified users' | translate }}
-        </ion-button>
-<<<<<<< HEAD
-        <ion-button mode="ios" [class.btn-active]="tab_filter === 'nuevos'" class="btn-div" (click)="set_tab ('nuevos')">
-          {{ 'Newest member' | translate }}
-        </ion-button>
-        <ion-button mode="ios" [class.btn-active]="tab_filter === 'membresia'" class="btn-div" (click)="set_tab ('recientes')">
-          {{ 'Recently connected' | translate }}
-        </ion-button>
-      </div>
-=======
-      </div>-->
-
     </ion-card>
     <ion-slides pager="false" [options]="slideOpts" class="slides-header">
-      <ion-slide class="slide-header">
-        <p class="p-slide">Show all</p>
+      <ion-slide [class.slider-activo]="tab_filter === null" (click)="set_tab (null)" class="slide-header">
+        <p class="p-slide">{{ 'Show all' | translate }}</p>
       </ion-slide>
-      <ion-slide class="slide-header">
-        <p class="p-slide">Online now</p>
+      <ion-slide [class.slider-activo]="tab_filter === 'online'" (click)="set_tab ('online')" class="slide-header">
+        <p class="p-slide">{{ 'Online now' | translate }}</p>
       </ion-slide>
-      <ion-slide class="slide-header slider-activo">
-        <p class="p-slide">Verified</p>
+      <ion-slide [class.slider-activo]="tab_filter === 'membresia'" (click)="set_tab ('membresia')" class="slide-header">
+        <p class="p-slide">{{ 'Verified users' | translate }}</p>
       </ion-slide>
-      <ion-slide class="slide-header">
-        <p class="p-slide">Closest</p>
+      <ion-slide [class.slider-activo]="tab_filter === 'nuevos'" (click)="set_tab ('nuevos')" class="slide-header">
+        <p class="p-slide">{{ 'Newest member' | translate }}</p>
       </ion-slide>
-      <ion-slide class="slide-header">
-        <p class="p-slide">Closest</p>
-      </ion-slide>
-      <ion-slide class="slide-header">
-        <p class="p-slide">Show all</p>
-      </ion-slide>
-      <ion-slide class="slide-header">
-        <p class="p-slide">Online now</p>
-      </ion-slide>
-      <ion-slide class="slide-header">
-        <p class="p-slide">Verified</p>
-      </ion-slide>
-      <ion-slide class="slide-header">
-        <p class="p-slide">Closest</p>
-      </ion-slide>
-      <ion-slide class="slide-header">
-        <p class="p-slide">Closest</p>
-      </ion-slide>
-      <ion-slide class="slide-header">
-        <p class="p-slide">Show all</p>
-      </ion-slide>
-      <ion-slide class="slide-header">
-        <p class="p-slide">Online now</p>
-      </ion-slide>
-      <ion-slide class="slide-header">
-        <p class="p-slide">Verified</p>
-      </ion-slide>
-      <ion-slide class="slide-header">
-        <p class="p-slide">Closest</p>
-      </ion-slide>
-      <ion-slide class="slide-header">
-        <p class="p-slide">Closest</p>
+      <ion-slide [class.slider-activo]="tab_filter === 'recientes'" (click)="set_tab ('recientes')" class="slide-header">
+        <p class="p-slide">{{ 'Recently connected' | translate }}</p>
       </ion-slide>
     </ion-slides>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <!-- <ion-button (click)="MostrarReward2 ()">
-    Video
-  </ion-button> -->
-
-  <!-- <ion-button (click)="cancelar ()">Cncelar</ion-button> -->
   <ion-refresher slot="fixed" (ionRefresh)="get_data ($event, false, 'refresher')">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  
-  <!-- <ion-slides pager="false" [options]="slideOpts">
-    <ion-slide style="height: 152px;" *ngIf="promovidos_loading === true">
-      <ion-spinner></ion-spinner>
-    </ion-slide>
-
-    <ion-slide *ngFor="let item of promovidos">
-      <ion-card (click)="view_profile (item)" class="card-slider">
-        <ion-thumbnail>
-          <ion-img [src]="get_photo (item.foto_perfil)"></ion-img>
-        </ion-thumbnail>
-        <div *ngIf="item.online === true" class="div-circulo-activo"></div>
-      </ion-card>
-    </ion-slide>
-
-    <ion-slide>
-      <ion-card class="card-amarillo">
-        <img src="assets/img/corana-amarrillo.PNG" class="img-slider">
-        <h6 class="h6-blanco">Get girls attention, put your photo right up here.</h6>
-      </ion-card>
-    </ion-slide>
-  </ion-slides>-->
 
   <ng-container *ngIf="complete_perfil?.total < 100">
     <div class="ion-text-center div-amarillo-profile">
@@ -137,34 +59,30 @@
     </div>
   </ng-container>
 
-  <!--
-  <ion-item class="item-select" lines="none">
-    <ion-select (ionChange)="change_order ($event)" [(ngModel)]="order_by" interface="popover" placeholder="Sort by popularity" class="select-popu" mode="ios">
-      <ion-select-option value="favoritos-desc" class="ion-text-wrap select-interface-option">
-        {{ 'Popularity' | translate }}
-      </ion-select-option>
-      <ion-select-option value="created_at-desc" class="ion-text-wrap select-interface-option">
-        {{ 'Newest member' | translate }}
-      </ion-select-option>
-      <ion-select-option value="last_seen-desc" class="ion-text-wrap select-interface-option">
-        {{ 'Recently connected' | translate }}
-      </ion-select-option>
-      <ion-select-option value="edad-desc" class="ion-text-wrap select-interface-option">
-        {{ 'Older' | translate }}
-      </ion-select-option>
-      <ion-select-option value="edad-asc" class="ion-text-wrap select-interface-option">
-        {{ 'Younger' | translate }}
-      </ion-select-option>
-    </ion-select>
-    <ion-icon name="chevron-down-sharp" class="icon-select"></ion-icon>
-  </ion-item>
-  -->
   <ion-card class="card-badge">
-    <ion-badge mode="ios" class="badge-filtros">Age.<span class="span-close">x</span></ion-badge>
-    <ion-badge mode="ios" class="badge-filtros">Ingles.<span class="span-close">x</span></ion-badge>
-    <ion-badge mode="ios" class="badge-filtros">Filtro 1.<span class="span-close">x</span></ion-badge>
-    <ion-badge mode="ios" class="badge-filtros">Este es otro filtro.<span class="span-close">x</span></ion-badge>
-    <ion-badge mode="ios" class="badge-filtros">Filtro 1.<span class="span-close">x</span></ion-badge>
+    <ion-badge *ngIf="edad_range.lower !== 18 || edad_range.upper !== 50" mode="ios" class="badge-filtros">
+      Age: {{ edad_range.lower }} - {{ edad_range.upper }}<span class="span-close">x</span>
+    </ion-badge>
+    
+    <ion-badge *ngFor="let item of relationship" mode="ios" class="badge-filtros">
+      {{ get_data_name (item, 'relationship') }} <span (click)="delete_filter (item, relationship)" class="span-close">x</span>
+    </ion-badge>
+
+    <ion-badge *ngFor="let item of idiomas" mode="ios" class="badge-filtros">
+      {{ get_data_name (item, 'idiomas') }} <span (click)="delete_filter (item, idiomas)" class="span-close">x</span>
+    </ion-badge>
+
+    <ion-badge *ngFor="let item of get_personalidades ()" mode="ios" class="badge-filtros">
+      <span>{{ get_data_title (item, 'personalidad') }}: </span>{{ get_data_name (item, 'personalidad') }}<span (click)="delete_map_filter (item, personalidad_map)" class="span-close">x</span>
+    </ion-badge>
+
+    <ion-badge *ngFor="let item of get_apariencias ()" mode="ios" class="badge-filtros">
+      <span>{{ get_data_title (item, 'apariencia') }}: </span>{{ get_data_name (item, 'apariencia') }}<span (click)="delete_map_filter (item, apariencia_map)" class="span-close">x</span>
+    </ion-badge>
+
+    <ion-badge *ngFor="let item of get_extras ()" mode="ios" class="badge-filtros">
+      {{ get_data_title (item, 'extras') }}: {{ get_data_name (item, 'extras') }}<span (click)="delete_map_filter (item, extra_map)" class="span-close">x</span>
+    </ion-badge>
   </ion-card>
 
   <ion-list class="div-list-card">
@@ -202,30 +120,12 @@
                   <span>
                     ({{ item.distance }}{{ item.distance_format }})
                   </span>
-    
-                  <!-- <span *ngIf="order_by === 'favoritos-desc'">
-                    {{ item.favoritos }} Likes
-                  </span>
-    
-                  <span *ngIf="order_by === 'edad-desc' || order_by === 'edad-asc'">
-                    {{ item.nombre_pais }}
-                  </span>
-    
-                  <span *ngIf="order_by === 'last_seen-desc'">
-                    {{ get_relative_format (item.last_seen) }}
-                  </span>
-    
-                  <span *ngIf="order_by === 'created_at-desc'">
-                    {{ get_relative_format (item.created_at) }}
-                  </span> -->
                 </p>
-                <ion-icon name="heart-outline" class="icon-activo-favorito"></ion-icon>
-                <!--Icono activo de favorito
-                <ion-icon name="heart-sharp" class="icon-activo-favorito"></ion-icon>-->
+                <ion-icon (click)="toggled_favorite (item, $event)" *ngIf="item.tengo_favorito === false" name="heart-outline" class="icon-activo-favorito"></ion-icon>
+                <ion-icon (click)="toggled_favorite (item, $event)" *ngIf="item.tengo_favorito === true" name="heart-sharp" class="icon-activo-favorito"></ion-icon>
               </div>
             </div>
             <ion-thumbnail class="avatar-img">
-              <!-- <ion-img [src]="item.thumbnail" class="img-persona"></ion-img> -->
             </ion-thumbnail>
             <img src="assets/img/grupo926.png" *ngIf="item.membresia === 1" class="img-circulo-amarrilo">
           </ion-card>
