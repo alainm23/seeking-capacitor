@@ -1,13 +1,13 @@
 <ion-content class="ion-text-center">
   <img src="assets/img/Grupo804.png" class="img-logo-genral">
-  <h1>Get credits</h1>
-  <p>Simply subscribe and gain access to our entire platform!</p>
-  <p>You have <span>{{ auth.USER_DATA.creditos }}</span> credits left:</p>
+  <h1>{{ 'Get credits' | translate }}</h1>
+  <p>{{ 'You have' | translate }} <span>{{ auth.USER_DATA.creditos }}</span> {{ 'credits' | translate }}:</p>
+  <!-- <p>{{ 'Simply subscribe and gain access to our entire platform!' | translate }}</p> -->
   <ion-card *ngFor="let item of prices" (click)="select_price (item)">
     <h5 class="ion-no-margin">{{ item.cantidad }} {{ 'Credits' | translate }}</h5>
     <p class="p_card ion-no-margin">$ {{ item.precio }}</p>
   </ion-card>
 </ion-content>
 <ion-footer class="ion-no-border">
-  <p class="ion-text-center p-footer" (click)="close ()">< Go back</p>
+  <p class="ion-text-center p-footer" (click)="close ()"><  {{ 'Go back' | translate }}</p>
 </ion-footer>

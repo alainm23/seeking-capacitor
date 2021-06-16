@@ -24,14 +24,12 @@
           <img [src]="perfil.thumbnail" class="img-perfil">
         </ion-avatar>
         <div class="div-general-top">
-          <div class="div-conversacion-una-linea div-anaranjado-conversacion div-radius-primer-mensaje">
+          <div class="div-conversacion-una-linea div-anaranjado-conversacion">
             <p class="p-conversacion p-conversacion-blanco ion-no-margin">{{ format_message (item.message) }}</p>
             <span class="span-hora span-hora-blanco">{{ get_date_format (item.created_at) }}</span>
           </div>
-          <!-- <div class="div-conversacion-una-linea div-anaranjado-conversacion div-radius-ultimo-mensaje">
-            <p class="p-conversacion p-conversacion-blanco ion-no-margin">{{ item.message }}</p>
-            <span class="span-hora span-hora-blanco">{{ get_date_format (item.created_at) }}</span>
-          </div> -->
+          <!-- div-radius-primer-mensaje
+          div-radius-ultimo-mensaje -->
         </div>
       </ion-item>
   

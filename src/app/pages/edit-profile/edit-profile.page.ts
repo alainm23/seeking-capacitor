@@ -19,7 +19,7 @@ export class EditProfilePage implements OnInit {
     'altura', 'idiomas', 'foto_perfil',
     'metric_system', 'name', 'nombre_ciudad',
     'nombre_pais', 'estoy_buscando', 'intereses', 'acerca_de_mi',
-    'personalidades', 'apariencias', 'generos_interes', 'relaciones'];
+    'personalidades', 'apariencias', 'generos_interes', 'relaciones', 'galeria'];
   constructor (private auth: AuthService,
     private modalController: ModalController,
     private loadingController: LoadingController,
@@ -61,14 +61,16 @@ export class EditProfilePage implements OnInit {
     if (form === 'galeria') {
       const modal = await this.modalController.create ({
         component: EditFotosPage,
+        componentProps: {
+          foto_perfil: this.profile.foto_perfil,
+          galeria: this.profile.galeria
+        },
         swipeToClose: true,
         mode: 'ios'
       });
   
       modal.onDidDismiss ().then ((response: any) => {
-        if (response.role === 'update') {
-          this.update_fields ();
-        }
+        this.update_fields ();
       });
   
       return await modal.present ();

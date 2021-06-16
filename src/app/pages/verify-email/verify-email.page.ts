@@ -80,10 +80,6 @@ export class VerifyEmailPage implements OnInit {
     let now = moment ();
     let verify_email = moment (await this.storage.get ('verify-email-sent'));
 
-    console.log ('now: ', now.format ());
-    console.log ('send: ', verify_email.format ());
-    console.log (now.diff (verify_email, 'minutes'));
-
     if (now.diff (verify_email, 'minutes') <= 10) {
       this.presentToast (
         this.utils.get_translate (
@@ -133,15 +129,15 @@ export class VerifyEmailPage implements OnInit {
 
   async logout () {
     const alert = await this.alertController.create({
-      header: 'Cerrar sesión',
-      message: '¿Está seguro que desea cerrar sesión?',
+      header: this.utils.get_translate ('Log out'),
+      message: this.utils.get_translate ('¿Está seguro que desea cerrar sesión?'),
       mode: 'ios',
       buttons: [
         {
-          text: 'Cancelar',
+          text: this.utils.get_translate ('Cancelar'),
           role: 'cancel'
         }, {
-          text: 'Confirmar',
+          text: this.utils.get_translate ('Confirmar'),
           handler: async () => {
             const loading = await this.loadingController.create({
               translucent: true,

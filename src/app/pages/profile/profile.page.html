@@ -27,7 +27,7 @@
   <!-- <ion-button class="btn-flecha"><ion-icon name="arrow-down" class="icon-flecha"></ion-icon></ion-button> -->
   <div class="div-padding-left-right">
     <h1>{{ profile?.usernick }}, {{ profile?.edad }}</h1>
-    <p class="p-nombre-lima">{{ profile?.nombre_ciudad }}, {{ profile?.nombre_pais }}. {{ profile?.distance }}</p>
+    <p class="p-nombre-lima">{{ profile?.nombre_ciudad }}, {{ profile?.nombre_pais }}. {{ profile?.distance }}{{ profile?.distance_format }}</p>
     <p class="p-height">{{ 'Height' | translate }} <span>{{ profile?.altura }}m</span></p>
     <ion-card class="card-note">
       <ion-note *ngFor="let item of profile?.idiomas" class="note-idioma">
@@ -45,7 +45,7 @@
       {{ profile?.estoy_buscando }}
     </p>
   </ion-card>
-  <ion-card class="card-mapa">
+  <ion-card [ngStyle]="{'display':profile?.config?.permiso_ubicacion == 1 ? 'block' : 'none' }" class="card-mapa">
     <div #map id="map"></div>
   </ion-card>
   <div  class="div-padding-left-right">
@@ -66,7 +66,7 @@
     <ion-grid class="ion-no-padding">
       <ion-row>
         <ion-col size="12">
-          <h5 class="h5-im h5-bottom-perso">{{ 'Personality:' | translate }}</h5>
+          <h5 class="h5-im h5-bottom-perso">{{ 'Personality' | translate }}:</h5>
         </ion-col>
         <ion-col *ngFor="let item of profile?.personalidades" size="4" class="col-bottom">
           <p class="p-color-plomo-titulo">{{ item.personalidad }}</p>

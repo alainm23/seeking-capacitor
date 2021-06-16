@@ -5,6 +5,8 @@ import { AuthService } from '../../services/auth.service';
 import { DatabaseService } from '../../services/database.service';
 import { Storage } from '@ionic/storage-angular';
 import { AlertController, LoadingController, NavController, ToastController } from '@ionic/angular';
+import * as moment from 'moment';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-settings',
@@ -12,12 +14,14 @@ import { AlertController, LoadingController, NavController, ToastController } fr
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
+  lang: string;
   seccion: string = 'account';
   modo_incognito: boolean = false;
   send_me_gifts: boolean = false;
   auto_renew: boolean = false;
   get_newsletter:boolean = false;
   metric_system: boolean = false;
+  permiso_ubicacion: boolean = false;
   planes: any [] = [];
   winks_notifications: any = {
     alert: false,
@@ -82,9 +86,17 @@ export class SettingsPage implements OnInit {
     private loadingController: LoadingController,
     private database: DatabaseService,
     private alertController: AlertController,
-    private storage: Storage) { }
+    private storage: Storage,
+    private translate: TranslateService) { }
 
   async ngOnInit () {
+    this.storage.get ('lang').then (async (lang: string) => {
+      this.lang = lang;
+      if (lang === undefined || lang === null) {
+        this.lang = 'en';
+      }
+    });
+
     const loading = await this.loadingController.create ({
       translucent: true,
       spinner: 'lines-small',
@@ -101,6 +113,7 @@ export class SettingsPage implements OnInit {
       this.auto_renew = res.auto_renew;
       this.get_newsletter = res.get_newsletter;
       this.metric_system = res.metric_system;
+      this.permiso_ubicacion = res.permiso_ubicacion;
 
       this.winks_notifications = res.winks_notifications;
       this.favorites_notifications = res.favorites_notifications;
@@ -131,6 +144,8 @@ export class SettingsPage implements OnInit {
     let request: any = {};
     request.campo = campo;
     request.valor = event.detail.checked; 
+
+    console.log (request);
 
     this.auth.save_settings (request).subscribe ((res: any) => {
       // this.presentToast ('Success', 'success');
@@ -282,5 +297,28 @@ export class SettingsPage implements OnInit {
 
   buttonClick () {
     this.navController.navigateForward (['settings-notifications']);
+  }
+
+  change_lan (event: any) {
+    moment.locale ();
+    this.set_lang (event.detail.value);
+  }
+
+  async set_lang (lang: any) {
+    this.translate.setDefaultLang (lang);
+    await this.storage.set ('lang', lang);
+
+    let request: any = {};
+    request.campo = 'language';
+    request.valor = this.lang === 'en' ? 1: 2;
+
+    console.log (request);
+
+    this.auth.save_settings (request).subscribe ((res: any) => {
+      console.log (res);
+      // this.presentToast ('Success', 'success');
+    }, error => {
+      console.log (error);
+    });
   }
 }

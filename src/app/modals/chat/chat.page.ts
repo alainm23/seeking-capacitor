@@ -69,10 +69,6 @@ export class ChatPage implements OnInit {
     this.id_recipient = this.perfil.id;
     this.id_sender = this.auth.USER_DATA.id;
 
-    console.log ('Recipient', this.id_recipient);
-    console.log ('Sender', this.id_sender);
-    console.log ('Abierto', this.abierto);
-    
     this.get_data (null, false);
   }
 
@@ -87,7 +83,9 @@ export class ChatPage implements OnInit {
     console.log (this.page);
 
     this.database.get_chat (this.chat_id, this.page).subscribe ((res: any []) => {
+      
       console.log (res);
+
       if (join) {
         res.forEach ((e: any) => {
           this.messages.unshift (e);

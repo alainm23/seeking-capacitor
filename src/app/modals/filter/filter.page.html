@@ -18,7 +18,7 @@
     <ion-icon name="chevron-forward-outline"></ion-icon>
   </div>
 
-  <ion-searchbar #searchbar [(ngModel)]="search_text" placeholder="{{ 'Search locations' | translate }}"></ion-searchbar>
+  <ion-searchbar [disabled]="auth.USER_DATA.membresia == '0'" #searchbar [(ngModel)]="search_text" placeholder="{{ 'Search locations' | translate }}"></ion-searchbar>
 
   <div class="div-disml div-bottom">
     <h4 class="titulo-campos ion-no-margin">{{ 'General' | translate }}</h4>

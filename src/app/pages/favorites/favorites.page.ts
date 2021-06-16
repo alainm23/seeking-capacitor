@@ -19,6 +19,13 @@ export class FavoritesPage implements OnInit {
   order_by: string = 'date-desc';
   seccion: string = 'favoritos';
 
+  slideOpts = {
+    initialSlide: 1,
+    slidesPerView: 3,
+    spaceBetween: 0,
+    centeredSlides: true,
+  };
+  
   constructor (private database: DatabaseService,
     private modalController: ModalController,
     private navController: NavController) { }

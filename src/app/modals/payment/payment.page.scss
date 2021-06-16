@@ -29,19 +29,20 @@ ion-card
             --padding-start: 0px;
             --inner-padding-end: 0px;
             display: flex;
-            align-content: center;
-            height: 23px;
+            align-items: flex-start;
+            line-height: 1;
             ion-icon
             {
                 color: #85B745;
-                font-size: 16px;
+                font-size: 20px;
             }
             ion-label
             {
                 color: #8F8F8F;
                 font-family: AvenirMedium;
-                font-size: 14px;
+                font-size: 18px;
                 margin-left: 5px;
+                white-space: normal;
                 .span_morado
                 {
                     color: #9437D8;

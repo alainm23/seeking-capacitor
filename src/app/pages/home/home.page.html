@@ -83,6 +83,10 @@
     <ion-badge *ngFor="let item of get_extras ()" mode="ios" class="badge-filtros">
       {{ get_data_title (item, 'extras') }}: {{ get_data_name (item, 'extras') }}<span (click)="delete_map_filter (item, extra_map)" class="span-close">x</span>
     </ion-badge>
+
+    <ion-badge *ngIf="location !== null" mode="ios" class="badge-filtros">
+      Ciudad: {{ location?.pais }}<span *ngIf="location?.ciudad">, {{ location?.ciudad }}</span><span (click)="delete_location ()" class="span-close">x</span>
+    </ion-badge>
   </ion-card>
 
   <ion-list class="div-list-card">

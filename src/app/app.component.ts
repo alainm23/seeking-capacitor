@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { AlertController, Platform, NavController} from '@ionic/angular';
 
 // Services
@@ -28,7 +28,8 @@ export class AppComponent {
     private location: Location,
     private alertController: AlertController,
     private navController: NavController,
-    private admob: AdmobService) {
+    private admob: AdmobService,
+    private zone: NgZone) {
     this.OnInit ();
   }
 
@@ -45,6 +46,23 @@ export class AppComponent {
   }
 
   async init () {
+    App.addListener('appUrlOpen', (data: any) => {
+      this.zone.run (() => {
+        // Example url: https://beerswift.app/tabs/tab2
+        // slug = /tabs/tab2
+
+        alert (JSON.stringify (data));
+
+        const slug = data.url.split (".app").pop ();
+
+        if (slug) {
+          
+        }
+        // If no match, do nothing - let regular routing
+        // logic take over
+      });
+    });
+
     App.addListener ('backButton', () => {
       console.log('Back press handler!');
 

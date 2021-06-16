@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar style="position: relative;">
     <ion-icon (click)="view_profile ()" name="chevron-back-outline" slot="start" class="icon-left-header"></ion-icon>
-    <ion-title class="ion-text-center">Notifications settings</ion-title>
+    <ion-title class="ion-text-center">{{ 'Notifications settings' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-text-center">
@@ -9,180 +9,180 @@
 
     <ion-list-header class="ion-no-padding">
       <ion-label class="ion-text-start ion-text-wrap label-list">
-        When someone winks me…
+        {{ 'When someone winks me' | translate }}…
       </ion-label>
     </ion-list-header>
     <ion-row class="ion-margin-bottom">
       <ion-col sieze="6" class="col-padding-eft-right">
         <ion-item lines="none" class="ion-no-padding">
           <ion-checkbox (ionChange)="update_check ($event, winks_notifications, 'winks_notifications', 'alert')" [(ngModel)]="winks_notifications.alert"></ion-checkbox>
-          <ion-label>Notification</ion-label>
+          <ion-label>{{ 'Notification' | translate }}</ion-label>
         </ion-item>
       </ion-col>
       <ion-col sieze="6" class="col-padding-eft-right">
         <ion-item lines="none" class="ion-no-padding">
           <ion-checkbox (ionChange)="update_check ($event, winks_notifications, 'winks_notifications', 'email')" [(ngModel)]="winks_notifications.email"></ion-checkbox>
-          <ion-label>E-mail</ion-label>
+          <ion-label>{{ 'E-mail' | translate }}</ion-label>
         </ion-item>
       </ion-col>
     </ion-row>
 
     <ion-list-header class="ion-no-padding">
       <ion-label class="ion-text-start ion-text-wrap label-list">
-        When someone adds me to favorites…
+        {{ 'When someone adds me to favorites' | translate }}…
       </ion-label>
     </ion-list-header>
     <ion-row class="ion-margin-bottom">
       <ion-col sieze="6" class="col-padding-eft-right">
         <ion-item lines="none" class="ion-no-padding">
           <ion-checkbox (ionChange)="update_check ($event, favorites_notifications, 'favorites_notifications', 'alert')" [(ngModel)]="favorites_notifications.alert"></ion-checkbox>
-          <ion-label>Notification</ion-label>
+          <ion-label>{{ 'Notification' | translate }}</ion-label>
         </ion-item>
       </ion-col>
       <ion-col sieze="6" class="col-padding-eft-right">
         <ion-item lines="none" class="ion-no-padding">
           <ion-checkbox (ionChange)="update_check ($event, favorites_notifications, 'favorites_notifications', 'email')" [(ngModel)]="favorites_notifications.email"></ion-checkbox>
-          <ion-label>E-mail</ion-label>
+          <ion-label>{{ 'E-mail' | translate }}</ion-label>
         </ion-item>
       </ion-col>
     </ion-row>
 
     <ion-list-header class="ion-no-padding">
       <ion-label class="ion-text-start ion-text-wrap label-list">
-        When someone sends me a message…
+        {{ 'When someone sends me a message' | translate }}…
       </ion-label>
     </ion-list-header>
     <ion-row class="ion-margin-bottom">
       <ion-col sieze="6" class="col-padding-eft-right">
         <ion-item lines="none" class="ion-no-padding">
           <ion-checkbox (ionChange)="update_check ($event, message_notifications, 'message_notifications', 'alert')" [(ngModel)]="message_notifications.alert"></ion-checkbox>
-          <ion-label>Notification</ion-label>
+          <ion-label>{{ 'Notification' | translate }}</ion-label>
         </ion-item>
       </ion-col>
       <ion-col sieze="6" class="col-padding-eft-right">
         <ion-item lines="none" class="ion-no-padding">
           <ion-checkbox (ionChange)="update_check ($event, message_notifications, 'message_notifications', 'email')" [(ngModel)]="message_notifications.email"></ion-checkbox>
-          <ion-label>E-mail</ion-label>
+          <ion-label>{{ 'E-mail' | translate }}</ion-label>
         </ion-item>
       </ion-col>
     </ion-row>
 
     <ion-list-header class="ion-no-padding">
       <ion-label class="ion-text-start ion-text-wrap label-list">
-        When someone views my profile…
+        {{ 'When someone views my profile' | translate }}…
       </ion-label>
     </ion-list-header>
     <ion-row class="ion-margin-bottom">
       <ion-col sieze="6" class="col-padding-eft-right">
         <ion-item lines="none" class="ion-no-padding">
           <ion-checkbox (ionChange)="update_check ($event, profile_notifications, 'profile_notifications', 'alert')" [(ngModel)]="profile_notifications.alert"></ion-checkbox>
-          <ion-label>Notification</ion-label>
+          <ion-label>{{ 'Notification' | translate }}</ion-label>
         </ion-item>
       </ion-col>
       <ion-col sieze="6" class="col-padding-eft-right">
         <ion-item lines="none" class="ion-no-padding">
           <ion-checkbox (ionChange)="update_check ($event, profile_notifications, 'profile_notifications', 'email')" [(ngModel)]="profile_notifications.email"></ion-checkbox>
-          <ion-label>E-mail</ion-label>
+          <ion-label>{{ 'E-mail' | translate }}</ion-label>
         </ion-item>
       </ion-col>
     </ion-row>
 
     <ion-list-header class="ion-no-padding">
       <ion-label class="ion-text-start ion-text-wrap label-list">
-        New members and matches…
+        {{ 'New members and matches' | translate }}…
       </ion-label>
     </ion-list-header>
     <ion-row class="ion-margin-bottom">
       <ion-col sieze="6" class="col-padding-eft-right">
         <ion-item lines="none" class="ion-no-padding">
           <ion-checkbox (ionChange)="update_check ($event, members_and_matches_notifications, 'members_and_matches_notifications', 'alert')" [(ngModel)]="members_and_matches_notifications.alert"></ion-checkbox>
-          <ion-label>Notification</ion-label>
+          <ion-label>{{ 'Notification' | translate }}</ion-label>
         </ion-item>
       </ion-col>
       <ion-col sieze="6" class="col-padding-eft-right">
         <ion-item lines="none" class="ion-no-padding">
           <ion-checkbox (ionChange)="update_check ($event, members_and_matches_notifications, 'members_and_matches_notifications', 'email')" [(ngModel)]="members_and_matches_notifications.email"></ion-checkbox>
-          <ion-label>E-mail</ion-label>
+          <ion-label>{{ 'E-mail' | translate }}</ion-label>
         </ion-item>
       </ion-col>
     </ion-row>
 
     <ion-list-header class="ion-no-padding">
       <ion-label class="ion-text-start ion-text-wrap label-list">
-        Profile changes are approved…
+        {{ 'Profile changes are approved' | translate }}…
       </ion-label>
     </ion-list-header>
     <ion-row class="ion-margin-bottom">
       <ion-col sieze="6" class="col-padding-eft-right">
         <ion-item lines="none" class="ion-no-padding">
           <ion-checkbox (ionChange)="update_check ($event, profile_changes_notifications, 'profile_changes_notifications', 'alert')" [(ngModel)]="profile_changes_notifications.alert"></ion-checkbox>
-          <ion-label>Notification</ion-label>
+          <ion-label>{{ 'Notification' | translate }}</ion-label>
         </ion-item>
       </ion-col>
       <ion-col sieze="6" class="col-padding-eft-right">
         <ion-item lines="none" class="ion-no-padding">
           <ion-checkbox (ionChange)="update_check ($event, profile_changes_notifications, 'profile_changes_notifications', 'email')" [(ngModel)]="profile_changes_notifications.email"></ion-checkbox>
-          <ion-label>E-mail</ion-label>
+          <ion-label>{{ 'E-mail' | translate }}</ion-label>
         </ion-item>
       </ion-col>
     </ion-row>
 
     <ion-list-header class="ion-no-padding">
       <ion-label class="ion-text-start ion-text-wrap label-list">
-        Verification & information requests…
+        {{ 'Verification & information requests' | translate }}…
       </ion-label>
     </ion-list-header>
     <ion-row class="ion-margin-bottom">
       <ion-col sieze="6" class="col-padding-eft-right">
         <ion-item lines="none" class="ion-no-padding">
           <ion-checkbox (ionChange)="update_check ($event, verification_and_information_notifications, 'verification_and_information_notifications', 'alert')" [(ngModel)]="verification_and_information_notifications.alert"></ion-checkbox>
-          <ion-label>Notification</ion-label>
+          <ion-label>{{ 'Notification' | translate }}</ion-label>
         </ion-item>
       </ion-col>
       <ion-col sieze="6" class="col-padding-eft-right">
         <ion-item lines="none" class="ion-no-padding">
           <ion-checkbox (ionChange)="update_check ($event, verification_and_information_notifications, 'verification_and_information_notifications', 'email')" [(ngModel)]="verification_and_information_notifications.email"></ion-checkbox>
-          <ion-label>E-mail</ion-label>
+          <ion-label>{{ 'E-mail' | translate }}</ion-label>
         </ion-item>
       </ion-col>
     </ion-row>
 
     <ion-list-header class="ion-no-padding">
       <ion-label class="ion-text-start ion-text-wrap label-list">
-        News and Special events…
+        {{ 'News and Special events' | translate }}…
       </ion-label>
     </ion-list-header>
     <ion-row class="ion-margin-bottom">
       <ion-col sieze="6" class="col-padding-eft-right">
         <ion-item lines="none" class="ion-no-padding">
           <ion-checkbox (ionChange)="update_check ($event, news_and_events_notifications, 'news_and_events_notifications', 'alert')" [(ngModel)]="news_and_events_notifications.alert"></ion-checkbox>
-          <ion-label>Notification</ion-label>
+          <ion-label>{{ 'News and Special events' | translate }}x</ion-label>
         </ion-item>
       </ion-col>
       <ion-col sieze="6" class="col-padding-eft-right">
         <ion-item lines="none" class="ion-no-padding">
           <ion-checkbox (ionChange)="update_check ($event, news_and_events_notifications, 'news_and_events_notifications', 'email')" [(ngModel)]="news_and_events_notifications.email"></ion-checkbox>
-          <ion-label>E-mail</ion-label>
+          <ion-label>{{ 'E-mail' | translate }}</ion-label>
         </ion-item>
       </ion-col>
     </ion-row>
 
     <ion-list-header class="ion-no-padding">
       <ion-label class="ion-text-start ion-text-wrap label-list">
-        Promotions and offers…
+        {{ 'Promotions and offers' | translate }}…
       </ion-label>
     </ion-list-header>
     <ion-row class="ion-margin-bottom">
       <ion-col sieze="6" class="col-padding-eft-right">
         <ion-item lines="none" class="ion-no-padding">
           <ion-checkbox (ionChange)="update_check ($event, promotions_notifications, 'promotions_notifications', 'alert')" [(ngModel)]="promotions_notifications.alert"></ion-checkbox>
-          <ion-label>Notification</ion-label>
+          <ion-label>{{ 'Notification' | translate }}</ion-label>
         </ion-item>
       </ion-col>
       <ion-col sieze="6" class="col-padding-eft-right">
         <ion-item lines="none" class="ion-no-padding">
           <ion-checkbox (ionChange)="update_check ($event, promotions_notifications, 'promotions_notifications', 'email')" [(ngModel)]="promotions_notifications.email"></ion-checkbox>
-          <ion-label>E-mail</ion-label>
+          <ion-label>{{ 'E-mail' | translate }}</ion-label>
         </ion-item>
       </ion-col>
     </ion-row>

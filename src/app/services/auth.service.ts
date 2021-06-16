@@ -82,6 +82,11 @@ export class AuthService {
     return this.http.post (url, request);
   }
 
+  recover_email (email: string) {
+    let url = 'https://seekingterms.com/api/password/' + email;
+    return this.http.get (url);
+  }
+
   save_settings_all (request: any) {
     let url = 'https://seekingterms.com/api/users/user/settings/set/all';
 

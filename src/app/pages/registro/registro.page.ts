@@ -738,13 +738,13 @@ export class RegistroPage implements OnInit {
     if (Capacitor.isNativePlatform ()) {
       const actionSheet = await this.actionSheetController.create ({
         buttons: [{
-          text: 'Take a picture',
+          text: this.utils.get_translate ('Take a picture'),
           icon: 'camera',
           handler: () => {
             this.takePicture (CameraSource.Camera, type, index);
           }
         }, {
-          text: 'Select a photo',
+          text: this.utils.get_translate ('Select a photo'),
           icon: 'images',
           handler: () => {
             this.takePicture (CameraSource.Photos, type, index);

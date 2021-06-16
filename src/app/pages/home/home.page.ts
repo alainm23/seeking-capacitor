@@ -519,4 +519,21 @@ export class HomePage implements OnInit {
   async open_upgrade_menu () {
     this.database.open_upgrade_menu ();
   }
+
+  delete_location () {
+    this.location = null;
+
+    if (this.timer !== null) {
+      clearTimeout (this.timer);
+    }
+
+    this.timer = setTimeout (() => {
+      this.items = [];
+      this.page = 0;
+      this.home_loading = true;
+      this.get_data (null, false, '');
+
+      this.timer = null;
+    }, 750);
+  }
 }

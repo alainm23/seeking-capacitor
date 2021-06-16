@@ -5,7 +5,7 @@
           <img src="assets/img/Grupo804.png" class="img-logo-genral">
           <ion-item class="item-lenguaje" lines="none">
             <!--<ion-label>Language</ion-label>-->
-            <ion-select interface="popover" (ionChange)="change_lan ($event)" [(ngModel)]="lang" placeholder="Language" class="select-lenguaje">
+            <ion-select interface="popover" (ionChange)="change_lan ($event)" [(ngModel)]="lang" placeholder="{{ 'Language' | translate }}" class="select-lenguaje">
               <ion-select-option value="es">{{ 'Español' | translate }}</ion-select-option>
               <ion-select-option value="en">{{ 'Ingles' | translate }}</ion-select-option>
             </ion-select>

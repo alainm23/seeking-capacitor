@@ -3,6 +3,8 @@ import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 // Services
 import { ModalController } from '@ionic/angular';
 import { DatabaseService } from '../../services/database.service';
+import { AuthService } from '../../services/auth.service';
+import { Storage } from '@ionic/storage-angular';
 declare var google: any;
 
 @Component({
@@ -85,56 +87,64 @@ export class FilterPage implements OnInit {
   relaciones_map: Map <number, string> = new Map <number, string> ();
 
   constructor (private modalController: ModalController,
-    public database: DatabaseService) { }
+    public database: DatabaseService,
+    public auth: AuthService,
+    public storage: Storage) { }
 
   ngOnInit () {
-    if (this.database.RELACIONES.length <= 0)  {
-      this.database.get_datos ('relaciones').subscribe ((res: any) => {
-        this.database.RELACIONES = res;
-      }, error => {
-        console.log (error);
-      });
-    }
-    
-    if (this.database.IDIOMAS.length <= 0) {
-      this.database.get_datos ('idiomas').subscribe ((res: any) => {
-        this.database.IDIOMAS = res;
-        console.log (res);
-      }, error => {
-        console.log (error);
-      });
-    }
+    this.storage.get ('lang').then (async (lang: any) => {
+      if (lang === null || lang === undefined) {
+        lang = 'en';
+      }
 
-    if (this.database.PERSONALIDADES.length <= 0) {
-      this.database.get_datos ('personalidades').subscribe ((res: any) => {
-        console.log ('personalidades', res);
-        this.database.PERSONALIDADES = res;
-      }, error => {
-        console.log (error);
-      });
-    }
-
-    if (this.database.APARIENCIAS.length <= 0) {
-      this.database.get_datos ('apariencias').subscribe ((res: any) => {
-        console.log ('apariencias', res);
-        this.database.APARIENCIAS = res;
-      }, error => {
-        console.log (error);
-      });
-    }
-
-    if (this.database.EXTRAS.length <= 0) {
-      this.database.get_datos ('extras').subscribe ((res: any) => {
-        console.log ('extras', res);
-        this.database.EXTRAS = res;
-      }, error => {
-        console.log (error);
-      });
-    }
-
-    setTimeout(() => {
-      this.initAutocomplete ();
-    }, 500);
+      if (this.database.RELACIONES.length <= 0)  {
+        this.database.get_datos ('relaciones', lang).subscribe ((res: any) => {
+          this.database.RELACIONES = res;
+        }, error => {
+          console.log (error);
+        });
+      }
+      
+      if (this.database.IDIOMAS.length <= 0) {
+        this.database.get_datos ('idiomas', lang).subscribe ((res: any) => {
+          this.database.IDIOMAS = res;
+          console.log (res);
+        }, error => {
+          console.log (error);
+        });
+      }
+  
+      if (this.database.PERSONALIDADES.length <= 0) {
+        this.database.get_datos ('personalidades', lang).subscribe ((res: any) => {
+          console.log ('personalidades', res);
+          this.database.PERSONALIDADES = res;
+        }, error => {
+          console.log (error);
+        });
+      }
+  
+      if (this.database.APARIENCIAS.length <= 0) {
+        this.database.get_datos ('apariencias', lang).subscribe ((res: any) => {
+          console.log ('apariencias', res);
+          this.database.APARIENCIAS = res;
+        }, error => {
+          console.log (error);
+        });
+      }
+  
+      if (this.database.EXTRAS.length <= 0) {
+        this.database.get_datos ('extras', lang).subscribe ((res: any) => {
+          console.log ('extras', res);
+          this.database.EXTRAS = res;
+        }, error => {
+          console.log (error);
+        });
+      }
+  
+      setTimeout(() => {
+        this.initAutocomplete ();
+      }, 500);
+    });
   }
 
   initAutocomplete () {

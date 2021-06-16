@@ -11,14 +11,14 @@
           {{ 'Popular' | translate }}
         </span>
       </div>
-      <h5 *ngIf="type !== 'credis'" class="ion-no-margin ion-text-start">{{ data?.nombre }}</h5>
-      <h5 *ngIf="type === 'credis'" class="ion-no-margin ion-text-start">{{ data.cantidad }} {{ 'Credits' | translate }}</h5>
-      <p *ngIf="type !== 'credis'" class="p_card ion-no-margin ion-text-start">$ {{ data?.monto }} x month</p>
-      <p *ngIf="type === 'credis'" class="p_card ion-no-margin ion-text-start">$ {{ data?.precio }}</p>
+      <h5 *ngIf="type !== 'credis'" class="ion-no-margin ion-text-start ion-text-wrap">{{ data?.nombre }}</h5>
+      <h5 *ngIf="type === 'credis'" class="ion-no-margin ion-text-start ion-text-wrap">{{ data.cantidad }} {{ 'Credits' | translate }}</h5>
+      <p *ngIf="type !== 'credis'" class="p_card ion-no-margin ion-text-start ion-text-wrap">$ {{ data?.monto }} x month</p>
+      <p *ngIf="type === 'credis'" class="p_card ion-no-margin ion-text-start ion-text-wrap">$ {{ data?.precio }}</p>
       <ion-list mode="ios">
         <ion-item mode="ios" *ngFor="let item of data?.detalles" lines="none">
           <ion-icon name="checkmark-circle-sharp"></ion-icon>
-          <ion-label class="ion-no-margin">{{ item.nombre }}</ion-label>
+          <ion-label class="ion-no-margin ion-text-wrap">{{ item.nombre }}</ion-label>
         </ion-item>
       </ion-list>
     </ion-card>

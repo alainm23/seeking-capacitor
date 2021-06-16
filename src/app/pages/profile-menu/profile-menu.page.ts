@@ -8,6 +8,7 @@ import { DatabaseService } from '../../services/database.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Storage } from '@ionic/storage-angular';
 import { AdmobService } from 'src/app/services/admob.service';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'app-profile-menu',
@@ -25,7 +26,8 @@ export class ProfileMenuPage implements OnInit {
     private alertController: AlertController,
     private loadingCo1ntroller: LoadingController,
     private navController: NavController,
-    private admob: AdmobService) { }
+    private admob: AdmobService,
+    private utils: UtilsService) { }
 
   ngOnInit () {
     
@@ -41,15 +43,15 @@ export class ProfileMenuPage implements OnInit {
 
   async logout () {
     const alert = await this.alertController.create({
-      header: 'Cerrar sesión',
-      message: '¿Está seguro que desea cerrar sesión?',
+      header: this.utils.get_translate ('Log out'),
+      message: this.utils.get_translate ('¿Está seguro que desea cerrar sesión?'),
       mode: 'ios',
       buttons: [
         {
-          text: 'Cancelar',
+          text: this.utils.get_translate ('Cancelar'),
           role: 'cancel'
         }, {
-          text: 'Confirmar',
+          text: this.utils.get_translate ('Confirmar'),
           handler: async () => {
             const loading = await this.loadingCo1ntroller.create({
               translucent: true,

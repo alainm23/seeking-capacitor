@@ -116,8 +116,25 @@ ion-content
     .btn-close
     {
         position: absolute;
-        top: 8px;
-        right: 5px;
+        top: 6px;
+        right: 6px;
+        --background: #ffff;
+        --background-activated: #ffff;
+        --color: #333333;
+        width: 30px;
+        height: 30px;
+        --border-radius: 50%;
+        font-size: 0px;
+        .icon-close
+        {
+            color: #333333;
+            font-size: 20px;
+        }
+    }
+    .btn-hide {
+        position: absolute;
+        top: 6px;
+        left: 6px;
         --background: #ffff;
         --background-activated: #ffff;
         --color: #333333;
