@@ -38,11 +38,6 @@ ion-slide
         display: flex;
         align-items: flex-end;
         padding-bottom: 15px;
-        .icon-corazon
-        {
-            color: #fff;
-            font-size: 24px;
-        }
     }
 }
 
@@ -236,6 +231,19 @@ h1
 {
     margin-bottom: 20px;
 }
+.div-slider
+{
+    height: 70%;
+    position: relative;
+}
+.icon-corazon
+{
+    color: #fff;
+    font-size: 24px;
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+}
 ion-slides
 {
     --bullet-background: #ffffff;
@@ -243,7 +251,7 @@ ion-slides
     --bullet-width: 30px;
     --bullet-background-active: #C89530;
     z-index: 0;
-    height: 70%;
+    height: 100%;
     ion-thumbnail
     {
         width: 100%;
@@ -431,7 +439,7 @@ ion-footer
 }
 @media (min-width: 540px)
 {
-    ion-slides
+    .div-slider
     {
         height: 80%;
     }

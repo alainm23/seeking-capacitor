@@ -22,18 +22,29 @@ ion-content
 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  height: 100%;
 }
 .bajar_card
 {
-  margin-top: 10%;
+  margin-top: 0px;
   margin-left: 0px;
   margin-right: 0px;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+.card-register
+{
+  width: 100%;
 }
 ion-card
 {
   --background: #ffffffe0;
   border-radius: 13px;
-  margin-bottom: 8px;
   ion-card-content
   {
     padding-left: 1.5625rem;
@@ -243,34 +254,34 @@ ion-list
     font-size: 25px;
   }
 }
-@media (min-width: 375px) and (min-height: 667px)
+/*@media (min-width: 375px) and (min-height: 667px)
 {
   .bajar_card
   {
     margin-top: 7%;
   }
-}
-@media (min-width: 375px) and (min-height: 812px)
+}*/
+/*@media (min-width: 375px) and (min-height: 812px)
 {
   .bajar_card
   {
     margin-top: 30%;
   }
-}
-@media (min-width: 411px) and (min-height: 731px)
+}*/
+/*@media (min-width: 411px) and (min-height: 731px)
 {
   .bajar_card
   {
     margin-top: 2.75rem;
   }
-}
-@media (min-width: 411px) and (min-height: 823px)
+}*/
+/*@media (min-width: 411px) and (min-height: 823px)
 {
   .bajar_card
   {
     margin-top: 6.75rem;
   }
-}
+}*/
 @media (min-width: 411px)
 {
   .div-login
@@ -291,13 +302,13 @@ ion-list
     }  
   }
 }
-@media (min-width: 414px) and (min-height: 896px)
+/*@media (min-width: 414px) and (min-height: 896px)
 {
   .bajar_card
   {
     margin-top: 7.8125rem;
   }
-}
+}*/
 @media (min-width: 480px)
 {
   .div-login
@@ -310,17 +321,9 @@ ion-list
     padding-left: 3.125rem;
     padding-right: 3.125rem;
   }
-  .bajar_card
-  {
-    margin-top: 7.8125rem;
-  }
 }
 @media (min-width: 540px)
 {
-  .bajar_card
-  {
-    margin-top: 2.8125rem;
-  }
   .div-login
   {
     padding-left: 6.125rem;
@@ -329,10 +332,6 @@ ion-list
 }
 @media (min-width: 640px)
 {
-  .bajar_card
-  {
-    margin-top: 1.25rem;
-  }
   .div-login
   {
     padding-left: 7.5rem;
@@ -346,10 +345,6 @@ ion-list
 }
 @media (min-width: 768px)
 {
-  .bajar_card
-  {
-    margin-top: 12.5rem;
-  }
   .div-login
   {
     padding-left: 12.5rem;
@@ -363,10 +358,6 @@ ion-list
 }
 @media (min-width: 1024px)
 {
-  .bajar_card
-  {
-    margin-top: 25.3125rem;
-  }
   .div-login
   {
     padding-left: 18.75rem;

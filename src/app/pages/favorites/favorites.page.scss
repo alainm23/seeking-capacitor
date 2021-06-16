@@ -46,7 +46,7 @@
 
 ion-content
 {
-    --background: #F5F5F5;
+    --background: #fff;
 }
 .card-cabezera
 {
@@ -132,10 +132,10 @@ ion-content
 {
     display: flex;
     flex-wrap: wrap;
-    padding: 0px 15px;
+    padding: 0px 6px;
     background: transparent;
     box-shadow: none;
-    margin-top: 30px;
+    margin-top: 0px;
     .card-pefil-fondo
     {
         background-position: top center;
@@ -153,13 +153,10 @@ ion-content
     {
         width: 100%;
         border-radius: 0px;
-        margin-left: 5px !important;
-        margin-right: 5px !important;
         margin: 0px;
         height: 15.625rem;
         overflow: hidden;
         box-shadow: 0px 6px 12px #00000029;
-        margin-bottom: 17px;
         position: relative;
         .img-circulo-amarrilo
         {
@@ -465,7 +462,7 @@ ion-footer
 }
 .h1-result
 {
-    color: #000000;
+    color: #6E6E6E;
     font-family: Avenirlight;
     font-size: 20px;
 }
@@ -590,6 +587,13 @@ ion-footer
             }
         }
     }
+    .div-list-card
+    {
+        .card-perfil
+        {
+            height: 13.75rem;
+        }
+    }
 }
 @media(min-width: 768px)
 {
@@ -633,7 +637,7 @@ ion-footer
         padding: 0px 45px;
         .card-perfil
         {
-            height: 28.125rem;
+            height: 18.75rem;
         }
     }
     ion-footer
@@ -677,7 +681,7 @@ ion-footer
         padding: 0px 120px;
         .card-perfil
         {
-            height: 37.5rem;
+            height: 23.75rem;
         }
     }
     ion-slides

@@ -6,24 +6,25 @@
 
 <ion-content>
   <ion-button (click)="back ()" mode="ios" shape="round" class="btn-regresar"><ion-icon name="arrow-back-sharp" class="icon-left"></ion-icon></ion-button>
-  <ion-slides pager="true" [options]="slideOpts">
-    <ion-slide
-      *ngFor="let item of galeria"
-      [ngStyle]="{'background-image': 'url(' + item.imagen + ')'}"
-      class="slider-fondo">
-      <div class="div-sombre-profile">
-        <ion-button (click)="toggled_favorite ()" fill="clear" class="icon-corazon">
-          <ng-container *ngIf="loadings.favorite === true">
-            <ion-spinner color="light" name="dots"></ion-spinner>
-          </ng-container>
+  <div class="div-slider">
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide
+        *ngFor="let item of galeria"
+        [ngStyle]="{'background-image': 'url(' + item.imagen + ')'}"
+        class="slider-fondo">
+        <div class="div-sombre-profile"></div>
+      </ion-slide>
+    </ion-slides>
+    <ion-button (click)="toggled_favorite ()" fill="clear" class="icon-corazon">
+      <ng-container *ngIf="loadings.favorite === true">
+        <ion-spinner color="light" name="dots"></ion-spinner>
+      </ng-container>
 
-          <ng-container *ngIf="loadings.favorite === false">
-            <ion-icon [name]="profile?.tengo_favorito === true ? 'heart': 'heart-outline'"></ion-icon>
-          </ng-container>
-        </ion-button>
-      </div>
-    </ion-slide>
-  </ion-slides>
+      <ng-container *ngIf="loadings.favorite === false">
+        <ion-icon [name]="profile?.tengo_favorito === true ? 'heart': 'heart-outline'"></ion-icon>
+      </ng-container>
+    </ion-button>
+  </div>
   <!-- <ion-button class="btn-flecha"><ion-icon name="arrow-down" class="icon-flecha"></ion-icon></ion-button> -->
   <div class="div-padding-left-right">
     <h1>{{ profile?.usernick }}, {{ profile?.edad }}</h1>

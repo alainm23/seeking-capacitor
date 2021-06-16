@@ -56,9 +56,9 @@
       </ion-item>
     </div>
 
-    <ion-grid>
+    <ion-grid style="padding-left: 0px;padding-right: 0px;padding-top: 0px;">
       <ion-row>
-        <ion-col size="6" *ngFor="let item of items">
+        <ion-col size="6" size-md="4" *ngFor="let item of items">
           <ion-card
             class="card-perfil card-pefil-fondo"
             [ngStyle]="{'background-image': 'url(' + item.thumbnail + ')'}"
