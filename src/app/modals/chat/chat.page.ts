@@ -279,4 +279,8 @@ export class ChatPage implements OnInit {
 
     return await modal.present ();
   }
+
+  valid_before_element () {
+    
+  }
 }

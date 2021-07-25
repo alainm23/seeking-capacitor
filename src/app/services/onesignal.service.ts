@@ -34,7 +34,7 @@ export class OnesignalService {
         this.onesignal.handleNotificationOpened ().subscribe ((response: OSNotificationOpenedResult) => {
           // do something when a notification is opened
         });
-        
+          
         this.onesignal.getIds ().then ((identity: any) => {
           this.database.save_onesignal_player_id (identity.userId).subscribe ((res: any) => {
             resolve (true);

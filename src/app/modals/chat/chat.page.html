@@ -18,17 +18,19 @@
   </div>
 
   <ng-container *ngIf="loadings.page === false">
-    <ng-container *ngFor="let item of messages">
+    <ng-container *ngFor="let item of messages; let i = index">
+      {{ i }}
       <ion-item *ngIf="item.id_sender !== auth.USER_DATA.id" class="ion-no-padding item-avatar-sytle" lines="none">
         <ion-avatar slot="start">
           <img [src]="perfil.thumbnail" class="img-perfil">
         </ion-avatar>
         <div class="div-general-top">
-          <div class="div-conversacion-una-linea div-anaranjado-conversacion">
+          <div [class.div-radius-primer-mensaje]="valid_before_element (item, i)" class="div-conversacion-una-linea div-anaranjado-conversacion">
             <p class="p-conversacion p-conversacion-blanco ion-no-margin">{{ format_message (item.message) }}</p>
             <span class="span-hora span-hora-blanco">{{ get_date_format (item.created_at) }}</span>
           </div>
           <!-- div-radius-primer-mensaje
+            [class.text-success]="true"
           div-radius-ultimo-mensaje -->
         </div>
       </ion-item>
